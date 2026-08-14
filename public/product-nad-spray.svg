@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+ <stop offset="0%" stop-color="#e6f0ed"/><stop offset="100%" stop-color="#c3dcd7"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+ <stop offset="0%" stop-color="#ffffff" stop-opacity=".95"/><stop offset="22%" stop-color="#e9f2f0" stop-opacity=".55"/>
+ <stop offset="60%" stop-color="#cfe0dd" stop-opacity=".45"/><stop offset="100%" stop-color="#ffffff" stop-opacity=".8"/></linearGradient>
+<linearGradient id="label" x1="0" y1="0" x2="1" y2="0">
+ <stop offset="0%" stop-color="#1d4d4a"/><stop offset="45%" stop-color="#2f6f68"/><stop offset="100%" stop-color="#1d4d4a"/></linearGradient>
+<linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+ <stop offset="0%" stop-color="#9aa6a4"/><stop offset="30%" stop-color="#eef2f1"/>
+ <stop offset="65%" stop-color="#b9c4c2"/><stop offset="100%" stop-color="#8e9a98"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+ <stop offset="0%" stop-color="#e8d4a0"/><stop offset="100%" stop-color="#c9a961"/></linearGradient>
+<radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+ <stop offset="0%" stop-color="#143035" stop-opacity=".28"/><stop offset="100%" stop-color="#143035" stop-opacity="0"/></radialGradient>
+
+</defs>
+<rect width="800" height="800" fill="url(#bg)"/>
+<ellipse cx="400" cy="672" rx="215" ry="34" fill="url(#shadow)"/>
+<rect x="358" y="96" width="84" height="70" rx="10" fill="url(#cap)"/>
+<rect x="380" y="70" width="40" height="34" rx="8" fill="url(#cap)"/>
+<rect x="366" y="166" width="68" height="26" rx="6" fill="#9fabaa"/>
+<path d="M336 192 h128 v368 a30 30 0 0 1 -30 30 h-68 a30 30 0 0 1 -30 -30 z" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".7"/>
+<rect x="336" y="300" width="128" height="212" fill="url(#label)"/>
+<text x="400" y="362" text-anchor="middle" font-family="Georgia,serif" font-size="18.0" letter-spacing="2.0" fill="#ffffff" fill-opacity=".95">SERENEQUE</text>
+<line x1="360" y1="382" x2="440" y2="382" stroke="#c9a961" stroke-opacity=".7" stroke-width="1"/>
+<text x="400" y="414" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" letter-spacing="1.1" fill="#e8d4a0">NAD+ Nasal Spray</text>
+<rect x="348" y="206" width="14" height="350" rx="7" fill="#ffffff" fill-opacity=".28"/>
+</svg>

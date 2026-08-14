@@ -75,12 +75,24 @@
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; padding-bottom: 26px; border-bottom: 1px solid rgba(176, 138, 53, 0.35);">
       <div>
         <h2 style="margin: 0 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.01em;">Catalog</h2>
-        <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #3d6a71;">Six things we actually use every day.</p>
+        <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #3d6a71;">{{ activeCatName }}</p>
       </div>
       <span style="font-size: 11.5px; letter-spacing: 0.14em; color: #587f87;">{{ productCountLabel }}</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 22px; padding-top: 32px;">
+    <div style="display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 36px; padding-top: 32px; align-items: start;">
+
+      <aside style="display: flex; flex-direction: column; gap: 8px; position: sticky; top: 96px;">
+        <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #587f87; padding: 0 0 10px 4px;">Categories</div>
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+          <button onClick="{{ c.select }}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 4px; background: {{ c.bg }}; border: {{ c.border }}; color: #143035; font-family: inherit; font-size: 13.5px; font-weight: {{ c.weight }}; cursor: pointer; transition: all 180ms ease;" style-hover="border-color: #b08a35; background: rgba(255, 255, 255, 0.82);">
+            <span>{{ c.name }}</span>
+            <span style="font-size: 11px; color: #8f6d29;">{{ c.count }}</span>
+          </button>
+        </sc-for>
+      </aside>
+
+      <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 22px;">
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
         <article style="display: flex; flex-direction: column; border-radius: 4px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.52); overflow: hidden; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
           <div style="position: relative; aspect-ratio: 4 / 3; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.06) 0 2px, transparent 2px 11px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
@@ -99,6 +111,8 @@
           </div>
         </article>
       </sc-for>
+      </div>
+
     </div>
   </section>
 
@@ -190,13 +204,30 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;floatMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;catalogColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;,&quot;4&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Catalog&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Catalog&quot;}}">
+const CATEGORIES = [
+  { id: "all",    name: "All products" },
+  { id: "appet",  name: "Appetite Suppressant" },
+  { id: "weight", name: "Weight Management" },
+  { id: "pep",    name: "Peptides" },
+  { id: "aging",  name: "Anti-Aging" },
+  { id: "sexual", name: "Sexual Health" },
+  { id: "hair",   name: "Hair Loss" },
+  { id: "acne",   name: "Acne" }
+];
+
 const PRODUCTS = [
-  { id: "nad",  name: "NAD+",        price: 0, badge: "RX", img: "product-nad.svg",  slot: "NAD+",        blurb: "Nicotinamide adenine dinucleotide. Prescription required." },
-  { id: "serm", name: "Sermorelin",  price: 0, badge: "RX", img: "product-serm.svg", slot: "Sermorelin",  blurb: "Growth hormone\u2013releasing hormone analog. Prescription required." },
-  { id: "tesa", name: "Tesamorelin", price: 0, badge: "RX", img: "product-tesa.svg", slot: "Tesamorelin", blurb: "Growth hormone\u2013releasing factor analog. Prescription required." },
-  { id: "ghk",  name: "GHK-Cu",      price: 0, badge: "",   img: "product-ghk.svg",  slot: "GHK-Cu",      blurb: "Copper tripeptide, topical formulation." },
-  { id: "bpc",  name: "BPC-157",     price: 0, badge: "",   img: "product-bpc.svg",  slot: "BPC-157",     blurb: "Synthetic pentadecapeptide. Not FDA approved." },
-  { id: "tirz", name: "Tirzepatide", price: 0, badge: "RX", img: "product-tirz.svg", slot: "Tirzepatide", blurb: "GIP/GLP-1 receptor agonist. Prescription required." }
+  { id: "sermorelin", cat: "pep",    name: "Sermorelin Troche",     price: 199, badge: "RX", img: "product-sermorelin-troche.svg", blurb: "Growth hormone\u2013releasing hormone analog. Sublingual troche." },
+  { id: "lcarn",      cat: "weight", name: "L-Carnitine",           price: 249, badge: "",   img: "product-l-carnitine.svg",       blurb: "Amino acid derivative. Injectable formulation." },
+  { id: "micc",       cat: "weight", name: "Skinny Shots \u2014 MICC",  price: 249, badge: "",   img: "product-skinny-shots.svg",      blurb: "Methionine, inositol, choline and cyanocobalamin blend." },
+  { id: "oralwl",     cat: "appet",  name: "Oral Weight Loss Capsules", price: 269, badge: "", img: "product-oral-weight-loss.svg",  blurb: "Oral capsule formulation. Prescription required." },
+  { id: "sema",       cat: "weight", name: "Semaglutide Injection", price: 189, badge: "RX", img: "product-semaglutide.svg",       blurb: "GLP-1 receptor agonist, compounded with glycine." },
+  { id: "ghk",        cat: "aging",  name: "GHK-Cu",                price: 200, badge: "",   img: "product-ghk-cu.svg",            blurb: "Copper tripeptide. Injectable formulation." },
+  { id: "ghkep",      cat: "aging",  name: "GHK-Cu / Epitalon",     price: 250, badge: "",   img: "product-ghk-epitalon.svg",      blurb: "Copper tripeptide with epitalon. Injectable." },
+  { id: "bpc",        cat: "pep",    name: "BPC-157",               price: 350, badge: "",   img: "product-bpc-157.svg",           blurb: "Synthetic pentadecapeptide. Not FDA approved." },
+  { id: "cream",      cat: "aging",  name: "Anti-Aging Topical Cream", price: 150, badge: "", img: "product-anti-aging-cream.svg", blurb: "Compounded topical cream." },
+  { id: "nad",        cat: "pep",    name: "NAD+ Nasal Spray",      price: 320, badge: "",   img: "product-nad-spray.svg",         blurb: "Nicotinamide adenine dinucleotide. Intranasal." },
+  { id: "methblue",   cat: "aging",  name: "Methylene Blue Capsules", price: 225, badge: "", img: "product-methylene-blue.svg",    blurb: "Oral capsule formulation." },
+  { id: "gluta",      cat: "aging",  name: "Glutathione",           price: 169, badge: "",   img: "product-glutathione.svg",       blurb: "Tripeptide antioxidant. Injectable formulation." }
 ];
 
 const NODES = [
@@ -214,7 +245,7 @@ const NODES = [
 const money = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 class Component extends DCLogic {
-  state = { cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
+  state = { activeCat: "all", cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
 
   add = (id) => this.setState((s) => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 }, cartOpen: true }));
   bump = (id, d) => this.setState((s) => {
@@ -277,7 +308,8 @@ class Component extends DCLogic {
   componentWillUnmount() { cancelAnimationFrame(this._raf); }
 
   renderVals() {
-    const { cart, cartOpen, checkout, tilt, hovered } = this.state;
+    const { cart, cartOpen, checkout, tilt, hovered, activeCat } = this.state;
+    const VISIBLE = activeCat === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === activeCat);
     const cols = this.props.catalogColumns ?? "3";
     const motion = this.props.floatMotion ?? true;
     const showBadges = this.props.showBadges ?? true;
@@ -299,14 +331,26 @@ class Component extends DCLogic {
       shippingLabel: shipping === 0 ? "Free" : money(shipping),
       totalLabel: money(subtotal + shipping),
 
-      products: PRODUCTS.map((p) => ({
-        name: p.name, blurb: p.blurb, slot: p.slot, img: p.img,
+      products: VISIBLE.map((p) => ({
+        name: p.name, blurb: p.blurb, img: p.img,
         badge: showBadges ? p.badge : "",
-        priceLabel: "Consultation",
-        cta: cart[p.id] ? "Saved · " + cart[p.id] : "Enquire",
+        priceLabel: "From " + money(p.price),
+        cta: cart[p.id] ? "Saved \u00b7 " + cart[p.id] : "Get started",
         add: () => this.add(p.id)
       })),
-      productCountLabel: PRODUCTS.length + " ITEMS",
+      categories: CATEGORIES.map((c) => {
+        const on = c.id === activeCat;
+        return {
+          name: c.name,
+          count: c.id === "all" ? PRODUCTS.length : PRODUCTS.filter((p) => p.cat === c.id).length,
+          bg: on ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.42)",
+          border: on ? "1px solid #b08a35" : "1px solid rgba(176,138,53,0.28)",
+          weight: on ? "500" : "300",
+          select: () => this.setState({ activeCat: c.id })
+        };
+      }),
+      activeCatName: (CATEGORIES.find((c) => c.id === activeCat) || {}).name,
+      productCountLabel: VISIBLE.length + " ITEMS",
       gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 400 : cols === "4" ? 240 : 300) + "px, 1fr))",
 
       floatAnim: motion ? "floaty 7s ease-in-out infinite" : "none",
