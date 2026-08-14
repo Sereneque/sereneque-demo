@@ -82,14 +82,19 @@
 
     <div style="display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 36px; padding-top: 32px; align-items: start;">
 
-      <aside style="display: flex; flex-direction: column; gap: 8px; position: sticky; top: 96px;">
-        <div style="font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #587f87; padding: 0 0 10px 4px;">Categories</div>
-        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
-          <button onClick="{{ c.select }}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 4px; background: {{ c.bg }}; border: {{ c.border }}; color: #143035; font-family: inherit; font-size: 13.5px; font-weight: {{ c.weight }}; cursor: pointer; transition: all 180ms ease;" style-hover="border-color: #b08a35; background: rgba(255, 255, 255, 0.82);">
-            <span>{{ c.name }}</span>
-            <span style="font-size: 11px; color: #8f6d29;">{{ c.count }}</span>
-          </button>
-        </sc-for>
+      <aside style="position: sticky; top: 96px;">
+        <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #587f87; padding: 0 0 12px 2px;">Browse</div>
+        <div style="border-radius: 8px; border: 1px solid rgba(176, 138, 53, 0.28); background: linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.34)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 34px rgba(20, 48, 53, 0.09); overflow: hidden;">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+            <button onClick="{{ c.select }}" style="position: relative; display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 11px 13px; background: {{ c.bg }}; border: none; border-bottom: {{ c.divider }}; color: {{ c.nameColor }}; font-family: inherit; cursor: pointer; opacity: {{ c.dim }}; transition: background 200ms ease, opacity 200ms ease;" style-hover="background: rgba(255,255,255,0.62); opacity: 1;">
+              <span style="position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: {{ c.accent }};"></span>
+              <img src="{{ c.icon }}" alt="" style="display: block; width: 40px; height: 40px; border-radius: 7px; flex: none; border: {{ c.thumbRing }}; box-shadow: {{ c.thumbShadow }}; transition: box-shadow 200ms ease;">
+              <span style="flex: 1; min-width: 0; font-size: 13.5px; font-weight: {{ c.weight }}; letter-spacing: 0.01em; line-height: 1.3;">{{ c.name }}</span>
+              <span style="flex: none; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; padding: 0 7px; border-radius: 999px; font-size: 10.5px; font-weight: 500; background: {{ c.countBg }}; color: {{ c.countColor }};">{{ c.count }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="margin: 14px 2px 0; font-size: 11.5px; font-weight: 300; line-height: 1.5; color: #587f87;">All items require consultation with a licensed provider.</p>
       </aside>
 
       <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 22px;">
@@ -338,14 +343,23 @@ class Component extends DCLogic {
         cta: cart[p.id] ? "Saved \u00b7 " + cart[p.id] : "Get started",
         add: () => this.add(p.id)
       })),
-      categories: CATEGORIES.map((c) => {
+      categories: CATEGORIES.map((c, idx) => {
         const on = c.id === activeCat;
+        const n = c.id === "all" ? PRODUCTS.length : PRODUCTS.filter((p) => p.cat === c.id).length;
         return {
           name: c.name,
-          count: c.id === "all" ? PRODUCTS.length : PRODUCTS.filter((p) => p.cat === c.id).length,
-          bg: on ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.42)",
-          border: on ? "1px solid #b08a35" : "1px solid rgba(176,138,53,0.28)",
+          count: n,
+          icon: "cat-" + c.id + ".svg",
+          bg: on ? "linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.62))" : "transparent",
+          accent: on ? "linear-gradient(180deg, #e8d4a0, #b08a35)" : "transparent",
           weight: on ? "500" : "300",
+          nameColor: on ? "#143035" : "#3d6a71",
+          thumbRing: on ? "1px solid rgba(176,138,53,0.75)" : "1px solid rgba(176,138,53,0.22)",
+          thumbShadow: on ? "0 4px 12px rgba(20,48,53,0.16)" : "none",
+          countBg: on ? "linear-gradient(150deg, #d3ac5f, #b08a35)" : "rgba(176,138,53,0.12)",
+          countColor: on ? "#ffffff" : "#8f6d29",
+          divider: idx === CATEGORIES.length - 1 ? "none" : "1px solid rgba(176,138,53,0.16)",
+          dim: n === 0 ? "0.45" : "1",
           select: () => this.setState({ activeCat: c.id })
         };
       }),
