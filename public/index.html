@@ -79,7 +79,7 @@
 
       
 
-      <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, 190px); justify-content: center; gap: 18px; max-width: 832px; margin: 0 auto;">
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
         <article style="display: flex; flex-direction: column; border-radius: 4px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.52); overflow: hidden; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
           <div style="position: relative; aspect-ratio: 4 / 3; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.06) 0 2px, transparent 2px 11px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
@@ -203,7 +203,9 @@ const PRODUCTS = [
   { id: "oralwl",     cat: "appet",  badge: "",   img: "product-oral-weight-loss.svg" },
   { id: "ghk",        cat: "aging",  badge: "",   img: "product-ghk-cu.svg" },
   { id: "cream",      cat: "aging",  badge: "",   img: "product-anti-aging-cream.svg" },
-  { id: "nad",        cat: "pep",    badge: "",   img: "product-nad-spray.svg" }
+  { id: "nad",        cat: "pep",    badge: "",   img: "product-nad-spray.svg" },
+  { id: "bpc",        cat: "pep",    badge: "",   img: "product-bpc-157.svg" },
+  { id: "micc",       cat: "weight", badge: "",   img: "product-skinny-shots.svg" }
 ];
 
 const NODES = [
