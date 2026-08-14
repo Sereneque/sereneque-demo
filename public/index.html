@@ -92,7 +92,7 @@
         <p style="margin: 14px 2px 0; font-size: 11.5px; font-weight: 300; line-height: 1.5; color: #587f87;">All items require consultation with a licensed provider.</p>
       </aside>
 
-      <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 22px;">
+      <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 16px;">
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
         <article style="display: flex; flex-direction: column; border-radius: 4px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.52); overflow: hidden; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
           <div style="position: relative; aspect-ratio: 4 / 3; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.06) 0 2px, transparent 2px 11px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
@@ -101,8 +101,8 @@
               <span style="position: absolute; top: 12px; left: 12px; font-size: 10px; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 138, 53, 0.5); color: #8f6d29; backdrop-filter: blur(8px);">{{ p.badge }}</span>
             </sc-if>
           </div>
-          <div style="display: flex; align-items: center; justify-content: center; padding: 16px 20px 18px;">
-            <span style="font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #7d9b8d;">Coming soon</span>
+          <div style="display: flex; align-items: center; justify-content: center; padding: 10px 12px 12px;">
+            <span style="font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #7d9b8d;">Coming soon</span>
           </div>
         </article>
       </sc-for>
@@ -211,18 +211,12 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: "sermorelin", cat: "pep",    name: "Sermorelin Troche",     price: 199, badge: "RX", img: "product-sermorelin-troche.svg", blurb: "Growth hormone\u2013releasing hormone analog. Sublingual troche." },
-  { id: "lcarn",      cat: "weight", name: "L-Carnitine",           price: 249, badge: "",   img: "product-l-carnitine.svg",       blurb: "Amino acid derivative. Injectable formulation." },
-  { id: "micc",       cat: "weight", name: "Skinny Shots \u2014 MICC",  price: 249, badge: "",   img: "product-skinny-shots.svg",      blurb: "Methionine, inositol, choline and cyanocobalamin blend." },
-  { id: "oralwl",     cat: "appet",  name: "Oral Weight Loss Capsules", price: 269, badge: "", img: "product-oral-weight-loss.svg",  blurb: "Oral capsule formulation. Prescription required." },
-  { id: "sema",       cat: "weight", name: "Semaglutide Injection", price: 189, badge: "RX", img: "product-semaglutide.svg",       blurb: "GLP-1 receptor agonist, compounded with glycine." },
-  { id: "ghk",        cat: "aging",  name: "GHK-Cu",                price: 200, badge: "",   img: "product-ghk-cu.svg",            blurb: "Copper tripeptide. Injectable formulation." },
-  { id: "ghkep",      cat: "aging",  name: "GHK-Cu / Epitalon",     price: 250, badge: "",   img: "product-ghk-epitalon.svg",      blurb: "Copper tripeptide with epitalon. Injectable." },
-  { id: "bpc",        cat: "pep",    name: "BPC-157",               price: 350, badge: "",   img: "product-bpc-157.svg",           blurb: "Synthetic pentadecapeptide. Not FDA approved." },
-  { id: "cream",      cat: "aging",  name: "Anti-Aging Topical Cream", price: 150, badge: "", img: "product-anti-aging-cream.svg", blurb: "Compounded topical cream." },
-  { id: "nad",        cat: "pep",    name: "NAD+ Nasal Spray",      price: 320, badge: "",   img: "product-nad-spray.svg",         blurb: "Nicotinamide adenine dinucleotide. Intranasal." },
-  { id: "methblue",   cat: "aging",  name: "Methylene Blue Capsules", price: 225, badge: "", img: "product-methylene-blue.svg",    blurb: "Oral capsule formulation." },
-  { id: "gluta",      cat: "aging",  name: "Glutathione",           price: 169, badge: "",   img: "product-glutathione.svg",       blurb: "Tripeptide antioxidant. Injectable formulation." }
+  { id: "sermorelin", cat: "pep",    badge: "RX", img: "product-sermorelin-troche.svg" },
+  { id: "sema",       cat: "weight", badge: "RX", img: "product-semaglutide.svg" },
+  { id: "oralwl",     cat: "appet",  badge: "",   img: "product-oral-weight-loss.svg" },
+  { id: "ghk",        cat: "aging",  badge: "",   img: "product-ghk-cu.svg" },
+  { id: "cream",      cat: "aging",  badge: "",   img: "product-anti-aging-cream.svg" },
+  { id: "nad",        cat: "pep",    badge: "",   img: "product-nad-spray.svg" }
 ];
 
 const NODES = [
@@ -352,7 +346,7 @@ class Component extends DCLogic {
       }),
       activeCatName: (CATEGORIES.find((c) => c.id === activeCat) || {}).name,
       productCountLabel: VISIBLE.length + " ITEMS",
-      gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 400 : cols === "4" ? 240 : 300) + "px, 1fr))",
+      gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 240 : cols === "4" ? 160 : 190) + "px, 1fr))",
 
       floatAnim: motion ? "floaty 7s ease-in-out infinite" : "none",
       treeTilt: "perspective(1000px) rotateX(" + tilt.x + "deg) rotateY(" + tilt.y + "deg)",
