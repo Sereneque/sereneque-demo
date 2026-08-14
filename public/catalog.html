@@ -39,7 +39,7 @@
     </a>
     <div style="display: flex; flex-wrap: wrap; overflow: hidden; max-height: 24px; gap: 30px; font-size: 13.5px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #3d6a71;">
       <a href="catalog.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Catalog</a>
-      <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Method</a>
+      <a href="method.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Method</a>
       <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
       <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
     </div>
@@ -65,26 +65,31 @@
       <span style="font-size: 11.5px; letter-spacing: 0.14em; color: #587f87;">{{ productCountLabel }}</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 36px; padding-top: 32px; align-items: start;">
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 28px; align-items: start;">
 
-      <aside style="position: sticky; top: 96px;">
-        <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #587f87; padding: 0 0 12px 2px;">Browse</div>
-        <div style="border-radius: 8px; border: 1px solid rgba(176, 138, 53, 0.28); background: linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.34)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 14px 34px rgba(20, 48, 53, 0.09); overflow: hidden;">
-          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
-            <button onClick="{{ c.select }}" style="position: relative; display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 11px 13px; background: {{ c.bg }}; border: none; border-bottom: {{ c.divider }}; color: {{ c.nameColor }}; font-family: inherit; cursor: pointer; opacity: {{ c.dim }}; transition: background 200ms ease, opacity 200ms ease;" style-hover="background: rgba(255,255,255,0.62); opacity: 1;">
-              <span style="position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: {{ c.accent }};"></span>
-              <img src="{{ c.icon }}" alt="" style="display: block; width: 40px; height: 40px; border-radius: 7px; flex: none; border: {{ c.thumbRing }}; box-shadow: {{ c.thumbShadow }}; transition: box-shadow 200ms ease;">
-              <span style="flex: 1; min-width: 0; font-size: 13.5px; font-weight: {{ c.weight }}; letter-spacing: 0.01em; line-height: 1.3;">{{ c.name }}</span>
-              <span style="flex: none; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; padding: 0 7px; border-radius: 999px; font-size: 10.5px; font-weight: 500; background: {{ c.countBg }}; color: {{ c.countColor }};">{{ c.count }}</span>
-            </button>
-          </sc-for>
-        </div>
-        <p style="margin: 14px 2px 0; font-size: 11.5px; font-weight: 300; line-height: 1.5; color: #587f87;">All items require consultation with a licensed provider.</p>
-      </aside>
+      <div style="position: relative; width: 300px; max-width: 100%; z-index: 20;">
+        <button onClick="{{ toggleCatMenu }}" style="display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(176, 138, 53, 0.4); background: rgba(255, 255, 255, 0.62); backdrop-filter: blur(10px); color: #143035; font-family: inherit; font-size: 14px; cursor: pointer; box-shadow: 0 3px 10px rgba(20, 48, 53, 0.1);" style-hover="border-color: #b08a35; background: rgba(255, 255, 255, 0.8);">
+          <img src="{{ activeCatIcon }}" alt="" style="display: block; width: 34px; height: 34px; border-radius: 6px; flex: none;">
+          <span style="flex: 1; min-width: 0;">{{ activeCatName }}</span>
+          <span style="flex: none; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; padding: 0 7px; border-radius: 999px; font-size: 10.5px; background: linear-gradient(150deg, #d3ac5f, #b08a35); color: #ffffff;">{{ activeCatCount }}</span>
+          <span style="flex: none; font-size: 11px; color: #8f6d29; transform: {{ catMenuTransform }}; transition: transform 200ms ease;">&#9660;</span>
+        </button>
+        <sc-if value="{{ catOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="position: absolute; top: calc(100% + 8px); left: 0; right: 0; border-radius: 6px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); box-shadow: 0 18px 40px rgba(20, 48, 53, 0.18); overflow: hidden;">
+            <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+              <button onClick="{{ c.select }}" style="display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; padding: 10px 14px; background: {{ c.bg }}; border: none; border-bottom: {{ c.divider }}; color: {{ c.nameColor }}; font-family: inherit; font-size: 13.5px; font-weight: {{ c.weight }}; cursor: pointer; opacity: {{ c.dim }};" style-hover="background: rgba(176, 138, 53, 0.12); opacity: 1;">
+                <img src="{{ c.icon }}" alt="" style="display: block; width: 30px; height: 30px; border-radius: 5px; flex: none;">
+                <span style="flex: 1; min-width: 0;">{{ c.name }}</span>
+                <span style="flex: none; font-size: 11px; color: #8f6d29;">{{ c.count }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
 
       <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 16px;">
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
-        <article style="display: flex; flex-direction: column; border-radius: 5px; border: 1px solid rgba(176, 138, 53, 0.34); background: rgba(255, 255, 255, 0.34); overflow: hidden; box-shadow: 0 3px 10px rgba(20, 48, 53, 0.12); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
+        <article style="display: flex; flex-direction: column; border-radius: 5px; border: none; background: rgba(255, 255, 255, 0.34); overflow: hidden; box-shadow: 0 3px 10px rgba(20, 48, 53, 0.12); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20, 48, 53, 0.18);">
           <div style="position: relative; aspect-ratio: 4 / 3; background-color: #9cc4bf; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
             <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ true }}">
@@ -230,7 +235,7 @@ const NODES = [
 const money = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 class Component extends DCLogic {
-  state = { activeCat: "all", cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
+  state = { activeCat: "all", catOpen: false, cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
 
   add = (id) => this.setState((s) => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 }, cartOpen: true }));
   bump = (id, d) => this.setState((s) => {
@@ -293,7 +298,7 @@ class Component extends DCLogic {
   componentWillUnmount() { cancelAnimationFrame(this._raf); }
 
   renderVals() {
-    const { cart, cartOpen, checkout, tilt, hovered, activeCat } = this.state;
+    const { cart, cartOpen, checkout, tilt, hovered, activeCat, catOpen } = this.state;
     const VISIBLE = activeCat === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === activeCat);
     const cols = this.props.catalogColumns ?? "3";
     const motion = this.props.floatMotion ?? true;
@@ -337,10 +342,15 @@ class Component extends DCLogic {
           countColor: on ? "#ffffff" : "#8f6d29",
           divider: idx === CATEGORIES.length - 1 ? "none" : "1px solid rgba(176,138,53,0.16)",
           dim: n === 0 ? "0.45" : "1",
-          select: () => this.setState({ activeCat: c.id })
+          select: () => this.setState({ activeCat: c.id, catOpen: false })
         };
       }),
       activeCatName: (CATEGORIES.find((c) => c.id === activeCat) || {}).name,
+      activeCatIcon: "cat-" + activeCat + ".svg",
+      activeCatCount: activeCat === "all" ? PRODUCTS.length : PRODUCTS.filter((p) => p.cat === activeCat).length,
+      catOpen: catOpen,
+      catMenuTransform: catOpen ? "rotate(180deg)" : "rotate(0deg)",
+      toggleCatMenu: () => this.setState({ catOpen: !catOpen }),
       productCountLabel: VISIBLE.length + " ITEMS",
       gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 300 : cols === "4" ? 190 : 230) + "px, 1fr))",
 

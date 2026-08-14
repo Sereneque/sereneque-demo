@@ -34,14 +34,14 @@
 <div style="min-height: 100vh; background: radial-gradient(ellipse 120% 80% at 50% 0%, #d5e8e4 0%, #a9cbc7 45%, #86b6b2 100%); background-attachment: fixed; overflow-x: hidden;">
 
   <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 24px; background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(176, 138, 53, 0.28);">
-    <a href="#top" style="display: flex; align-items: center; gap: 11px; flex: none;">
+    <a href="index.html" style="display: flex; align-items: center; gap: 11px; flex: none;">
       <img src="sereneque-header-logo.png" alt="Sereneque" style="display: block; height: 52px; width: auto;">
     </a>
     <div style="display: flex; flex-wrap: wrap; overflow: hidden; max-height: 24px; gap: 30px; font-size: 13.5px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #3d6a71;">
       <a href="catalog.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Catalog</a>
       <a href="method.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Method</a>
-      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
-      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
+      <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
+      <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
     </div>
     <button onClick="{{ openCart }}" style="position: relative; display: flex; align-items: center; gap: 9px; height: 38px; padding: 0 15px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255, 255, 255, 0.5); color: #143035; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.04em; cursor: pointer; transition: all 180ms ease;" style-hover="background: #ffffff; border-color: #b08a35;">
       <span>Cart</span>
@@ -49,48 +49,26 @@
     </button>
   </nav>
 
-  <section id="top" onMouseMove="{{ onTreeMove }}" onMouseLeave="{{ onTreeLeave }}" style="position: relative; min-height: 86vh; display: flex; align-items: center; justify-content: center; padding: 150px 24px 112px; overflow: hidden;">
-
-    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translateY(104px);">
-      <div style="position: absolute; width: min(880px, 100vw); aspect-ratio: 1 / 1; border-radius: 999px; background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%); filter: blur(14px);"></div>
-      <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
-      <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
-      <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
-      <img src="./img_4489-mss3grav-tuua.png" alt="" style="position: relative; width: min(650px, 88vw); height: auto; opacity: 0.7; margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }}; filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18));">
-    </div>
-
-    <div style="position: absolute; top: clamp(82px, 9.5vh, 108px); left: 0; right: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 0 24px; text-align: center;">
-      <img src="sereneque-wordmark-gold.png" alt="Sereneque" style="display: block; width: min(390px, 78vw); height: auto; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));">
-      <p style="margin: 0; max-width: 620px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.2vw, 26px); line-height: 1.52; color: #143035; text-wrap: pretty; text-shadow: 0 1px 12px rgba(255, 255, 255, 0.95), 0 0 26px rgba(255, 255, 255, 0.7);">A modern philosophy of wellness centered on vitality, balance, confidence, and whole-body renewal. Built on the belief that true radiance begins from within.</p>
-      <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 400; letter-spacing: 0.07em; color: #335c63; text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);">The Sereneque Wellness Method</div>
-    </div>
+  <section style="position: relative; padding: 128px 24px 8px; text-align: center;">
+    <a href="index.html" style="display: inline-block;">
+      <img src="sereneque-wordmark-gold.png" alt="Sereneque" style="display: block; margin: 0 auto; width: min(280px, 62vw); height: auto;">
+    </a>
+    <p style="margin: 18px auto 0; max-width: 560px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.5; color: #3d6a71;">Calm strength, renewal, and the pursuit of feeling fully alive again.</p>
   </section>
 
-  <section id="catalog" style="position: relative; max-width: 1180px; margin: 0 auto; padding: 8px 24px 120px;">
+  <section style="position: relative; max-width: 820px; margin: 0 auto; padding: 8px 24px 120px;">
 
-    <div style="height: 1px; margin: 0 auto 46px; max-width: 900px; background: linear-gradient(90deg, rgba(176, 138, 53, 0) 0%, rgba(176, 138, 53, 0.55) 16%, rgba(176, 138, 53, 0.6) 50%, rgba(176, 138, 53, 0.55) 84%, rgba(176, 138, 53, 0) 100%);"></div>
+    <div style="height: 1px; margin: 0 auto 52px; max-width: 700px; background: linear-gradient(90deg, rgba(176,138,53,0) 0%, rgba(176,138,53,0.55) 16%, rgba(176,138,53,0.6) 50%, rgba(176,138,53,0.55) 84%, rgba(176,138,53,0) 100%);"></div>
 
-    <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 32px; align-items: start;">
+    <h2 style="margin: 0 0 34px; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.01em; color: #143035;">The Sereneque Wellness Method</h2>
 
-      
+    <p style="margin: 0 0 26px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.72; color: #1d3f45; text-wrap: pretty;">The Sereneque Wellness Method is a modern wellness philosophy centered around vitality, balance, confidence, and whole-body renewal. Built on the belief that true radiance begins from within, Sereneque combines personalized wellness strategies with advanced aesthetic and lifestyle-focused approaches designed to help individuals feel energized, restored, and aligned in both body and mind.</p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, 190px); justify-content: center; gap: 18px; max-width: 832px; margin: 0 auto;">
-      <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
-        <article style="display: flex; flex-direction: column; border-radius: 5px; border: none; background: rgba(255, 255, 255, 0.34); overflow: hidden; box-shadow: 0 3px 10px rgba(20, 48, 53, 0.12); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20, 48, 53, 0.18);">
-          <div style="position: relative; aspect-ratio: 4 / 3; background-color: #9cc4bf; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
-            <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ true }}">
-              <span style="position: absolute; top: 12px; left: 12px; font-size: 10px; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 138, 53, 0.5); color: #8f6d29; backdrop-filter: blur(8px);">{{ p.badge }}</span>
-            </sc-if>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: center; padding: 10px 12px 12px;">
-            <span style="font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #7d9b8d;">Coming soon</span>
-          </div>
-        </article>
-      </sc-for>
-      </div>
+    <p style="margin: 0 0 26px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.72; color: #1d3f45; text-wrap: pretty;">Rather than focusing on surface-level beauty alone, the Sereneque approach emphasizes the connection between internal wellness, skin health, recovery, confidence, and overall vitality. The goal is to support a more vibrant, balanced version of self through intentional wellness practices tailored to the individual.</p>
 
-    </div>
+    <div style="height: 1px; margin: 40px auto; max-width: 220px; background: linear-gradient(90deg, rgba(176,138,53,0) 0%, rgba(176,138,53,0.6) 50%, rgba(176,138,53,0) 100%);"></div>
+
+    <p style="margin: 0; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.6; color: #143035; text-wrap: pretty;">At its core, Sereneque represents calm strength, renewal, and the pursuit of feeling fully alive again.</p>
   </section>
 
   <footer style="border-top: 1px solid rgba(176, 138, 53, 0.3); padding: 36px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between; max-width: 1180px; margin: 0 auto; font-size: 12.5px; font-weight: 300; color: #3d6a71;">
@@ -194,13 +172,17 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   { id: "sermorelin", cat: "pep",    badge: "RX", img: "product-sermorelin-troche.svg" },
-  { id: "sema",       cat: "weight", badge: "RX", img: "product-semaglutide.svg" },
+  { id: "lcarn",      cat: "weight", badge: "",   img: "product-l-carnitine.svg" },
+  { id: "micc",       cat: "weight", badge: "",   img: "product-skinny-shots.svg" },
   { id: "oralwl",     cat: "appet",  badge: "",   img: "product-oral-weight-loss.svg" },
+  { id: "sema",       cat: "weight", badge: "RX", img: "product-semaglutide.svg" },
   { id: "ghk",        cat: "aging",  badge: "",   img: "product-ghk-cu.svg" },
+  { id: "ghkep",      cat: "aging",  badge: "",   img: "product-ghk-epitalon.svg" },
+  { id: "bpc",        cat: "pep",    badge: "",   img: "product-bpc-157.svg" },
   { id: "cream",      cat: "aging",  badge: "",   img: "product-anti-aging-cream.svg" },
   { id: "nad",        cat: "pep",    badge: "",   img: "product-nad-spray.svg" },
-  { id: "bpc",        cat: "pep",    badge: "",   img: "product-bpc-157.svg" },
-  { id: "micc",       cat: "weight", badge: "",   img: "product-skinny-shots.svg" }
+  { id: "methblue",   cat: "aging",  badge: "",   img: "product-methylene-blue.svg" },
+  { id: "gluta",      cat: "aging",  badge: "",   img: "product-glutathione.svg" }
 ];
 
 const NODES = [
@@ -218,7 +200,7 @@ const NODES = [
 const money = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 class Component extends DCLogic {
-  state = { activeCat: "all", cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
+  state = { activeCat: "all", catOpen: false, cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
 
   add = (id) => this.setState((s) => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 }, cartOpen: true }));
   bump = (id, d) => this.setState((s) => {
@@ -281,7 +263,7 @@ class Component extends DCLogic {
   componentWillUnmount() { cancelAnimationFrame(this._raf); }
 
   renderVals() {
-    const { cart, cartOpen, checkout, tilt, hovered, activeCat } = this.state;
+    const { cart, cartOpen, checkout, tilt, hovered, activeCat, catOpen } = this.state;
     const VISIBLE = activeCat === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === activeCat);
     const cols = this.props.catalogColumns ?? "3";
     const motion = this.props.floatMotion ?? true;
@@ -325,12 +307,17 @@ class Component extends DCLogic {
           countColor: on ? "#ffffff" : "#8f6d29",
           divider: idx === CATEGORIES.length - 1 ? "none" : "1px solid rgba(176,138,53,0.16)",
           dim: n === 0 ? "0.45" : "1",
-          select: () => this.setState({ activeCat: c.id })
+          select: () => this.setState({ activeCat: c.id, catOpen: false })
         };
       }),
       activeCatName: (CATEGORIES.find((c) => c.id === activeCat) || {}).name,
+      activeCatIcon: "cat-" + activeCat + ".svg",
+      activeCatCount: activeCat === "all" ? PRODUCTS.length : PRODUCTS.filter((p) => p.cat === activeCat).length,
+      catOpen: catOpen,
+      catMenuTransform: catOpen ? "rotate(180deg)" : "rotate(0deg)",
+      toggleCatMenu: () => this.setState({ catOpen: !catOpen }),
       productCountLabel: VISIBLE.length + " ITEMS",
-      gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 240 : cols === "4" ? 160 : 190) + "px, 1fr))",
+      gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 300 : cols === "4" ? 190 : 230) + "px, 1fr))",
 
       floatAnim: motion ? "floaty 7s ease-in-out infinite" : "none",
       treeTilt: "perspective(1000px) rotateX(" + tilt.x + "deg) rotateY(" + tilt.y + "deg)",
