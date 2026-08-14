@@ -1,50 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
-<defs>
-<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
- <stop offset="0%" stop-color="#e6f0ed"/><stop offset="100%" stop-color="#c3dcd7"/></linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e9f2ef"/><stop offset="100%" stop-color="#c4dcd7"/></linearGradient>
 <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
- <stop offset="0%" stop-color="#ffffff" stop-opacity=".95"/><stop offset="22%" stop-color="#e9f2f0" stop-opacity=".55"/>
- <stop offset="60%" stop-color="#cfe0dd" stop-opacity=".45"/><stop offset="100%" stop-color="#ffffff" stop-opacity=".8"/></linearGradient>
-<linearGradient id="label" x1="0" y1="0" x2="1" y2="0">
- <stop offset="0%" stop-color="#1d4d4a"/><stop offset="45%" stop-color="#2f6f68"/><stop offset="100%" stop-color="#1d4d4a"/></linearGradient>
+ <stop offset="0%" stop-color="#c8dedb" stop-opacity=".85"/><stop offset="12%" stop-color="#ffffff" stop-opacity=".92"/>
+ <stop offset="34%" stop-color="#e4efed" stop-opacity=".5"/><stop offset="70%" stop-color="#cadedb" stop-opacity=".55"/>
+ <stop offset="88%" stop-color="#ffffff" stop-opacity=".8"/><stop offset="100%" stop-color="#b9d2ce" stop-opacity=".85"/></linearGradient>
+<linearGradient id="alu" x1="0" y1="0" x2="1" y2="0">
+ <stop offset="0%" stop-color="#8f9b99"/><stop offset="14%" stop-color="#e8eeed"/><stop offset="34%" stop-color="#b6c1bf"/>
+ <stop offset="58%" stop-color="#f2f6f5"/><stop offset="80%" stop-color="#a7b3b1"/><stop offset="100%" stop-color="#7f8c8a"/></linearGradient>
 <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
- <stop offset="0%" stop-color="#9aa6a4"/><stop offset="30%" stop-color="#eef2f1"/>
- <stop offset="65%" stop-color="#b9c4c2"/><stop offset="100%" stop-color="#8e9a98"/></linearGradient>
-<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
- <stop offset="0%" stop-color="#e8d4a0"/><stop offset="100%" stop-color="#c9a961"/></linearGradient>
-<radialGradient id="shadow" cx="50%" cy="50%" r="50%">
- <stop offset="0%" stop-color="#143035" stop-opacity=".28"/><stop offset="100%" stop-color="#143035" stop-opacity="0"/></radialGradient>
-
-</defs>
-<rect width="800" height="800" fill="url(#bg)"/>
-<ellipse cx="400" cy="672" rx="215" ry="34" fill="url(#shadow)"/>
-<g transform="translate(300,300) rotate(-28)">
-<rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#label)"/>
-<rect x="-46" y="-104" width="92" height="104" rx="46" fill="#143035" fill-opacity=".22"/>
-<rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".55"/>
-<rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/>
-<text x="0" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="1.4" fill="#ffffff" fill-opacity=".85">SERENEQUE</text>
-</g>
-<g transform="translate(470,268) rotate(18)">
-<rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#label)"/>
-<rect x="-46" y="-104" width="92" height="104" rx="46" fill="#143035" fill-opacity=".22"/>
-<rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".55"/>
-<rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/>
-<text x="0" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="1.4" fill="#ffffff" fill-opacity=".85">SERENEQUE</text>
-</g>
-<g transform="translate(360,455) rotate(12)">
-<rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#label)"/>
-<rect x="-46" y="-104" width="92" height="104" rx="46" fill="#143035" fill-opacity=".22"/>
-<rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".55"/>
-<rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/>
-<text x="0" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="1.4" fill="#ffffff" fill-opacity=".85">SERENEQUE</text>
-</g>
-<g transform="translate(520,430) rotate(-14)">
-<rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#label)"/>
-<rect x="-46" y="-104" width="92" height="104" rx="46" fill="#143035" fill-opacity=".22"/>
-<rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".55"/>
-<rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/>
-<text x="0" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="1.4" fill="#ffffff" fill-opacity=".85">SERENEQUE</text>
-</g>
-<text x="400" y="700" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="17" letter-spacing="2" fill="#143035" fill-opacity=".6">Methylene Blue</text>
-</svg>
+ <stop offset="0%" stop-color="#26564f"/><stop offset="22%" stop-color="#3f7f77"/><stop offset="60%" stop-color="#26564f"/><stop offset="100%" stop-color="#3f7f77"/></linearGradient>
+<linearGradient id="lab" x1="0" y1="0" x2="1" y2="0">
+ <stop offset="0%" stop-color="#dfe9e6"/><stop offset="12%" stop-color="#fbfdfc"/><stop offset="60%" stop-color="#f4f8f7"/><stop offset="100%" stop-color="#d8e4e1"/></linearGradient>
+<linearGradient id="powder" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff" stop-opacity=".95"/><stop offset="100%" stop-color="#e3ece9" stop-opacity=".9"/></linearGradient>
+<radialGradient id="sh" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#143035" stop-opacity=".3"/><stop offset="100%" stop-color="#143035" stop-opacity="0"/></radialGradient>
+</defs><rect width="800" height="800" fill="url(#bg)"/><ellipse cx="400" cy="628" rx="150" ry="26" fill="url(#sh)"/><g transform="translate(300,300) rotate(-28)"><rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#lab)"/><rect x="-46" y="-104" width="92" height="104" rx="46" fill="#1d4d4a" fill-opacity=".9"/><rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".7"/><rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/><text x="0" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" letter-spacing="1.4" fill="#1d4d4a">SERENEQUE</text></g><g transform="translate(470,268) rotate(18)"><rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#lab)"/><rect x="-46" y="-104" width="92" height="104" rx="46" fill="#1d4d4a" fill-opacity=".9"/><rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".7"/><rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/><text x="0" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" letter-spacing="1.4" fill="#1d4d4a">SERENEQUE</text></g><g transform="translate(360,455) rotate(12)"><rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#lab)"/><rect x="-46" y="-104" width="92" height="104" rx="46" fill="#1d4d4a" fill-opacity=".9"/><rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".7"/><rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/><text x="0" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" letter-spacing="1.4" fill="#1d4d4a">SERENEQUE</text></g><g transform="translate(520,430) rotate(-14)"><rect x="-46" y="-104" width="92" height="208" rx="46" fill="url(#lab)"/><rect x="-46" y="-104" width="92" height="104" rx="46" fill="#1d4d4a" fill-opacity=".9"/><rect x="-46" y="-4" width="92" height="8" fill="#c9a961" fill-opacity=".7"/><rect x="-34" y="-92" width="14" height="184" rx="7" fill="#ffffff" fill-opacity=".22"/><text x="0" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" letter-spacing="1.4" fill="#1d4d4a">SERENEQUE</text></g></svg>
