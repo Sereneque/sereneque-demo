@@ -84,7 +84,7 @@
       <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
         <article style="display: flex; flex-direction: column; border-radius: 4px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.52); overflow: hidden; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
           <div style="position: relative; aspect-ratio: 4 / 3; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.06) 0 2px, transparent 2px 11px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
-            <span style="font-size: 10.5px; letter-spacing: 0.14em; color: #587f87; text-transform: uppercase;">{{ p.slot }}</span>
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ true }}">
               <span style="position: absolute; top: 12px; left: 12px; font-size: 10px; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 138, 53, 0.5); color: #8f6d29; backdrop-filter: blur(8px);">{{ p.badge }}</span>
             </sc-if>
@@ -191,12 +191,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;floatMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;catalogColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;,&quot;4&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Catalog&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Catalog&quot;}}">
 const PRODUCTS = [
-  { id: "kb", name: "Arbor Keyboard 65", price: 189, badge: "BESTSELLER", slot: "product shot — keyboard", blurb: "Low-profile aluminium body, hot-swap switches, USB-C." },
-  { id: "hub", name: "Node Hub 8-Port", price: 129, badge: "", slot: "product shot — hub", blurb: "Eight ports, one cable. Passive cooling, no fan noise." },
-  { id: "cli", name: "Branch CLI — Pro", price: 24, badge: "DIGITAL", slot: "screenshot — cli", blurb: "Deterministic builds and remote cache. Billed monthly." },
-  { id: "mon", name: "Canopy Display 27\"", price: 749, badge: "LOW STOCK", slot: "product shot — display", blurb: "4K matte panel, 120Hz, factory-calibrated out of the box." },
-  { id: "dock", name: "Root Dock Mini", price: 96, badge: "", slot: "product shot — dock", blurb: "Machined base, 100W passthrough, fits every desk." },
-  { id: "tpl", name: "Grove UI Kit", price: 49, badge: "DIGITAL", slot: "screenshot — ui kit", blurb: "120 components, dark and light, Figma plus React source." }
+  { id: "nad",  name: "NAD+",        price: 0, badge: "RX", img: "product-nad.svg",  slot: "NAD+",        blurb: "Nicotinamide adenine dinucleotide. Prescription required." },
+  { id: "serm", name: "Sermorelin",  price: 0, badge: "RX", img: "product-serm.svg", slot: "Sermorelin",  blurb: "Growth hormone\u2013releasing hormone analog. Prescription required." },
+  { id: "tesa", name: "Tesamorelin", price: 0, badge: "RX", img: "product-tesa.svg", slot: "Tesamorelin", blurb: "Growth hormone\u2013releasing factor analog. Prescription required." },
+  { id: "ghk",  name: "GHK-Cu",      price: 0, badge: "",   img: "product-ghk.svg",  slot: "GHK-Cu",      blurb: "Copper tripeptide, topical formulation." },
+  { id: "bpc",  name: "BPC-157",     price: 0, badge: "",   img: "product-bpc.svg",  slot: "BPC-157",     blurb: "Synthetic pentadecapeptide. Not FDA approved." },
+  { id: "tirz", name: "Tirzepatide", price: 0, badge: "RX", img: "product-tirz.svg", slot: "Tirzepatide", blurb: "GIP/GLP-1 receptor agonist. Prescription required." }
 ];
 
 const NODES = [
@@ -300,10 +300,10 @@ class Component extends DCLogic {
       totalLabel: money(subtotal + shipping),
 
       products: PRODUCTS.map((p) => ({
-        name: p.name, blurb: p.blurb, slot: p.slot,
+        name: p.name, blurb: p.blurb, slot: p.slot, img: p.img,
         badge: showBadges ? p.badge : "",
-        priceLabel: money(p.price),
-        cta: cart[p.id] ? "In cart · " + cart[p.id] : "Add to cart",
+        priceLabel: "Consultation",
+        cta: cart[p.id] ? "Saved · " + cart[p.id] : "Enquire",
         add: () => this.add(p.id)
       })),
       productCountLabel: PRODUCTS.length + " ITEMS",
