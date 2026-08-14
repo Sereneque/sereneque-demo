@@ -364,5 +364,33 @@ class Component extends DCLogic {
 }
 
 </script>
+
+<script>
+(function () {
+  var LOW = 0.12;                       // quiet, but audible
+  var EVENTS = ["pointerdown", "keydown", "touchstart", "wheel", "scroll"];
+
+  function arm() {
+    var v = document.querySelector("video");
+    if (!v) return false;
+    v.volume = LOW;                     // set before unmuting so it never blasts
+
+    function unmute() {
+      v.muted = false;
+      v.volume = LOW;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+      EVENTS.forEach(function (e) { window.removeEventListener(e, unmute); });
+    }
+    EVENTS.forEach(function (e) { window.addEventListener(e, unmute, { passive: true }); });
+    return true;
+  }
+
+  if (!arm()) {
+    var t = setInterval(function () { if (arm()) clearInterval(t); }, 200);
+    setTimeout(function () { clearInterval(t); }, 15000);
+  }
+})();
+</script>
 </body>
 </html>
