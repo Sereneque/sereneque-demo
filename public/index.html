@@ -1,36 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Sereneque — Coming Soon</title>
-<style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; min-height: 100vh; display: grid; place-items: center;
-    font: 400 16px/1.6 ui-sans-serif, -apple-system, "Helvetica Neue", sans-serif;
-    background: linear-gradient(160deg, #f6f8f7 0%, #e8efec 100%);
-    color: #1e2b26; padding: 24px;
-  }
-  main { text-align: center; max-width: 34rem; }
-  h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 300; letter-spacing: .12em;
-       text-transform: uppercase; margin: 0 0 .5rem; }
-  .rule { width: 3rem; height: 1px; background: #7d9b8d; margin: 1.5rem auto; }
-  p { margin: 0; color: #4a5f57; }
-  .status { margin-top: 2.5rem; font-size: .75rem; letter-spacing: .1em;
-            text-transform: uppercase; color: #7d9b8d; }
-  code { font-size: .85em; background: #dde7e2; padding: .15em .45em; border-radius: 3px; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-  <main>
-    <h1>Sereneque</h1>
-    <p>Site in development.</p>
-    <div class="rule"></div>
-    <p>Auto-deploy confirmed &mdash; this line was published automatically by a git push.</p>
-    <p class="status">Build <code id="build">v2</code> &middot; deployed via Cloudflare Workers</p>
-  </main>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Dancing+Script:wght@400;500;600&amp;family=Pinyon+Script&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #bcd8d4; }
+  body { font-family: "Jost", "Helvetica Neue", Helvetica, sans-serif; color: #143035; -webkit-font-smoothing: antialiased; }
+  a { color: #143035; text-decoration: none; }
+  a:hover { color: #8f6d29; }
+  ::selection { background: rgba(176, 138, 53, 0.28); }
+  @keyframes floaty { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(14px); } }
+  @keyframes pulseGlow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+  @keyframes dash { to { stroke-dashoffset: -200; } }
+  @keyframes rippleBands { 0% { transform: scale(0.55); } 100% { transform: scale(1.6); } }
+  @keyframes bandFade { 0% { opacity: 0; } 14% { opacity: 1; } 72% { opacity: 0.55; } 100% { opacity: 0; } }
+  @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: radial-gradient(ellipse 120% 80% at 50% 0%, #d5e8e4 0%, #a9cbc7 45%, #86b6b2 100%); background-attachment: fixed; overflow-x: hidden;">
+
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 24px; background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(176, 138, 53, 0.28);">
+    <a href="#top" style="display: flex; align-items: center; gap: 11px; flex: none;">
+      <img src="sereneque-header-logo.png" alt="Sereneque" style="display: block; height: 46px; width: auto;">
+    </a>
+    <div style="display: flex; flex-wrap: wrap; overflow: hidden; max-height: 24px; gap: 30px; font-size: 13.5px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #3d6a71;">
+      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Catalog</a>
+      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Method</a>
+      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
+      <a href="#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
+    </div>
+    <button onClick="{{ openCart }}" style="position: relative; display: flex; align-items: center; gap: 9px; height: 38px; padding: 0 15px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255, 255, 255, 0.5); color: #143035; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.04em; cursor: pointer; transition: all 180ms ease;" style-hover="background: #ffffff; border-color: #b08a35;">
+      <span>Cart</span>
+      <span style="font-size: 11px; min-width: 21px; height: 21px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: linear-gradient(150deg, #d3ac5f, #b08a35); color: #ffffff; font-weight: 500; padding: 0 6px;">{{ cartCount }}</span>
+    </button>
+  </nav>
+
+  <section id="top" style="position: relative; padding: 148px 24px 96px; overflow: hidden;">
+    
+
+    <div style="position: relative; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; align-items: center; width: 475px; height: 750px">
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 26px; width: 654px; height: 243px">
+        <h1 style="margin: 0; font-family: 'Zapfino Extra LT Pro', 'Zapfino Forte LT Pro', 'Zapfino Extra', 'Zapfino Forte', Zapfino, 'Pinyon Script', 'Dancing Script', cursive; font-weight: 400; font-size: clamp(40px, 5.2vw, 62px); line-height: 1.5; letter-spacing: -0.015em; color: #143035; text-wrap: balance; max-width: 629px; align-self: center; width: 1219px; height: 288px">
+          <img src="sereneque-wordmark-gold.png" alt="Sereneque" style="display: block; width: 325px; height: 92px; object-fit: contain; position: relative; border-radius: 9px; left: 58px; filter: drop-shadow(0 1.5px 2px rgba(20, 48, 53, 0.28))">
+          <em style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 25px; line-height: 1.4; display: block; margin-top: 10px; max-width: 596px; color: #143035; width: 895px; height: 153px; text-align: center; margin-left: 42px; position: relative; left: -112px">A modern philosophy of wellness centered on vitality, balance, confidence, and whole-body renewal. Built on the belief that true radiance begins from within.</em>
+        </h1>
+      </div>
+
+      <div onMouseMove="{{ onTreeMove }}" onMouseLeave="{{ onTreeLeave }}" style="position: static; height: 100%; display: flex; align-items: center; justify-content: center; width: 100%; align-self: auto">
+        <div style="position: absolute; width: 380px; height: 380px; border-radius: 999px; background: linear-gradient(180deg, radial-gradient(circle, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 68%), #F6EA9F); filter: blur(6px)"></div>
+        <div style="position: absolute; width: 250px; height: 250px; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.8); animation: pulseGlow 6s ease-in-out infinite;"></div>
+        <div style="position: absolute; width: 560px; height: 560px; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.8); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
+        <div style="position: absolute; width: 560px; height: 560px; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.8); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
+        <div style="position: relative; width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; gap: 34px; animation: {{ floatAnim }};">
+          <img src="./img_4489-mss3grav-tuua.png" alt="Sereneque lotus" style="display: block; width: min(300px, 70%); height: auto; transform: {{ treeTilt }}; transition: transform 240ms ease-out; filter: drop-shadow(0 14px 22px rgba(23, 53, 57, 0.18)); align-self: auto; position: static; object-fit: fill">
+          <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 400; letter-spacing: 0.06em; color: #335c63; text-align: center;">The Sereneque Wellness Method</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" style="position: relative; max-width: 1180px; margin: 0 auto; padding: 24px 24px 120px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; padding-bottom: 26px; border-bottom: 1px solid rgba(176, 138, 53, 0.35);">
+      <div>
+        <h2 style="margin: 0 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.01em;">Catalog</h2>
+        <p style="margin: 0; font-size: 14.5px; font-weight: 300; color: #3d6a71;">Six things we actually use every day.</p>
+      </div>
+      <span style="font-size: 11.5px; letter-spacing: 0.14em; color: #587f87;">{{ productCountLabel }}</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: {{ gridColumns }}; gap: 22px; padding-top: 32px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+        <article style="display: flex; flex-direction: column; border-radius: 4px; border: 1px solid rgba(176, 138, 53, 0.3); background: rgba(255, 255, 255, 0.52); overflow: hidden; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;" style-hover="transform: translateY(-4px); border-color: #b08a35; box-shadow: 0 20px 44px rgba(20, 48, 53, 0.14);">
+          <div style="position: relative; aspect-ratio: 4 / 3; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.06) 0 2px, transparent 2px 11px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(176, 138, 53, 0.25);">
+            <span style="font-size: 10.5px; letter-spacing: 0.14em; color: #587f87; text-transform: uppercase;">{{ p.slot }}</span>
+            <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ true }}">
+              <span style="position: absolute; top: 12px; left: 12px; font-size: 10px; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(176, 138, 53, 0.5); color: #8f6d29; backdrop-filter: blur(8px);">{{ p.badge }}</span>
+            </sc-if>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 20px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+              <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 500;">{{ p.name }}</h3>
+              <span style="font-size: 14px; color: #8f6d29;">{{ p.priceLabel }}</span>
+            </div>
+            <p style="margin: 0 0 16px; font-size: 13.5px; font-weight: 300; line-height: 1.55; color: #3d6a71; text-wrap: pretty;">{{ p.blurb }}</p>
+            <button onClick="{{ p.add }}" style="margin-top: auto; height: 42px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255, 255, 255, 0.6); color: #143035; font-family: inherit; font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 180ms ease;" style-hover="background: linear-gradient(150deg, #d3ac5f, #b08a35); border-color: #b08a35; color: #ffffff;">{{ p.cta }}</button>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid rgba(176, 138, 53, 0.3); padding: 36px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between; max-width: 1180px; margin: 0 auto; font-size: 12.5px; font-weight: 300; color: #3d6a71;">
+    <span>© 2026 Sereneque Wellness Method</span>
+    <span style="font-size: 11px; letter-spacing: 0.16em; color: #587f87;">CALM, BY DESIGN</span>
+  </footer>
+
+  <div onClick="{{ closeCart }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(20, 48, 53, 0.34); backdrop-filter: blur(3px); transition: opacity 260ms ease; opacity: {{ scrimOpacity }}; pointer-events: {{ scrimEvents }};"></div>
+
+  <aside style="position: fixed; top: 0; right: 0; bottom: 0; z-index: 80; width: min(420px, 100vw); display: flex; flex-direction: column; background: #e9f2f0; border-left: 1px solid rgba(176, 138, 53, 0.35); box-shadow: -30px 0 60px rgba(20, 48, 53, 0.2); transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1); transform: {{ drawerTransform }}">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px; border-bottom: 1px solid rgba(176, 138, 53, 0.3);">
+      <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; display: none">Your cart</span>
+      <button onClick="{{ closeCart }}" style="width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.4); background: rgba(255, 255, 255, 0.7); color: #3d6a71; font-family: inherit; font-size: 13px; line-height: 1; cursor: pointer;" style-hover="color: #143035; border-color: #b08a35;">✕</button>
+    </div>
+
+    <div style="flex: 1; overflow-y: auto; padding: 16px 22px;">
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 60px 0; text-align: center; color: #587f87; font-size: 14px; font-weight: 300;">Nothing here yet.</div>
+      </sc-if>
+      <sc-for list="{{ cartLines }}" as="line" hint-placeholder-count="0">
+        <div style="display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid rgba(176, 138, 53, 0.22);">
+          <div style="width: 62px; height: 62px; flex: none; border-radius: 3px; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.07) 0 2px, transparent 2px 10px); border: 1px solid rgba(176, 138, 53, 0.28);"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+              <span style="font-size: 14px; font-weight: 400;">{{ line.name }}</span>
+              <span style="font-size: 13px; color: #8f6d29;">{{ line.totalLabel }}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="display: flex; align-items: center; border: 1px solid rgba(176, 138, 53, 0.4); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.7);">
+                <button onClick="{{ line.dec }}" style="width: 28px; height: 26px; border: none; background: transparent; color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="background: rgba(176,138,53,0.16); color: #143035;">−</button>
+                <span style="font-size: 12px; min-width: 20px; text-align: center;">{{ line.qty }}</span>
+                <button onClick="{{ line.inc }}" style="width: 28px; height: 26px; border: none; background: transparent; color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="background: rgba(176,138,53,0.16); color: #143035;">+</button>
+              </div>
+              <button onClick="{{ line.remove }}" style="border: none; background: transparent; color: #587f87; font-family: inherit; font-size: 12.5px; font-weight: 300; cursor: pointer; padding: 0;" style-hover="color: #6b1642;">Remove</button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding: 20px 22px 24px; border-top: 1px solid rgba(176, 138, 53, 0.3); display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 300; color: #3d6a71;"><span>Subtotal</span><span>{{ subtotalLabel }}</span></div>
+      <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 300; color: #3d6a71;"><span>Shipping</span><span>{{ shippingLabel }}</span></div>
+      <div style="display: flex; justify-content: space-between; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; padding-top: 8px; border-top: 1px solid rgba(176, 138, 53, 0.25);"><span>Total</span><span>{{ totalLabel }}</span></div>
+      <button onClick="{{ openCheckout }}" style="margin-top: 8px; height: 48px; border-radius: 999px; border: none; background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%); color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: transform 180ms ease;" style-hover="transform: translateY(-1px);">Checkout</button>
+    </div>
+  </aside>
+
+  <div style="position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 48, 53, 0.5); backdrop-filter: blur(6px); transition: opacity 240ms ease; opacity: {{ checkoutOpacity }}; pointer-events: {{ checkoutEvents }}; left: -327px; top: -45px">
+    <div style="width: min(520px, 100%); border-radius: 6px; border: 1px solid rgba(176, 138, 53, 0.45); background: #eef5f3; box-shadow: 0 40px 90px rgba(20, 48, 53, 0.32); overflow: hidden;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid rgba(176, 138, 53, 0.3);">
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px;">{{ checkoutTitle }}</span>
+        <button onClick="{{ closeCheckout }}" style="width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.4); background: rgba(255,255,255,0.7); color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="color: #143035;">✕</button>
+      </div>
+      <div style="padding: 26px;">
+        <sc-if value="{{ checkoutDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 22px 0 8px; text-align: center;">
+            <div style="width: 54px; height: 54px; border-radius: 999px; background: linear-gradient(150deg, #d3ac5f, #b08a35); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 22px;">✓</div>
+            <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px;">Order confirmed</div>
+            <p style="margin: 0; font-size: 14px; font-weight: 300; color: #3d6a71; max-width: 320px;">A receipt is on its way. Estimated delivery in two business days.</p>
+            <span style="font-size: 11.5px; letter-spacing: 0.12em; color: #587f87;">{{ orderId }}</span>
+            <button onClick="{{ closeCheckout }}" style="margin-top: 12px; height: 44px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255,255,255,0.7); color: #143035; font-family: inherit; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;" style-hover="background: #ffffff; border-color: #b08a35;">Done</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ checkoutForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <label style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #587f87;">Email</label>
+              <input type="email" placeholder="you@company.com" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <label style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #587f87;">Card</label>
+              <input placeholder="4242 4242 4242 4242" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <input placeholder="MM / YY" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
+              <input placeholder="CVC" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; padding-top: 14px; margin-top: 4px; border-top: 1px solid rgba(176, 138, 53, 0.3);"><span>Total due</span><span>{{ totalLabel }}</span></div>
+            <button onClick="{{ payNow }}" style="height: 48px; border-radius: 999px; border: none; background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%); color: #ffffff; font-family: inherit; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: transform 180ms ease;" style-hover="transform: translateY(-1px);">{{ payLabel }}</button>
+            <span style="text-align: center; font-size: 10.5px; font-weight: 300; letter-spacing: 0.12em; color: #587f87;">SIMULATED PAYMENT — NO CARD IS CHARGED</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;floatMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;catalogColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;,&quot;4&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Catalog&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Catalog&quot;}}">
+const PRODUCTS = [
+  { id: "kb", name: "Arbor Keyboard 65", price: 189, badge: "BESTSELLER", slot: "product shot — keyboard", blurb: "Low-profile aluminium body, hot-swap switches, USB-C." },
+  { id: "hub", name: "Node Hub 8-Port", price: 129, badge: "", slot: "product shot — hub", blurb: "Eight ports, one cable. Passive cooling, no fan noise." },
+  { id: "cli", name: "Branch CLI — Pro", price: 24, badge: "DIGITAL", slot: "screenshot — cli", blurb: "Deterministic builds and remote cache. Billed monthly." },
+  { id: "mon", name: "Canopy Display 27\"", price: 749, badge: "LOW STOCK", slot: "product shot — display", blurb: "4K matte panel, 120Hz, factory-calibrated out of the box." },
+  { id: "dock", name: "Root Dock Mini", price: 96, badge: "", slot: "product shot — dock", blurb: "Machined base, 100W passthrough, fits every desk." },
+  { id: "tpl", name: "Grove UI Kit", price: 49, badge: "DIGITAL", slot: "screenshot — ui kit", blurb: "120 components, dark and light, Figma plus React source." }
+];
+
+const NODES = [
+  { id: "n0", x: 200, y: 356, r: 9 },
+  { id: "n1", x: 200, y: 248, r: 11 },
+  { id: "n2", x: 118, y: 196, r: 8 },
+  { id: "n3", x: 282, y: 196, r: 8 },
+  { id: "n4", x: 200, y: 128, r: 13 },
+  { id: "n5", x: 66, y: 128, r: 7 },
+  { id: "n6", x: 142, y: 106, r: 10 },
+  { id: "n7", x: 258, y: 106, r: 10 },
+  { id: "n8", x: 336, y: 132, r: 7 }
+];
+
+const money = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+class Component extends DCLogic {
+  state = { cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
+
+  add = (id) => this.setState((s) => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 }, cartOpen: true }));
+  bump = (id, d) => this.setState((s) => {
+    const q = (s.cart[id] || 0) + d;
+    const cart = { ...s.cart };
+    if (q <= 0) delete cart[id]; else cart[id] = q;
+    return { cart };
+  });
+  remove = (id) => this.setState((s) => { const cart = { ...s.cart }; delete cart[id]; return { cart }; });
+
+  waterRef = React.createRef();
+
+  componentDidMount() {
+    const cv = this.waterRef.current;
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+    const N = cv.width, C = N / 2;
+    const img = ctx.createImageData(N, N);
+    const d = img.data;
+    // precompute radius / normal direction per pixel
+    const rad = new Float32Array(N * N), nx = new Float32Array(N * N), ny = new Float32Array(N * N);
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      const i = y * N + x, dx = x - C + 0.5, dy = y - C + 0.5;
+      const r = Math.hypot(dx, dy);
+      rad[i] = r; nx[i] = dx / (r || 1); ny[i] = dy / (r || 1);
+    }
+    // a few wave trains: wavelength, speed, amplitude, phase
+    const waves = [
+      { k: 2 * Math.PI / 34, w: 1.05, a: 1.0, p: 0 },
+      { k: 2 * Math.PI / 52, w: 0.72, a: 0.75, p: 2.1 },
+      { k: 2 * Math.PI / 23, w: 1.5, a: 0.42, p: 4.4 }
+    ];
+    const t0 = performance.now();
+    const frame = (now) => {
+      if (!this.waterRef.current) return;
+      const t = (now - t0) / 1000;
+      for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+        const i = y * N + x, r = rad[i];
+        if (r > C) { d[i * 4 + 3] = 0; continue; }
+        // slope of the height field along the radius (gives the specular band)
+        let slope = 0;
+        for (let j = 0; j < waves.length; j++) {
+          const wv = waves[j];
+          const decay = Math.exp(-r / 150) * Math.min(1, r / 26);
+          slope += wv.a * wv.k * decay * Math.cos(wv.k * r - wv.w * t * 6.28 + wv.p);
+        }
+        const edge = 1 - Math.min(1, Math.max(0, (r - C * 0.55) / (C * 0.45)));
+        const lit = Math.max(0, slope) * 0.5 + Math.max(0, -slope) * 0.16;
+        const a = Math.min(1, lit * 1.35) * (0.35 + 0.65 * edge);
+        const t4 = i * 4;
+        d[t4] = 255; d[t4 + 1] = 255; d[t4 + 2] = 252;
+        d[t4 + 3] = Math.round(a * 190);
+      }
+      ctx.putImageData(img, 0, 0);
+      this._raf = requestAnimationFrame(frame);
+    };
+    this._raf = requestAnimationFrame(frame);
+  }
+
+  componentWillUnmount() { cancelAnimationFrame(this._raf); }
+
+  renderVals() {
+    const { cart, cartOpen, checkout, tilt, hovered } = this.state;
+    const cols = this.props.catalogColumns ?? "3";
+    const motion = this.props.floatMotion ?? true;
+    const showBadges = this.props.showBadges ?? true;
+
+    const lines = PRODUCTS.filter((p) => cart[p.id]).map((p) => ({
+      name: p.name, qty: cart[p.id], totalLabel: money(p.price * cart[p.id]),
+      inc: () => this.bump(p.id, 1), dec: () => this.bump(p.id, -1), remove: () => this.remove(p.id)
+    }));
+    const count = Object.values(cart).reduce((a, b) => a + b, 0);
+    const subtotal = PRODUCTS.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0);
+    const shipping = subtotal === 0 || subtotal >= 150 ? 0 : 12;
+
+    return {
+      waterRef: this.waterRef,
+      cartCount: count,
+      cartLines: lines,
+      cartEmpty: lines.length === 0,
+      subtotalLabel: money(subtotal),
+      shippingLabel: shipping === 0 ? "Free" : money(shipping),
+      totalLabel: money(subtotal + shipping),
+
+      products: PRODUCTS.map((p) => ({
+        name: p.name, blurb: p.blurb, slot: p.slot,
+        badge: showBadges ? p.badge : "",
+        priceLabel: money(p.price),
+        cta: cart[p.id] ? "In cart · " + cart[p.id] : "Add to cart",
+        add: () => this.add(p.id)
+      })),
+      productCountLabel: PRODUCTS.length + " ITEMS",
+      gridColumns: "repeat(auto-fill, minmax(" + (cols === "2" ? 400 : cols === "4" ? 240 : 300) + "px, 1fr))",
+
+      floatAnim: motion ? "floaty 7s ease-in-out infinite" : "none",
+      treeTilt: "perspective(1000px) rotateX(" + tilt.x + "deg) rotateY(" + tilt.y + "deg)",
+      nodes: NODES.map((n) => {
+        const on = hovered === n.id;
+        return {
+          left: (n.x / 4) + "%", top: (n.y / 4) + "%",
+          size: n.r * 2 + "px", offset: -n.r + "px",
+          bg: on ? "#6b1642" : n.r >= 10 ? "linear-gradient(150deg, #d3ac5f, #b08a35)" : "rgba(255,255,255,0.92)",
+          border: on ? "1px solid #6b1642" : "1px solid rgba(176,138,53,0.7)",
+          glow: on ? "0 0 22px rgba(124, 31, 78, 0.45)" : "0 2px 10px rgba(20, 48, 53, 0.14)",
+          scale: on ? "scale(1.45)" : "scale(1)",
+          hover: () => this.setState({ hovered: n.id }),
+          unhover: () => this.setState({ hovered: null })
+        };
+      }),
+      nodeLabel: hovered ? "NODE " + hovered.toUpperCase() + " · ACTIVE" : "SERENEQUE · THE METHOD",
+      onTreeMove: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        this.setState({ tilt: { x: -((e.clientY - r.top) / r.height - 0.5) * 14, y: ((e.clientX - r.left) / r.width - 0.5) * 18 } });
+      },
+      onTreeLeave: () => this.setState({ tilt: { x: 0, y: 0 } }),
+
+      openCart: () => this.setState({ cartOpen: true }),
+      closeCart: () => this.setState({ cartOpen: false }),
+      drawerTransform: cartOpen ? "translateX(0)" : "translateX(105%)",
+      scrimOpacity: cartOpen ? 1 : 0,
+      scrimEvents: cartOpen ? "auto" : "none",
+
+      openCheckout: () => { if (lines.length) this.setState({ checkout: "form" }); },
+      closeCheckout: () => this.setState({ checkout: "closed", paying: false, cart: checkout === "done" ? {} : cart, cartOpen: false }),
+      payNow: () => { this.setState({ paying: true }); setTimeout(() => this.setState({ checkout: "done", paying: false }), 900); },
+      payLabel: this.state.paying ? "Processing…" : "Pay " + money(subtotal + shipping),
+      checkoutOpacity: checkout === "closed" ? 0 : 1,
+      checkoutEvents: checkout === "closed" ? "none" : "auto",
+      checkoutForm: checkout === "form",
+      checkoutDone: checkout === "done",
+      checkoutTitle: checkout === "done" ? "Thank you" : "Checkout",
+      orderId: "ORDER #SRQ-" + (7100 + Object.keys(cart).length * 13 + count)
+    };
+  }
+}
+
+</script>
 </body>
 </html>
