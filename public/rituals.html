@@ -99,5 +99,78 @@
     window.addEventListener(e,unmute,{passive:true}); });
 })();
 </script>
+<script>
+(function () {
+  var BP = 760;
+
+  var css = document.createElement("style");
+  css.textContent =
+    "@media (max-width:" + BP + "px){" +
+    "[data-sq-links]{display:none !important}" +
+    "nav button[data-sq-cart]{display:none !important}" +
+    "#sqBurger{display:flex !important}}" +
+    "#sqBurger{display:none;position:fixed;top:16px;right:18px;z-index:120;width:42px;height:42px;" +
+    "align-items:center;justify-content:center;flex-direction:column;gap:5px;border-radius:8px;" +
+    "border:1px solid rgba(176,138,53,.45);background:rgba(255,255,255,.6);backdrop-filter:blur(10px);cursor:pointer}" +
+    "#sqBurger span{display:block;width:18px;height:1.5px;background:#3d6a71;transition:transform .2s ease,opacity .2s ease}" +
+    "#sqBurger.on span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}" +
+    "#sqBurger.on span:nth-child(2){opacity:0}" +
+    "#sqBurger.on span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}" +
+    "#sqMenu{position:fixed;top:66px;right:18px;z-index:119;min-width:190px;border-radius:10px;overflow:hidden;" +
+    "border:1px solid rgba(176,138,53,.35);background:rgba(255,255,255,.96);backdrop-filter:blur(16px);" +
+    "box-shadow:0 18px 44px rgba(20,48,53,.22);opacity:0;transform:translateY(-8px);pointer-events:none;" +
+    "transition:opacity .18s ease,transform .18s ease}" +
+    "#sqMenu.on{opacity:1;transform:translateY(0);pointer-events:auto}" +
+    "#sqMenu a{display:block;padding:13px 18px;font-family:'Jost',Helvetica,sans-serif;font-size:13.5px;" +
+    "font-weight:300;letter-spacing:.08em;text-transform:uppercase;color:#3d6a71;text-decoration:none;" +
+    "border-bottom:1px solid rgba(176,138,53,.16)}" +
+    "#sqMenu a:last-child{border-bottom:none}" +
+    "#sqMenu a:hover,#sqMenu a.on{background:rgba(176,138,53,.1);color:#8f6d29}";
+  document.head.appendChild(css);
+
+  var burger = document.createElement("button");
+  burger.id = "sqBurger";
+  burger.setAttribute("aria-label", "Menu");
+  burger.innerHTML = "<span></span><span></span><span></span>";
+
+  var here = (location.pathname.split("/").pop() || "index.html");
+  var menu = document.createElement("nav");
+  menu.id = "sqMenu";
+  [["Method","method.html"],["Catalog","catalog.html"],["Rituals","rituals.html"],["Journal","index.html"]]
+    .forEach(function (p) {
+      var a = document.createElement("a");
+      a.textContent = p[0]; a.href = p[1];
+      if (p[1] === here) a.className = "on";
+      menu.appendChild(a);
+    });
+
+  document.body.appendChild(burger);
+  document.body.appendChild(menu);
+
+  burger.addEventListener("click", function (e) {
+    e.stopPropagation();
+    burger.classList.toggle("on"); menu.classList.toggle("on");
+  });
+  document.addEventListener("click", function (e) {
+    if (!menu.contains(e.target) && e.target !== burger) {
+      burger.classList.remove("on"); menu.classList.remove("on");
+    }
+  });
+
+  // the template re-renders, so keep re-tagging what we hide
+  function tag() {
+    var nav = document.querySelector("nav:not(#sqMenu)");
+    if (!nav) return;
+    var divs = nav.querySelectorAll("div");
+    for (var i = 0; i < divs.length; i++) {
+      if (divs[i].querySelectorAll("a").length >= 3) divs[i].setAttribute("data-sq-links", "");
+    }
+    var b = nav.querySelector("button");
+    if (b) b.setAttribute("data-sq-cart", "");
+  }
+  tag(); setInterval(tag, 500);
+})();
+</script>
+
 </body>
 </html>
