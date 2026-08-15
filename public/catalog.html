@@ -49,7 +49,7 @@
     </button>
   </nav>
 
-  <section style="position: relative; padding: 128px 24px 8px; text-align: center;">
+  <section style="position: relative; padding: 124px 24px 8px; text-align: center;">
     <a href="index.html" style="display: inline-block;">
       <img src="sereneque-wordmark-gold.png" alt="Sereneque" style="display: block; margin: 0 auto; width: min(280px, 62vw); height: auto; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));">
     </a>
@@ -403,6 +403,7 @@ class Component extends DCLogic {
 
   var css = document.createElement("style");
   css.textContent =
+    "html{scrollbar-gutter:stable}" +
     "@media (max-width:" + BP + "px){" +
     "[data-sq-links]{display:none !important}" +
     "nav button[data-sq-cart]{display:none !important}" +
