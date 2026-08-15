@@ -73,9 +73,6 @@
     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 26px 24px 10px; text-align: center;">
       <span style="font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase; color: #8f6d29;">Coming Soon</span>
       <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 3.2vw, 34px); font-weight: 400; letter-spacing: 0.02em; color: #143035;">The Sereneque Wellness Method</div>
-      <div style="width: min(250px, 62vw); aspect-ratio: 9 / 16; margin-top: 10px; border-radius: 12px; overflow: hidden; background: rgba(139, 188, 183, 0.35); box-shadow: 0 18px 46px rgba(20, 48, 53, 0.28);">
-        <video src="sereneque-clip-short.mp4" autoplay muted loop playsinline controls preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
-      </div>
     </div>
 
   </section>
@@ -365,31 +362,6 @@ class Component extends DCLogic {
 
 
 
-<script>
-(function () {
-  var LOW = 0.12, unmuted = false;
-  function enforce() {
-    var list = document.querySelectorAll("video");
-    for (var i = 0; i < list.length; i++) {
-      var v = list[i];
-      if (!v.loop) v.loop = true;
-      if (!v.getAttribute("data-armed")) {
-        v.setAttribute("data-armed", "1");
-        v.muted = !unmuted; v.volume = LOW; v.playsInline = true;
-      }
-      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-    }
-  }
-  enforce(); setInterval(enforce, 400);
-  function unmute() {
-    unmuted = true;
-    var l = document.querySelectorAll("video");
-    for (var i = 0; i < l.length; i++) { l[i].muted = false; l[i].volume = LOW; }
-    ["pointerdown","keydown","touchstart","wheel"].forEach(function (e) { window.removeEventListener(e, unmute); });
-  }
-  ["pointerdown","keydown","touchstart","wheel"].forEach(function (e) { window.addEventListener(e, unmute, { passive: true }); });
-})();
-</script>
 <script>
 (function () {
   var BP = 760;
