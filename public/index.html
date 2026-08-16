@@ -37,22 +37,23 @@
              -webkit-backface-visibility: hidden; backface-visibility: hidden; }
   .sq-half img { position: absolute; top: 0; width: 200%; max-width: none; height: auto; display: block;
                  filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18)); }
-  .sq-half-l { left: 0; transform-origin: right center; }
+  .sq-half-l { left: 0; transform-origin: left center; }
   .sq-half-l img { left: 0; }
-  .sq-half-r { right: 0; transform-origin: left center; }
+  .sq-half-r { right: 0; transform-origin: right center; }
   .sq-half-r img { right: 0; }
-  html.sq-gate-open .sq-half-l { transform: rotateY(-76deg) translateX(-5%); opacity: 0.5; }
-  html.sq-gate-open .sq-half-r { transform: rotateY(76deg) translateX(5%); opacity: 0.5; }
+  html.sq-gate-open .sq-half-l { transform: translateX(-26%) rotateY(-54deg); opacity: 0.55; }
+  html.sq-gate-open .sq-half-r { transform: translateX(26%) rotateY(54deg); opacity: 0.55; }
 
   .sq-reveal { position: absolute; left: 50%; top: 55%; z-index: 4; opacity: 0; pointer-events: none;
                transform: translate(-50%, -50%) scale(0.86);
                transition: opacity 700ms ease 420ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 420ms; }
   html.sq-gate-open .sq-reveal { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
-  .sq-enter-btn { display: inline-block; height: 52px; padding: 0 40px; border: none; border-radius: 999px;
+  .sq-enter-btn { display: inline-block; min-height: 54px; padding: 16px 34px; border: none; border-radius: 999px;
                   background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%);
-                  color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
-                  text-transform: uppercase; cursor: pointer; white-space: nowrap;
-                  box-shadow: 0 0 40px 14px rgba(255, 255, 255, 0.75), 0 10px 26px rgba(20, 48, 53, 0.24);
+                  color: #ffffff; font-family: inherit; font-size: 13.5px; font-weight: 400; letter-spacing: 0.09em;
+                  line-height: 1.35; cursor: pointer; white-space: nowrap;
+                  text-shadow: 0 1px 2px rgba(20, 48, 53, 0.22);
+                  box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
 
@@ -62,7 +63,7 @@
              animation: sqHintPulse 3.4s ease-in-out infinite; transition: opacity 420ms ease; }
   html.sq-gate-open .sq-hint { opacity: 0; }
   @keyframes sqHintPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
-  @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; } }
+  @media (max-width: 760px) { .sq-enter-btn { white-space: normal; max-width: 80vw; padding: 14px 24px; font-size: 12.5px; letter-spacing: 0.06em; border-radius: 30px; } }
 </style>
 </helmet>
 
@@ -95,7 +96,7 @@
       <div class="sq-gate" style="position: relative; width: min(650px, 88vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./img_4489-mss3grav-tuua.png" alt="">
         <div class="sq-reveal">
-          <button type="button" class="sq-enter-btn">Enter</button>
+          <button type="button" class="sq-enter-btn">Click here to start your journey to wellness</button>
         </div>
         <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
         <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
