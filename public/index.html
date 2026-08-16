@@ -477,22 +477,39 @@ class Component extends DCLogic {
 </script>
 
 <script>
-/* Lotus gate: opens by itself five seconds after the page loads. */
+/* Lotus gate: opens by itself, holds, closes again, and repeats. */
 (function () {
   // ==== PASTE THE DESTINATION URL BETWEEN THE QUOTES BELOW ====
   var SQ_GATE_LINK = "";
   // ============================================================
 
-  var DELAY = 5000;
+  var FIRST_DELAY = 5000;   // wait after the page loads before the first opening
+  var SWING       = 2600;   // how long the doors take to travel (matches the CSS)
+  var HOLD_OPEN   = 8000;   // how long they stay fully open
+  var GAP_CLOSED  = 5000;   // how long they stay shut before opening again
 
-  function open() { document.documentElement.classList.add("sq-gate-open"); }
+  var root = document.documentElement;
+  var hoveringButton = false;
 
-  if (document.readyState === "complete") {
-    setTimeout(open, DELAY);
-  } else {
-    window.addEventListener("load", function () { setTimeout(open, DELAY); });
-    setTimeout(open, DELAY + 4000);   // safety net if load never fires
+  function openGate()  { root.classList.add("sq-gate-open"); }
+  function closeGate() { root.classList.remove("sq-gate-open"); }
+
+  function cycle() {
+    openGate();
+    setTimeout(tryClose, SWING + HOLD_OPEN);
   }
+
+  function tryClose() {
+    // don't shut the doors while someone is reaching for the button
+    if (hoveringButton) { setTimeout(tryClose, 3000); return; }
+    closeGate();
+    setTimeout(cycle, SWING + GAP_CLOSED);
+  }
+
+  function start() { setTimeout(cycle, FIRST_DELAY); }
+
+  if (document.readyState === "complete") start();
+  else window.addEventListener("load", start);
 
   function up(el, cls) {
     while (el && el.nodeType === 1) {
@@ -501,6 +518,9 @@ class Component extends DCLogic {
     }
     return null;
   }
+
+  document.addEventListener("mouseover", function (e) { if (up(e.target, "sq-enter-btn")) hoveringButton = true; });
+  document.addEventListener("mouseout",  function (e) { if (up(e.target, "sq-enter-btn")) hoveringButton = false; });
 
   document.addEventListener("click", function (e) {
     if (!up(e.target, "sq-enter-btn")) return;
