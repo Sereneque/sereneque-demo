@@ -28,6 +28,41 @@
   @keyframes rippleBands { 0% { transform: scale(0.55); } 100% { transform: scale(1.6); } }
   @keyframes bandFade { 0% { opacity: 0; } 14% { opacity: 1; } 72% { opacity: 0.55; } 100% { opacity: 0; } }
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
+
+  /* ---- lotus gate ---- */
+  .sq-gate { position: relative; pointer-events: auto; cursor: pointer; perspective: 1700px; }
+  .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
+  .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
+             transition: transform 1250ms cubic-bezier(0.22, 1, 0.36, 1), opacity 1250ms ease;
+             -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .sq-half img { position: absolute; top: 0; width: 200%; max-width: none; height: auto; display: block;
+                 filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18)); }
+  .sq-half-l { left: 0; transform-origin: right center; }
+  .sq-half-l img { left: 0; }
+  .sq-half-r { right: 0; transform-origin: left center; }
+  .sq-half-r img { right: 0; }
+  html.sq-gate-open .sq-half-l { transform: rotateY(-76deg) translateX(-5%); opacity: 0.5; }
+  html.sq-gate-open .sq-half-r { transform: rotateY(76deg) translateX(5%); opacity: 0.5; }
+
+  .sq-reveal { position: absolute; left: 50%; top: 55%; z-index: 4; opacity: 0; pointer-events: none;
+               transform: translate(-50%, -50%) scale(0.86);
+               transition: opacity 700ms ease 420ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 420ms; }
+  html.sq-gate-open .sq-reveal { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+  .sq-enter-btn { display: inline-block; height: 52px; padding: 0 40px; border: none; border-radius: 999px;
+                  background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%);
+                  color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
+                  text-transform: uppercase; cursor: pointer; white-space: nowrap;
+                  box-shadow: 0 0 40px 14px rgba(255, 255, 255, 0.75), 0 10px 26px rgba(20, 48, 53, 0.24);
+                  transition: transform 200ms ease, box-shadow 200ms ease; }
+  .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
+
+  .sq-hint { position: absolute; left: 50%; bottom: 7%; z-index: 4; transform: translateX(-50%);
+             font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #8f6d29;
+             text-shadow: 0 1px 10px rgba(255, 255, 255, 0.95); pointer-events: none;
+             animation: sqHintPulse 3.4s ease-in-out infinite; transition: opacity 420ms ease; }
+  html.sq-gate-open .sq-hint { opacity: 0; }
+  @keyframes sqHintPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+  @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; } }
 </style>
 </helmet>
 
@@ -57,7 +92,15 @@
       <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
-      <img src="./img_4489-mss3grav-tuua.png" alt="" style="position: relative; width: min(650px, 88vw); height: auto; opacity: 0.7; margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }}; filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18));">
+      <div class="sq-gate" style="position: relative; width: min(650px, 88vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
+        <img class="sq-gate-sizer" src="./img_4489-mss3grav-tuua.png" alt="">
+        <div class="sq-reveal">
+          <button type="button" class="sq-enter-btn">Enter</button>
+        </div>
+        <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
+        <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
+        <div class="sq-hint">Open</div>
+      </div>
     </div>
 
     <div style="position: absolute; top: 124px; left: 0; right: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 0 24px; text-align: center;">
@@ -434,6 +477,43 @@ class Component extends DCLogic {
     if (b) b.setAttribute("data-sq-cart", "");
   }
   tag(); setInterval(tag, 500);
+})();
+</script>
+
+<script>
+/* Lotus gate: click the lotus, it splits open and reveals the button. */
+(function () {
+  // ==== PASTE THE DESTINATION URL BETWEEN THE QUOTES BELOW ====
+  var SQ_GATE_LINK = "";
+  // ============================================================
+
+  var root = document.documentElement;
+
+  function up(el, sel) {
+    while (el && el.nodeType === 1) {
+      if (el.classList && el.classList.contains(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  document.addEventListener("click", function (e) {
+    if (up(e.target, "sq-enter-btn")) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (SQ_GATE_LINK) window.open(SQ_GATE_LINK, "_blank", "noopener");
+      return;
+    }
+    if (up(e.target, "sq-gate")) {
+      root.classList.toggle("sq-gate-open");
+      return;
+    }
+    root.classList.remove("sq-gate-open");
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") root.classList.remove("sq-gate-open");
+  });
 })();
 </script>
 
