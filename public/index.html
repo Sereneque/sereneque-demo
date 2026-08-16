@@ -30,7 +30,7 @@
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
 
   /* ---- lotus gate ---- */
-  .sq-gate { position: relative; pointer-events: auto; cursor: pointer; perspective: 1150px; perspective-origin: 50% 46%; }
+  .sq-gate { position: relative; pointer-events: none; perspective: 1150px; perspective-origin: 50% 46%; }
   .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
   .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
              transition: transform 2600ms cubic-bezier(0.58, 0.02, 0.24, 1), opacity 2600ms ease;
@@ -59,12 +59,6 @@
                   transition: transform 200ms ease, box-shadow 200ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
 
-  .sq-hint { position: absolute; left: 50%; bottom: 7%; z-index: 4; transform: translateX(-50%);
-             font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #8f6d29;
-             text-shadow: 0 1px 10px rgba(255, 255, 255, 0.95); pointer-events: none;
-             animation: sqHintPulse 3.4s ease-in-out infinite; transition: opacity 420ms ease; }
-  html.sq-gate-open .sq-hint { opacity: 0; }
-  @keyframes sqHintPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
   @media (max-width: 760px) { .sq-enter-btn { white-space: normal; max-width: 80vw; padding: 14px 24px; font-size: 12.5px; letter-spacing: 0.06em; border-radius: 30px; } }
 </style>
 </helmet>
@@ -102,7 +96,6 @@
         </div>
         <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
         <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
-        <div class="sq-hint">Open</div>
       </div>
     </div>
 
@@ -484,38 +477,35 @@ class Component extends DCLogic {
 </script>
 
 <script>
-/* Lotus gate: click the lotus, it splits open and reveals the button. */
+/* Lotus gate: opens by itself five seconds after the page loads. */
 (function () {
   // ==== PASTE THE DESTINATION URL BETWEEN THE QUOTES BELOW ====
   var SQ_GATE_LINK = "";
   // ============================================================
 
-  var root = document.documentElement;
+  var DELAY = 5000;
 
-  function up(el, sel) {
+  function open() { document.documentElement.classList.add("sq-gate-open"); }
+
+  if (document.readyState === "complete") {
+    setTimeout(open, DELAY);
+  } else {
+    window.addEventListener("load", function () { setTimeout(open, DELAY); });
+    setTimeout(open, DELAY + 4000);   // safety net if load never fires
+  }
+
+  function up(el, cls) {
     while (el && el.nodeType === 1) {
-      if (el.classList && el.classList.contains(sel)) return el;
+      if (el.classList && el.classList.contains(cls)) return el;
       el = el.parentNode;
     }
     return null;
   }
 
   document.addEventListener("click", function (e) {
-    if (up(e.target, "sq-enter-btn")) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (SQ_GATE_LINK) window.open(SQ_GATE_LINK, "_blank", "noopener");
-      return;
-    }
-    if (up(e.target, "sq-gate")) {
-      root.classList.toggle("sq-gate-open");
-      return;
-    }
-    root.classList.remove("sq-gate-open");
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") root.classList.remove("sq-gate-open");
+    if (!up(e.target, "sq-enter-btn")) return;
+    e.preventDefault();
+    if (SQ_GATE_LINK) window.open(SQ_GATE_LINK, "_blank", "noopener");
   });
 })();
 </script>
