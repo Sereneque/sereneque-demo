@@ -63,12 +63,13 @@
                   box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
   .sq-enter-cap { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
-                  font-weight: 400; letter-spacing: 0.07em; line-height: 1.35; color: #335c63; max-width: 92%;
+                  font-weight: 400; letter-spacing: 0.07em; line-height: 1.35; color: #335c63; white-space: nowrap;
                   text-shadow: 0 1px 12px rgba(255, 255, 255, 0.97), 0 0 26px rgba(255, 255, 255, 0.85); }
   .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
 
   @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; letter-spacing: 0.13em; }
-                              .sq-reveal { gap: 14px; width: 84vw; } }
+                              .sq-reveal { gap: 14px; width: 84vw; }
+                              .sq-enter-cap { white-space: normal; max-width: 84vw; font-size: 15px; } }
 </style>
 </helmet>
 
