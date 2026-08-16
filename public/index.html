@@ -32,36 +32,22 @@
   /* ---- lotus gate ---- */
   .sq-gate { position: relative; pointer-events: none; perspective: 1150px; perspective-origin: 50% 46%; }
   .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
-  .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
+  .sq-half { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.7;
              transition: transform 2600ms cubic-bezier(0.58, 0.02, 0.24, 1), opacity 2600ms ease;
              -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-  .sq-half img { position: absolute; top: 0; width: 200%; max-width: none; height: auto; display: block;
+  .sq-half img { position: absolute; top: 0; left: 0; width: 100%; max-width: none; height: auto; display: block;
                  filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18));
                  transition: filter 2600ms cubic-bezier(0.58, 0.02, 0.24, 1); }
-  .sq-half-l { left: 0; transform-origin: left center;
-               -webkit-mask-image: radial-gradient(ellipse 15% 19% at 100% 80.5%, transparent 0 99%, #000 100%);
-                       mask-image: radial-gradient(ellipse 15% 19% at 100% 80.5%, transparent 0 99%, #000 100%); }
-  .sq-half-l img { left: 0; }
-  .sq-half-r { right: 0; transform-origin: right center;
-               -webkit-mask-image: radial-gradient(ellipse 15% 19% at 0% 80.5%, transparent 0 99%, #000 100%);
-                       mask-image: radial-gradient(ellipse 15% 19% at 0% 80.5%, transparent 0 99%, #000 100%); }
-  .sq-half-r img { right: 0; }
-
-  /* the stone itself -- never moves, never splits */
-  .sq-gem { position: absolute; inset: 0; z-index: 3; opacity: 0.7; pointer-events: none;
-            -webkit-mask-image: radial-gradient(ellipse 7.5% 19% at 50% 80.5%, #000 0 99%, transparent 100%);
-                    mask-image: radial-gradient(ellipse 7.5% 19% at 50% 80.5%, #000 0 99%, transparent 100%);
-            filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18));
-            transition: filter 2600ms ease, opacity 2600ms ease; }
-  .sq-gem img { display: block; width: 100%; height: auto; }
-  html.sq-gate-open .sq-gem { opacity: 0.92;
-            filter: drop-shadow(0 0 16px rgba(198, 42, 100, 0.5)) drop-shadow(0 0 34px rgba(198, 42, 100, 0.28))
-                    drop-shadow(0 18px 34px rgba(23, 53, 57, 0.2)); }
+  /* the seam bulges right around the ruby, so the stone rides on the left door */
+  .sq-half-l { transform-origin: left center;
+               -webkit-clip-path: polygon(0 0, 50% 0, 50% 61.5%, 53.75% 64.05%, 56.5% 71%, 57.5% 80.5%, 56.5% 90%, 53.75% 96.95%, 50% 99.5%, 50% 100%, 0 100%); clip-path: polygon(0 0, 50% 0, 50% 61.5%, 53.75% 64.05%, 56.5% 71%, 57.5% 80.5%, 56.5% 90%, 53.75% 96.95%, 50% 99.5%, 50% 100%, 0 100%); }
+  .sq-half-r { transform-origin: right center;
+               -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 50% 99.5%, 53.75% 96.95%, 56.5% 90%, 57.5% 80.5%, 56.5% 71%, 53.75% 64.05%, 50% 61.5%); clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 50% 99.5%, 53.75% 96.95%, 56.5% 90%, 57.5% 80.5%, 56.5% 71%, 53.75% 64.05%, 50% 61.5%); }
   html.sq-gate-open .sq-half-l { transform: translateX(-15%) rotateY(-58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half-r { transform: translateX(15%) rotateY(58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half img { filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.22)) brightness(0.88) saturate(1.05); }
 
-  .sq-reveal { position: absolute; left: 50%; top: 44%; z-index: 4; opacity: 0; pointer-events: none;
+  .sq-reveal { position: absolute; left: 50%; top: 51%; z-index: 4; opacity: 0; pointer-events: none;
                display: flex; flex-direction: column; align-items: center; text-align: center;
                transform: translate(-50%, -50%) scale(0.86);
                transition: opacity 420ms ease, transform 420ms ease; }
@@ -77,7 +63,7 @@
                   text-shadow: 0 1px 2px rgba(20, 48, 53, 0.22);
                   box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
-  .sq-cap { position: absolute; left: 50%; top: 60%; z-index: 4; width: max-content; max-width: 92%;
+  .sq-cap { position: absolute; left: 50%; top: 67%; z-index: 4; width: max-content; max-width: 92%;
             transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
   .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
                   font-weight: 400; letter-spacing: 0.07em; line-height: 1.35; color: #335c63; white-space: nowrap;
@@ -131,7 +117,6 @@
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
         <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
         <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
-        <div class="sq-gem"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
       </div>
     </div>
 
