@@ -69,7 +69,9 @@
 
   @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; letter-spacing: 0.13em; }
                               .sq-reveal { gap: 14px; width: 84vw; }
-                              .sq-enter-cap { white-space: normal; max-width: 84vw; font-size: 15px; } }
+                              .sq-enter-cap { white-space: normal; max-width: 84vw; font-size: 15px; }
+                              .sq-hero { min-height: 780px !important; }
+                              .sq-backdrop { transform: translateY(134px) !important; } }
 </style>
 </helmet>
 
@@ -92,9 +94,9 @@
     </button>
   </nav>
 
-  <section id="top" onMouseMove="{{ onTreeMove }}" onMouseLeave="{{ onTreeLeave }}" style="position: relative; min-height: 86vh; display: flex; align-items: center; justify-content: center; padding: 150px 24px 112px; overflow: hidden;">
+  <section id="top" class="sq-hero" onMouseMove="{{ onTreeMove }}" onMouseLeave="{{ onTreeLeave }}" style="position: relative; min-height: 86vh; display: flex; align-items: center; justify-content: center; padding: 150px 24px 112px; overflow: hidden;">
 
-    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translateY(104px);">
+    <div class="sq-backdrop" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translateY(104px);">
       <div style="position: absolute; width: min(880px, 100vw); aspect-ratio: 1 / 1; border-radius: 999px; background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%); filter: blur(14px);"></div>
       <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
