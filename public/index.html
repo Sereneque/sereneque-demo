@@ -46,8 +46,8 @@
   html.sq-gate-open .sq-half-r { transform: translateX(15%) rotateY(58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half img { filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.22)) brightness(0.88) saturate(1.05); }
 
-  .sq-reveal { position: absolute; left: 50%; top: 55%; z-index: 4; opacity: 0; pointer-events: none;
-               display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
+  .sq-reveal { position: absolute; left: 50%; top: 51%; z-index: 4; opacity: 0; pointer-events: none;
+               display: flex; flex-direction: column; align-items: center; text-align: center;
                transform: translate(-50%, -50%) scale(0.86);
                transition: opacity 420ms ease, transform 420ms ease; }
   html.sq-gate-open .sq-reveal { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto;
@@ -62,14 +62,21 @@
                   text-shadow: 0 1px 2px rgba(20, 48, 53, 0.22);
                   box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
-  .sq-enter-cap { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
+  .sq-cap { position: absolute; left: 50%; top: 64%; z-index: 4; width: max-content; max-width: 92%;
+            transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+  .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
                   font-weight: 400; letter-spacing: 0.07em; line-height: 1.35; color: #335c63; white-space: nowrap;
-                  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.97), 0 0 26px rgba(255, 255, 255, 0.85); }
+                  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.97), 0 0 26px rgba(255, 255, 255, 0.85);
+                  opacity: 0; transform: scale(0.92); transition: opacity 420ms ease, transform 420ms ease; }
+  html.sq-gate-open .sq-enter-cap { opacity: 1; transform: scale(1);
+                  transition: opacity 900ms ease 1250ms, transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 1250ms; }
+  html.sq-gate-hiding .sq-enter-cap { opacity: 0; transform: scale(0.92);
+                  transition: opacity 420ms ease, transform 420ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
 
   @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; letter-spacing: 0.13em; }
-                              .sq-reveal { gap: 14px; width: 84vw; }
-                              .sq-enter-cap { white-space: normal; max-width: 84vw; font-size: 15px; }
+                              .sq-cap { top: 100%; transform: translate(-50%, 18px); max-width: 92vw; }
+                              .sq-enter-cap { white-space: normal; font-size: 17px; }
                               .sq-hero { min-height: 780px !important; }
                               .sq-backdrop { transform: translateY(134px) !important; } }
 </style>
@@ -105,8 +112,8 @@
         <img class="sq-gate-sizer" src="./img_4489-mss3grav-tuua.png" alt="">
         <div class="sq-reveal">
           <button type="button" class="sq-enter-btn">Click Here</button>
-          <div class="sq-enter-cap">Vitality. Balance. Confidence. Whole-body renewal.</div>
         </div>
+        <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence. Whole-body renewal.</span></div>
         <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
         <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
       </div>
