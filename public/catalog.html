@@ -30,7 +30,7 @@
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
 
   /* ---- lotus watermark (inner pages: the picture only, it never opens) ---- */
-  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 700px;
+  .sq-wm { position: fixed; top: 0; left: 0; right: 0; height: 700px;
            display: flex; align-items: center; justify-content: center;
            pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
   .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
