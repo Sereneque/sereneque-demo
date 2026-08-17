@@ -55,10 +55,11 @@
   html.sq-gate-hiding .sq-reveal { opacity: 0; pointer-events: none;
                transform: translate(-50%, -50%) scale(0.9);
                transition: opacity 420ms ease, transform 420ms ease; }
-  .sq-enter-btn { display: inline-block; height: 52px; padding: 0 42px; border: none; border-radius: 999px;
+  .sq-enter-btn { display: flex; align-items: center; justify-content: center; text-align: center;
+                  width: 118px; height: 118px; padding: 0 12px; border: none; border-radius: 50%;
                   background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%);
-                  color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.16em;
-                  text-transform: uppercase; cursor: pointer; white-space: nowrap;
+                  color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.11em;
+                  line-height: 1.4; text-transform: uppercase; cursor: pointer; white-space: normal;
                   text-shadow: 0 1px 2px rgba(20, 48, 53, 0.22);
                   box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
@@ -74,7 +75,7 @@
                   transition: opacity 420ms ease, transform 420ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
 
-  @media (max-width: 760px) { .sq-enter-btn { height: 46px; padding: 0 30px; font-size: 12px; letter-spacing: 0.13em; }
+  @media (max-width: 760px) { .sq-enter-btn { width: 100px; height: 100px; padding: 0 10px; font-size: 12px; letter-spacing: 0.09em; }
                               .sq-cap { top: 100%; transform: translate(-50%, 18px); max-width: 92vw; }
                               .sq-enter-cap { white-space: nowrap; font-size: 17px; }
                               .sq-hero { min-height: 780px !important; }
@@ -111,7 +112,7 @@
       <div class="sq-gate" style="position: relative; width: min(650px, 88vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./img_4489-mss3grav-tuua.png" alt="">
         <div class="sq-reveal">
-          <button type="button" class="sq-enter-btn">Click Here</button>
+          <button type="button" class="sq-enter-btn"><span>Click<br>Here</span></button>
         </div>
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
         <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
