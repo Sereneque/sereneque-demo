@@ -28,10 +28,35 @@
   @keyframes rippleBands { 0% { transform: scale(0.55); } 100% { transform: scale(1.6); } }
   @keyframes bandFade { 0% { opacity: 0; } 14% { opacity: 1; } 72% { opacity: 0.55; } 100% { opacity: 0; } }
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
+
+  /* ---- lotus watermark (inner pages: the picture only, it never opens) ---- */
+  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 86vh; min-height: 560px;
+           display: flex; align-items: center; justify-content: center;
+           pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
+  .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
+  .sq-wm-glow { width: min(880px, 100vw);
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 62%);
+                filter: blur(14px); }
+  .sq-wm-pulse { width: min(405px, 54vw); border: 1px solid rgba(241, 221, 158, 0.7);
+                 animation: pulseGlow 6s ease-in-out infinite; }
+  .sq-wm-ripple { width: min(820px, 92vw); border: 1px solid rgba(241, 221, 158, 0.7);
+                  animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite; }
+  .sq-wm-ripple-b { animation-delay: 5.5s; }
+  .sq-wm img { position: relative; width: min(650px, 88vw); height: auto; opacity: 0.3;
+               margin-top: 54px; animation: floaty 9s ease-in-out infinite;
+               filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.14)); }
+  @media (max-width: 760px) { .sq-wm { height: 780px; transform: translateY(134px); } }
 </style>
 </helmet>
 
 <div style="min-height: 100vh; background: radial-gradient(ellipse 120% 80% at 50% 0%, #d5e8e4 0%, #a9cbc7 45%, #86b6b2 100%); background-attachment: fixed; overflow-x: hidden;">
+  <div class="sq-wm" aria-hidden="true">
+    <div class="sq-wm-glow"></div>
+    <div class="sq-wm-pulse"></div>
+    <div class="sq-wm-ripple"></div>
+    <div class="sq-wm-ripple sq-wm-ripple-b"></div>
+    <img src="./img_4489-mss3grav-tuua.png" alt="">
+  </div>
 
   <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 24px; background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(176, 138, 53, 0.28);">
     <a href="index.html" style="display: flex; align-items: center; gap: 11px; flex: none;">

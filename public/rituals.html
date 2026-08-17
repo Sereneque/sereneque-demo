@@ -23,7 +23,29 @@
              text-transform:uppercase;color:#3d6a71}
   nav .links a{color:#3d6a71;transition:color 180ms ease}
   nav .links a:hover,nav .links a.on{color:#8f6d29}
-  .wrap{max-width:1100px;margin:0 auto;padding:124px 24px 120px;text-align:center}
+  .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:124px 24px 120px;text-align:center}
+  body{position:relative}
+  @keyframes floaty { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(14px); } }
+  @keyframes pulseGlow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+  @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
+  /* ---- lotus watermark (inner pages: the picture only, it never opens) ---- */
+  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 86vh; min-height: 560px;
+           display: flex; align-items: center; justify-content: center;
+           pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
+  .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
+  .sq-wm-glow { width: min(880px, 100vw);
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 62%);
+                filter: blur(14px); }
+  .sq-wm-pulse { width: min(405px, 54vw); border: 1px solid rgba(241, 221, 158, 0.7);
+                 animation: pulseGlow 6s ease-in-out infinite; }
+  .sq-wm-ripple { width: min(820px, 92vw); border: 1px solid rgba(241, 221, 158, 0.7);
+                  animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite; }
+  .sq-wm-ripple-b { animation-delay: 5.5s; }
+  .sq-wm img { position: relative; width: min(650px, 88vw); height: auto; opacity: 0.3;
+               margin-top: 54px; animation: floaty 9s ease-in-out infinite;
+               filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.14)); }
+  @media (max-width: 760px) { .sq-wm { height: 780px; transform: translateY(134px); } }
+
   .rule{height:1px;margin:34px auto 44px;max-width:640px;
         background:linear-gradient(90deg,rgba(176,138,53,0) 0%,rgba(176,138,53,.55) 16%,rgba(176,138,53,.6) 50%,rgba(176,138,53,.55) 84%,rgba(176,138,53,0) 100%)}
   h1{margin:22px 0 0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
@@ -53,6 +75,13 @@
   <span style="width:96px"></span>
 </nav>
 
+  <div class="sq-wm" aria-hidden="true">
+    <div class="sq-wm-glow"></div>
+    <div class="sq-wm-pulse"></div>
+    <div class="sq-wm-ripple"></div>
+    <div class="sq-wm-ripple sq-wm-ripple-b"></div>
+    <img src="./img_4489-mss3grav-tuua.png" alt="">
+  </div>
 <div class="wrap">
   <a href="index.html" style="display:inline-block"><img src="sereneque-wordmark-gold.png" alt="Sereneque" style="display:block;margin:0 auto;width:min(280px,62vw);height:auto;filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));"></a>
   <h1>Rituals</h1>
