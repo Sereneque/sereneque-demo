@@ -30,7 +30,7 @@
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
 
   /* ---- lotus watermark (inner pages: the picture only, it never opens) ---- */
-  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 86vh; min-height: 560px;
+  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 700px;
            display: flex; align-items: center; justify-content: center;
            pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
   .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
@@ -49,7 +49,7 @@
 </style>
 </helmet>
 
-<div style="min-height: 100vh; background: radial-gradient(ellipse 120% 80% at 50% 0%, #d5e8e4 0%, #a9cbc7 45%, #86b6b2 100%); background-attachment: fixed; overflow-x: hidden;">
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(ellipse 120% 80% at 50% 0%, #d5e8e4 0%, #a9cbc7 45%, #86b6b2 100%); background-attachment: fixed; overflow-x: hidden;">
   <div class="sq-wm" aria-hidden="true">
     <div class="sq-wm-glow"></div>
     <div class="sq-wm-pulse"></div>
@@ -97,9 +97,9 @@
     <p style="margin: 0; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.6; color: #143035; text-wrap: pretty;">At its core, Sereneque represents calm strength, renewal, and the pursuit of feeling fully alive again.</p>
   </section>
 
-  <footer style="border-top: 1px solid rgba(176, 138, 53, 0.3); padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; max-width: 1180px; margin: 0 auto; font-size: 11.5px; font-weight: 300; color: #3d6a71;">
+  <footer style="border-top: 1px solid rgba(176, 138, 53, 0.3); padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; width: 100%; max-width: 1180px; margin: auto auto 0; font-size: 11px; font-weight: 300; color: #3d6a71;">
     <span>© 2026 Sereneque Wellness Method</span>
-    <span style="font-size: 10px; letter-spacing: 0.16em; color: #587f87;">CALM, BY DESIGN</span>
+    <span style="font-size: 9.5px; letter-spacing: 0.16em; color: #587f87;">CALM, BY DESIGN</span>
   </footer>
 
   <div onClick="{{ closeCart }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(20, 48, 53, 0.34); backdrop-filter: blur(3px); transition: opacity 260ms ease; opacity: {{ scrimOpacity }}; pointer-events: {{ scrimEvents }};"></div>

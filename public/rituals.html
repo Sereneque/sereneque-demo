@@ -14,7 +14,7 @@
   html,body{margin:0;padding:0;background:#bcd8d4}
   body{font-family:"Jost","Helvetica Neue",Helvetica,sans-serif;color:#143035;-webkit-font-smoothing:antialiased;
        background:radial-gradient(ellipse 120% 80% at 50% 0%,#d5e8e4 0%,#a9cbc7 45%,#86b6b2 100%);
-       background-attachment:fixed;min-height:100vh}
+       background-attachment:fixed;min-height:100vh;display:flex;flex-direction:column}
   a{color:#143035;text-decoration:none}
   nav{position:fixed;top:0;left:0;right:0;z-index:60;height:72px;display:flex;align-items:center;
       justify-content:space-between;gap:16px;padding:0 24px;background:rgba(226,239,236,.68);
@@ -29,7 +29,7 @@
   @keyframes pulseGlow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
   /* ---- lotus watermark (inner pages: the picture only, it never opens) ---- */
-  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 86vh; min-height: 560px;
+  .sq-wm { position: absolute; top: 0; left: 0; right: 0; height: 700px;
            display: flex; align-items: center; justify-content: center;
            pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
   .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
@@ -56,9 +56,9 @@
          background:#8bbcb7;box-shadow:0 14px 40px rgba(20,48,53,.24)}
   .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   figcaption{margin-top:12px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#587f87}
-  footer{border-top:1px solid rgba(176,138,53,.3);padding:18px 24px;display:flex;flex-wrap:wrap;
-         align-items:center;gap:12px;justify-content:space-between;max-width:1180px;margin:0 auto;
-         font-size:11.5px;font-weight:300;color:#3d6a71}
+  footer{border-top:1px solid rgba(176,138,53,.3);padding:12px 24px;display:flex;flex-wrap:wrap;
+         align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:1180px;
+         margin:auto auto 0;font-size:11px;font-weight:300;color:#3d6a71}
 </style>
 </head>
 <body>
@@ -111,7 +111,7 @@
 
 <footer>
   <span>&copy; 2026 Sereneque Wellness Method</span>
-  <span style="font-size:10px;letter-spacing:.16em;color:#587f87">CALM, BY DESIGN</span>
+  <span style="font-size:9.5px;letter-spacing:.16em;color:#587f87">CALM, BY DESIGN</span>
 </footer>
 
 <script>
