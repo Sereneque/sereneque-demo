@@ -52,9 +52,12 @@
      lotus width), with the logo's own spacing kept in proportion */
   .sq-dot { position: absolute; left: 50%; width: 2.45%; height: 4.11%; border-radius: 50%;
             transform: translate(-50%, -50%);
-            background: radial-gradient(circle at 36% 30%, #fff9e3 0%, #f4e4b0 30%,
-                        #e2c886 56%, #cdae6b 76%, #b08a35 100%);
-            box-shadow: inset 0 0 0 1px rgba(160, 124, 46, 0.55); }
+            background:
+              radial-gradient(circle at 40% 33%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 36%),
+              radial-gradient(circle,
+                #ffdc86 0%, #fcdf95 22%, #fce7a6 40%, #faeab4 52%,
+                #d7b465 64%, #c4a158 76%, #e8d79e 88%, #fdf7cf 100%);
+            box-shadow: 0 0 3px rgba(176, 138, 53, 0.4); }
   .sq-dot-a { top: -10.06%; }
   .sq-dot-b { top: -4.22%; }
   html.sq-gate-open .sq-half-l { transform: translateX(-15%) rotateY(-58deg); opacity: 0.6; }
