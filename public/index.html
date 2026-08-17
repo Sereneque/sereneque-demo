@@ -56,14 +56,20 @@
                transform: translate(-50%, -50%) scale(0.9);
                transition: opacity 420ms ease, transform 420ms ease; }
   .sq-enter-btn { display: flex; align-items: center; justify-content: center; text-align: center;
-                  width: 118px; height: 118px; padding: 0 12px; border: none; border-radius: 50%;
-                  background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%);
-                  color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.11em;
-                  line-height: 1.4; text-transform: uppercase; cursor: pointer; white-space: normal;
-                  text-shadow: 0 1px 2px rgba(20, 48, 53, 0.22);
-                  box-shadow: 0 0 44px 16px rgba(255, 255, 255, 0.78), 0 10px 26px rgba(20, 48, 53, 0.24);
+                  width: 92px; height: 92px; padding: 0 9px; border: none; border-radius: 50%;
+                  background: radial-gradient(circle at 34% 26%, #fffdf0 0%, #fbf0c4 18%, #f0dda2 38%,
+                              #dcc17c 60%, #bda05a 80%, #967d45 100%);
+                  color: #ffffff; font-family: inherit; font-size: 11.5px; font-weight: 400; letter-spacing: 0.1em;
+                  line-height: 1.45; text-transform: uppercase; cursor: pointer; white-space: normal;
+                  text-shadow: 0 1px 2px rgba(20, 48, 53, 0.5);
+                  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.9),
+                              inset 0 -5px 9px rgba(88, 64, 20, 0.5),
+                              inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+                              0 9px 16px rgba(20, 48, 53, 0.38),
+                              0 2px 4px rgba(20, 48, 53, 0.3),
+                              0 0 38px 13px rgba(255, 255, 255, 0.72);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
-  .sq-cap { position: absolute; left: 50%; top: 77.5%; z-index: 4; width: max-content; max-width: 92%;
+  .sq-cap { position: absolute; left: 50%; top: 73%; z-index: 4; width: max-content; max-width: 92%;
             transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
   .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
                   font-weight: 400; letter-spacing: 0.07em; line-height: 1.35; color: #335c63; white-space: nowrap;
@@ -73,9 +79,20 @@
                   transition: opacity 900ms ease 1250ms, transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 1250ms; }
   html.sq-gate-hiding .sq-enter-cap { opacity: 0; transform: scale(0.92);
                   transition: opacity 420ms ease, transform 420ms ease; }
-  .sq-enter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 48px 18px rgba(255, 255, 255, 0.85), 0 14px 30px rgba(20, 48, 53, 0.28); }
+  .sq-enter-btn:hover { transform: translateY(-2px);
+                        box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.95),
+                                    inset 0 -5px 9px rgba(88, 64, 20, 0.45),
+                                    inset 0 0 0 1px rgba(255, 255, 255, 0.38),
+                                    0 14px 22px rgba(20, 48, 53, 0.4),
+                                    0 3px 6px rgba(20, 48, 53, 0.3),
+                                    0 0 44px 16px rgba(255, 255, 255, 0.82); }
+  .sq-enter-btn:active { transform: translateY(1px);
+                        box-shadow: inset 0 3px 7px rgba(88, 64, 20, 0.5),
+                                    inset 0 -1px 2px rgba(255, 255, 255, 0.5),
+                                    0 4px 8px rgba(20, 48, 53, 0.32),
+                                    0 0 34px 11px rgba(255, 255, 255, 0.68); }
 
-  @media (max-width: 760px) { .sq-enter-btn { width: 100px; height: 100px; padding: 0 10px; font-size: 12px; letter-spacing: 0.09em; }
+  @media (max-width: 760px) { .sq-enter-btn { width: 80px; height: 80px; padding: 0 8px; font-size: 10.5px; letter-spacing: 0.07em; }
                               .sq-cap { top: 100%; transform: translate(-50%, 18px); max-width: 92vw; }
                               .sq-enter-cap { white-space: nowrap; font-size: 17px; }
                               .sq-hero { min-height: 780px !important; }
