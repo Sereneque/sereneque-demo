@@ -32,34 +32,16 @@
   /* ---- lotus gate ---- */
   .sq-gate { position: relative; pointer-events: none; perspective: 1150px; perspective-origin: 50% 46%; }
   .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
-  .sq-half { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.7;
+  .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
              transition: transform 2600ms cubic-bezier(0.58, 0.02, 0.24, 1), opacity 2600ms ease;
              -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-  .sq-half img { position: absolute; top: 0; left: 0; width: 100%; max-width: none; height: auto; display: block;
+  .sq-half img { position: absolute; top: 0; width: 200%; max-width: none; height: auto; display: block;
                  filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.18));
                  transition: filter 2600ms cubic-bezier(0.58, 0.02, 0.24, 1); }
-  /* the cut still runs straight down the middle -- it just reaches above the
-     artwork now so the two beads split with the doors as well */
-  .sq-half-l { transform-origin: left center;
-               -webkit-clip-path: polygon(0 -40%, 50% -40%, 50% 100%, 0 100%);
-                       clip-path: polygon(0 -40%, 50% -40%, 50% 100%, 0 100%); }
-  .sq-half-r { transform-origin: right center;
-               -webkit-clip-path: polygon(50% -40%, 100% -40%, 100% 100%, 50% 100%);
-                       clip-path: polygon(50% -40%, 100% -40%, 100% 100%, 50% 100%); }
-
-  /* the two gold beads above the flower, matching the header lockup:
-     sized to match the beads already drawn inside the flower (2.4% of the
-     lotus width), with the logo's own spacing kept in proportion */
-  .sq-dot { position: absolute; left: 50%; width: 2.45%; height: 4.11%; border-radius: 50%;
-            transform: translate(-50%, -50%);
-            background:
-              radial-gradient(circle at 40% 33%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 36%),
-              radial-gradient(circle,
-                #ffdc86 0%, #fcdf95 22%, #fce7a6 40%, #faeab4 52%,
-                #d7b465 64%, #c4a158 76%, #e8d79e 88%, #fdf7cf 100%);
-            box-shadow: 0 0 3px rgba(176, 138, 53, 0.4); }
-  .sq-dot-a { top: -10.06%; }
-  .sq-dot-b { top: -4.22%; }
+  .sq-half-l { left: 0; transform-origin: left center; }
+  .sq-half-l img { left: 0; }
+  .sq-half-r { right: 0; transform-origin: right center; }
+  .sq-half-r img { right: 0; }
   html.sq-gate-open .sq-half-l { transform: translateX(-15%) rotateY(-58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half-r { transform: translateX(15%) rotateY(58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half img { filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.22)) brightness(0.88) saturate(1.05); }
@@ -150,8 +132,8 @@
           <button type="button" class="sq-enter-btn"><span>Click<br>Here</span></button>
         </div>
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
-        <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"><span class="sq-dot sq-dot-a"></span><span class="sq-dot sq-dot-b"></span></div>
-        <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""><span class="sq-dot sq-dot-a"></span><span class="sq-dot sq-dot-b"></span></div>
+        <div class="sq-half sq-half-l"><img src="./img_4489-mss3grav-tuua.png" alt="Sereneque"></div>
+        <div class="sq-half sq-half-r"><img src="./img_4489-mss3grav-tuua.png" alt=""></div>
       </div>
     </div>
 
