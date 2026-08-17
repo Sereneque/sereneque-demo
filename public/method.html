@@ -67,7 +67,7 @@
       <a href="method.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Method</a>
       <a href="catalog.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Products</a>
       <a href="rituals.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
-      <a href="index.html#catalog" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
+      <a href="journal.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
     </div>
     <button onClick="{{ openCart }}" style="position: relative; display: flex; align-items: center; gap: 9px; height: 38px; padding: 0 15px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255, 255, 255, 0.5); color: #143035; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.04em; cursor: pointer; transition: all 180ms ease;" style-hover="background: #ffffff; border-color: #b08a35;">
       <span>Cart</span>
@@ -433,7 +433,7 @@ class Component extends DCLogic {
   var here = (location.pathname.split("/").pop() || "index.html");
   var menu = document.createElement("nav");
   menu.id = "sqMenu";
-  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","index.html"]]
+  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
     .forEach(function (p) {
       var a = document.createElement("a");
       a.textContent = p[0]; a.href = p[1];
