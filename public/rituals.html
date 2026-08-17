@@ -70,7 +70,7 @@
     <a href="method.html">Method</a>
     <a href="catalog.html">Products</a>
     <a href="rituals.html" class="on">Rituals</a>
-    <a href="journal.html">Journal</a>
+    <a href="subscribe.html">Subscribe</a>
   </div>
   <span style="width:96px"></span>
 </nav>
@@ -174,7 +174,7 @@
   var here = (location.pathname.split("/").pop() || "index.html");
   var menu = document.createElement("nav");
   menu.id = "sqMenu";
-  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
+  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Subscribe","subscribe.html"]]
     .forEach(function (p) {
       var a = document.createElement("a");
       a.textContent = p[0]; a.href = p[1];
