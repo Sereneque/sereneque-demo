@@ -98,11 +98,11 @@
      rides up into the paragraph -- give the hero a floor in that case */
   /* the new lotus is far taller than the old one, so the hero needs a floor at
      every desktop size -- 86vh alone let the flower ride up into the paragraph */
-  @media (min-width: 761px) { .sq-hero { min-height: max(86vh, 1020px) !important; } }
+  @media (min-width: 761px) { .sq-hero { min-height: max(86vh, 1110px) !important; } }
   @media (max-width: 760px) { .sq-enter-btn { width: 68px; height: 68px; padding: 0 6px; font-size: 10px; letter-spacing: 0.05em; }
                               .sq-cap { top: 100%; transform: translate(-50%, 18px); max-width: 92vw; }
                               .sq-enter-cap { white-space: nowrap; font-size: 17px; }
-                              .sq-hero { min-height: 780px !important; }
+                              .sq-hero { min-height: 830px !important; }
                               .sq-backdrop { transform: translateY(134px) !important; } }
 </style>
 </helmet>
@@ -132,7 +132,7 @@
       <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
-      <div class="sq-gate" style="position: relative; width: min(500px, 70vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
+      <div class="sq-gate" style="position: relative; width: min(600px, 82vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" alt="">
         <div class="sq-reveal">
           <button type="button" class="sq-enter-btn"><span>Click<br>Here</span></button>
