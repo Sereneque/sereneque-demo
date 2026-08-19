@@ -30,25 +30,6 @@
   @keyframes ripple { 0% { transform: scale(0.5); opacity: 0; } 18% { opacity: 0.7; } 65% { opacity: 0.25; } 100% { transform: scale(1.2); opacity: 0; } }
 
   /* ---- lotus gate ---- */
-
-
-  /* ---- the opening reads as a lit recess rather than flat background ---- */
-  .sq-well { position: absolute; width: min(470px, 62vw); aspect-ratio: 1 / 1; border-radius: 999px;
-             pointer-events: none; opacity: 0; transform: scale(0.94);
-             transition: opacity 1500ms ease 250ms, transform 1500ms ease 250ms;
-             background: radial-gradient(circle at 50% 44%, rgba(255,255,255,0.85) 0%, rgba(255,253,240,0.55) 22%, rgba(226,242,239,0.30) 46%, rgba(150,190,186,0.20) 72%, rgba(96,146,142,0.26) 100%);
-             box-shadow: inset 0 14px 34px rgba(20, 48, 53, 0.20),
-                         inset 0 -10px 26px rgba(255, 255, 255, 0.45),
-                         inset 0 0 0 1px rgba(241, 221, 158, 0.85),
-                         inset 0 0 44px 6px rgba(255, 246, 214, 0.35),
-                         0 26px 60px rgba(20, 48, 53, 0.16); }
-  html.sq-gate-open .sq-well { opacity: 1; transform: scale(1); }
-  html.sq-gate-hiding .sq-well { opacity: 0; transition: opacity 420ms ease; }
-  .sq-shaft { position: absolute; width: min(300px, 40vw); height: min(470px, 62vw); border-radius: 999px;
-              pointer-events: none; opacity: 0; transition: opacity 1700ms ease 400ms; filter: blur(12px);
-              background: radial-gradient(ellipse 50% 46% at 50% 50%, rgba(255, 252, 232, 0.75) 0%, rgba(255, 248, 214, 0.28) 38%, rgba(255, 248, 214, 0) 72%); }
-  html.sq-gate-open .sq-shaft { opacity: 1; }
-  html.sq-gate-hiding .sq-shaft { opacity: 0; transition: opacity 380ms ease; }
   .sq-gate { position: relative; pointer-events: none; perspective: 1150px; perspective-origin: 50% 46%; }
   .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
   .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
@@ -64,8 +45,6 @@
   html.sq-gate-open .sq-half-l { transform: translateX(-15%) rotateY(-58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half-r { transform: translateX(15%) rotateY(58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half img { filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.22)) brightness(0.88) saturate(1.05); }
-  html.sq-gate-open .sq-half-l img { filter: drop-shadow(14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
-  html.sq-gate-open .sq-half-r img { filter: drop-shadow(-14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
 
   .sq-reveal { position: absolute; left: 50%; top: calc(50% - 27px); z-index: 4; opacity: 0; pointer-events: none;
                display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -76,28 +55,22 @@
   html.sq-gate-hiding .sq-reveal { opacity: 0; pointer-events: none;
                transform: translate(-50%, -50%) scale(0.9);
                transition: opacity 420ms ease, transform 420ms ease; }
-  .sq-enter-btn { position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
-                  width: 96px; height: 96px; padding: 0 9px; border: none; border-radius: 50%;
-                  background:
-                    radial-gradient(circle at 50% 116%, rgba(255, 244, 198, 0.75) 0%, rgba(255, 244, 198, 0) 52%),
-                    conic-gradient(from 212deg at 50% 50%, rgba(255,255,255,0.34) 0deg, rgba(255,255,255,0) 42deg, rgba(255,255,255,0.26) 96deg, rgba(255,255,255,0) 156deg, rgba(255,255,255,0.30) 228deg, rgba(255,255,255,0) 292deg, rgba(255,255,255,0.34) 360deg),
-                    radial-gradient(circle at 37% 25%, #fffdf3 0%, #fdf1c8 13%, #f4e2a8 30%, #e0c47c 52%, #c19f57 72%, #99793d 89%, #7a5f2e 100%);
+  .sq-enter-btn { display: flex; align-items: center; justify-content: center; text-align: center;
+                  width: 92px; height: 92px; padding: 0 9px; border: none; border-radius: 50%;
+                  background: radial-gradient(circle at 34% 26%, #fffdf0 0%, #fbf0c4 18%, #f0dda2 38%,
+                              #dcc17c 60%, #bda05a 80%, #967d45 100%);
                   color: #ffffff; font-family: inherit; font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em;
                   line-height: 1.4; text-transform: uppercase; cursor: pointer; white-space: normal;
-                  text-shadow: 0 1px 1px rgba(70, 48, 8, 0.75), 0 2px 5px rgba(52, 36, 6, 0.5);
-                  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.95),
-                              inset 0 -7px 14px rgba(92, 66, 20, 0.5),
-                              inset 0 0 0 1px rgba(255, 255, 255, 0.32),
-                              inset 0 0 24px rgba(255, 238, 186, 0.3),
-                              0 0 0 1px rgba(138, 108, 46, 0.55),
-                              0 14px 24px rgba(20, 48, 53, 0.4),
-                              0 4px 8px rgba(20, 48, 53, 0.3),
-                              0 0 40px 12px rgba(255, 255, 255, 0.55);
+                  text-shadow: 0 1px 1px rgba(20, 48, 53, 0.62),
+                               0 2px 5px rgba(20, 48, 53, 0.45),
+                               0 0 2px rgba(20, 48, 53, 0.35);
+                  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.9),
+                              inset 0 -5px 9px rgba(88, 64, 20, 0.5),
+                              inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+                              0 9px 16px rgba(20, 48, 53, 0.38),
+                              0 2px 4px rgba(20, 48, 53, 0.3),
+                              0 0 38px 13px rgba(255, 255, 255, 0.72);
                   transition: transform 200ms ease, box-shadow 200ms ease; }
-  .sq-enter-btn > span { position: relative; z-index: 2; }
-  .sq-enter-btn::after { content: ""; position: absolute; left: 17%; top: 7%; width: 66%; height: 36%;
-                  border-radius: 50%; pointer-events: none;
-                  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.34) 45%, rgba(255,255,255,0) 78%); }
   .sq-cap { position: absolute; left: 50%; top: 70%; z-index: 4; width: max-content; max-width: 92%;
             transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
   .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
@@ -125,11 +98,11 @@
      rides up into the paragraph -- give the hero a floor in that case */
   /* the new lotus is far taller than the old one, so the hero needs a floor at
      every desktop size -- 86vh alone let the flower ride up into the paragraph */
-  @media (min-width: 761px) { .sq-hero { min-height: max(86vh, 1110px) !important; } }
+  @media (min-width: 761px) { .sq-hero { min-height: max(86vh, 1020px) !important; } }
   @media (max-width: 760px) { .sq-enter-btn { width: 68px; height: 68px; padding: 0 6px; font-size: 10px; letter-spacing: 0.05em; }
                               .sq-cap { top: 100%; transform: translate(-50%, 18px); max-width: 92vw; }
                               .sq-enter-cap { white-space: nowrap; font-size: 17px; }
-                              .sq-hero { min-height: 830px !important; }
+                              .sq-hero { min-height: 780px !important; }
                               .sq-backdrop { transform: translateY(134px) !important; } }
 </style>
 </helmet>
@@ -156,11 +129,10 @@
 
     <div class="sq-backdrop" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translateY(104px);">
       <div style="position: absolute; width: min(880px, 100vw); aspect-ratio: 1 / 1; border-radius: 999px; background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%); filter: blur(14px);"></div>
-      <div class="sq-well"></div>
-      <div class="sq-shaft"></div>
+      <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
-      <div class="sq-gate" style="position: relative; width: min(600px, 82vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
+      <div class="sq-gate" style="position: relative; width: min(500px, 70vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" alt="">
         <div class="sq-reveal">
           <button type="button" class="sq-enter-btn"><span>Click<br>Here</span></button>
@@ -618,7 +590,6 @@ class Component extends DCLogic {
   });
 })();
 </script>
-
 
 </body>
 </html>
