@@ -68,7 +68,6 @@
   <div class="links">
     <a href="index.html">Home</a>
     <a href="method.html">Method</a>
-    <a href="catalog.html">Products</a>
     <a href="rituals.html" class="on">Rituals</a>
     <a href="journal.html">Journal</a>
   </div>
@@ -185,7 +184,7 @@
   var here = (location.pathname.split("/").pop() || "index.html");
   var menu = document.createElement("nav");
   menu.id = "sqMenu";
-  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
+  [["Home","index.html"],["Method","method.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
     .forEach(function (p) {
       var a = document.createElement("a");
       a.textContent = p[0]; a.href = p[1];
