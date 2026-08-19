@@ -49,8 +49,6 @@
               background: radial-gradient(ellipse 50% 46% at 50% 50%, rgba(255, 252, 232, 0.75) 0%, rgba(255, 248, 214, 0.28) 38%, rgba(255, 248, 214, 0) 72%); }
   html.sq-gate-open .sq-shaft { opacity: 1; }
   html.sq-gate-hiding .sq-shaft { opacity: 0; transition: opacity 380ms ease; }
-  html.sq-gate-open .sq-half-l img { filter: drop-shadow(14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
-  html.sq-gate-open .sq-half-r img { filter: drop-shadow(-14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
   .sq-gate { position: relative; pointer-events: none; perspective: 1150px; perspective-origin: 50% 46%; }
   .sq-gate-sizer { display: block; width: 100%; height: auto; visibility: hidden; }
   .sq-half { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; opacity: 0.7;
@@ -66,6 +64,8 @@
   html.sq-gate-open .sq-half-l { transform: translateX(-15%) rotateY(-58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half-r { transform: translateX(15%) rotateY(58deg); opacity: 0.6; }
   html.sq-gate-open .sq-half img { filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.22)) brightness(0.88) saturate(1.05); }
+  html.sq-gate-open .sq-half-l img { filter: drop-shadow(14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
+  html.sq-gate-open .sq-half-r img { filter: drop-shadow(-14px 16px 26px rgba(20, 48, 53, 0.34)) brightness(0.9) saturate(1.05); }
 
   .sq-reveal { position: absolute; left: 50%; top: calc(50% - 27px); z-index: 4; opacity: 0; pointer-events: none;
                display: flex; flex-direction: column; align-items: center; text-align: center;
