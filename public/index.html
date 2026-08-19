@@ -691,7 +691,9 @@ class Component extends DCLogic {
     var back = document.querySelector(".sq-backdrop");
     if (!back) return;
     if (cv.parentNode !== back) {
-      back.insertBefore(cv, back.firstChild ? back.firstChild.nextSibling : null);
+      // sit just above the soft white bloom, still behind the flower
+      var kids = back.children;
+      back.insertBefore(cv, kids.length > 1 ? kids[1] : null);
       fit();
     }
   }
