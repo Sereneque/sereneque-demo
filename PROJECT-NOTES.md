@@ -2,6 +2,7 @@
 
 Live at **sereneque.com**. Domain at GoDaddy, DNS pointed at GitHub Pages.
 Repo `Sereneque/sereneque-demo`, branch `main`, served from `public/`.
+Local folder: `~/Sereneque/website` (moved out of `~/Projects` on 24 Aug).
 Every push triggers a GitHub Actions deploy; it goes live in roughly 45 seconds.
 
 ## Pages
@@ -78,6 +79,13 @@ Numbers that have been tuned by measurement, not guesswork:
 7. Products page is hidden from the nav but still reachable at
    `sereneque.com/catalog.html`. That is obscurity, not privacy — a static
    host cannot password-protect a page.
+
+## Backups
+
+`website/` is mirrored on GitHub, so the site, its artwork and
+`brand-source/` survive this Mac. **The repo is public** — business and legal
+documents must never be committed to it. Those live in
+`~/Desktop/Desktop Folder/Sereneque/` and are backed up nowhere.
 
 ## Things learned the hard way
 
