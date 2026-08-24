@@ -13,7 +13,7 @@ Every push triggers a GitHub Actions deploy; it goes live in roughly 45 seconds.
 | `method.html` | Method | The Wellness Method copy |
 | `rituals.html` | Rituals | Three videos. Plain HTML, not the template |
 | `journal.html` | Journal | Intro + first entry. Plain HTML |
-| `catalog.html` | (hidden) | 12 products. Removed from the nav on request |
+| `catalog.html` | Products | Yoga / Wellness / Lotions. Back in the nav 24 Aug |
 
 `index.html`, `method.html` and `catalog.html` are Claude Design `<x-dc>` templates —
 React renders them, so anything injected by script can be wiped on re-render.
@@ -78,10 +78,8 @@ file sizes no longer cost anything on load.
   Rituals has no prose to quote, so it has none — Google will compose one.
 - `sitemap.xml` lists the four public pages and is referenced from `robots.txt`.
   `catalog.html` is deliberately absent.
-- `catalog.html` carries `noindex, follow`, and `robots.txt` no longer disallows
-  it. Those two have to go together: a crawler blocked from fetching a page
-  never reads its noindex. **When Products goes public, delete the meta tag** —
-  nothing else needs changing.
+- `catalog.html` is public as of 24 Aug: no `noindex`, in the nav, in the
+  sitemap. `robots.txt` allows everything.
 - Not done yet: the site is not registered in Google Search Console, so nothing
   has been submitted for crawling and there is no coverage reporting.
 
@@ -96,25 +94,27 @@ file sizes no longer cost anything on load.
 
 ## Open items
 
-1. **Google Search Console.** The site is not registered. Sign in to Google,
-   add `sereneque.com`, verify, and submit `sitemap.xml`. A domain property
-   (DNS TXT at GoDaddy) covers `rx.sereneque.com` too; a URL-prefix property
-   only needs an HTML meta tag on the site.
-2. **The cart is coming back.** It was removed on 24 Aug because it was a mock
-   with a fake card form. The plan is a real cart for the items that do not
-   need a prescription, with prescription items redirected to the portal.
-   Commit `35d331d` has the old markup if any of it is worth reusing — but the
-   payment step has to be a real processor, not the simulation.
-3. **`rx.sereneque.com` renders blank in desktop Chrome.** It serves over
-   https with a valid certificate and the title loads, but the body paints
-   nothing. It works on iPhone. Worth checking on a desktop browser before
-   sending customers through the gate button.
-4. Products has three empty categories (Sexual Health, Hair Loss, Acne).
-5. Products page is hidden from the nav but still reachable at
-   `sereneque.com/catalog.html`. That is obscurity, not privacy — a static
-   host cannot password-protect a page.
+1. **Products needs real products.** The six tiles are SAMPLE placeholders on
+   a neutral `product-placeholder.svg`. Needed: names, prices, photography.
+   The peptide and Rx range was removed on 24 Aug — that all routes through
+   the portal now.
+2. **Nothing on this site can take money yet.** The mock cart came out on
+   24 Aug (commit `35d331d` has the markup). GoDaddy's store **cannot** be
+   embedded here — their docs are clear, there is no buy button or API. So a
+   real cart on `sereneque.com` means a third-party embed (Shopify Buy
+   Button, Snipcart, Ecwid), or pointing the domain at GoDaddy and losing
+   this site. Decision still open.
+3. **There is a second, separate store on GoDaddy** at
+   `sereneque.godaddysites.com` — Websites + Marketing Commerce, paid to
+   June 2027, with four SAMPLE products loaded. Its products do not display
+   on the published page; shipping is unset and that is the likeliest cause.
+   GoDaddy Payments is fully set up and can take money (PNC ••••6194).
+4. **Google Search Console.** Not registered. Nothing submitted for crawling.
+5. **`rx.sereneque.com` renders blank in desktop Chrome.** Valid certificate,
+   title loads, body paints nothing. Works on iPhone. Check before sending
+   customers through the gate button.
 
-No newsletter for now — decided against it on 24 Aug.
+No newsletter — decided against it on 24 Aug.
 
 ## Backups
 
