@@ -27,10 +27,12 @@ and page wordmarks use a script logo; the lotus artwork is the same throughout.
 
 **What still needs doing, roughly in order:**
 
-1. Every page carries `noindex, nofollow` left over from the original template —
-   Google won't list the site until those come out.
-2. The cart is a mock, with a fake card form labelled "simulated payment".
-   It should be removed before real visitors arrive.
-3. The gate button has no destination (`SQ_GATE_LINK` is empty in `index.html`).
-4. No newsletter signup yet — I'm considering Kit, free to 10,000 subscribers.
-5. Rituals carries about 44MB of autoplaying video, slow on phone data.
+1. The gate button has no destination (`SQ_GATE_LINK` is empty in `index.html`).
+   It should point at the customer portal once that subdomain is live.
+2. No newsletter signup yet — I'm considering Kit, free to 10,000 subscribers.
+3. Products has three empty categories (Sexual Health, Hair Loss, Acne).
+4. Products is hidden from the nav but still reachable at `catalog.html`.
+   See the note in PROJECT-NOTES about `noindex` vs `robots.txt` for that page.
+
+The `noindex` tags, the mock cart and the autoplaying Rituals video were all
+dealt with on 24 Aug.

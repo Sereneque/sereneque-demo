@@ -42,7 +42,8 @@ their outer edges so they part from the centre outward.
 - Opens 1s after load, holds 8s, the button clears away, then the doors shut. Repeats.
 - The swing is 2.6s and the CSS duration must match `SWING` in the script.
 - `SQ_GATE_LINK` near the bottom of `index.html` is **empty** — the button goes nowhere.
-  Paste a URL between the quotes and it opens in a new tab.
+  Paste a URL between the quotes and it opens in a new tab. It is meant to point
+  at the customer portal (probably `rx.sereneque.com`) once that is live.
 
 Numbers that have been tuned by measurement, not guesswork:
 
@@ -54,29 +55,43 @@ Numbers that have been tuned by measurement, not guesswork:
   Sizing the hero off `86vh` alone lets the flower ride up into the paragraph
   on short or landscape screens.
 
+## Rituals video
+
+Three clips, ~46MB in total. They do **not** autoplay: each `<video>` carries a
+`poster` still and `preload="none"`, so a visitor downloads nothing until they
+tap play. The stills are `sereneque-<name>-poster.jpg`, about 146KB together,
+pulled out of the clips with ffmpeg.
+
+A small script sets volume to 0.12 on play and pauses the other two, so only one
+runs at a time. Because a tap is a user gesture, the clips are no longer muted —
+tapping play gives quiet sound.
+
+`-short` versions of two clips still exist and are unused; with tap-to-play the
+file sizes no longer cost anything on load.
+
 ## Conventions
 
 - Header 72px; logo 52px, 44px on mobile.
 - Footer 41px, pinned to the bottom with `margin-top: auto` in a flex column.
   Centred blocks in that column need `width: 100%` or they shrink to fit.
-- Mobile breakpoint 760px. Cart becomes a 42px icon; the count badge is hidden.
+- Mobile breakpoint 760px. The nav links collapse into the burger at top right.
 - Gold `#b08a35` / `#f1dd9e`, deep teal `#143035`, soft teal `#3d6a71`.
 - Body type Jost; anything in serif is Cormorant Garamond.
 
 ## Open items
 
-1. **Every page carries `noindex, nofollow`.** Left over from the original
-   template. Google will not list the site until those five tags come out.
-   `robots.txt` also disallows `catalog.html`, which is deliberate.
-2. **The cart is a mock.** It opens a drawer and a fake card form that says
-   "simulated payment". It should come out before anyone real visits.
-3. **The gate button has no destination.**
-4. **No newsletter signup.** A static site cannot store addresses; it needs a
+1. **The gate button has no destination.** Waiting on the customer portal.
+2. **`catalog.html` is now indexable in principle.** The `noindex` tag came off
+   every page, including this one; `robots.txt` still disallows it, so Google
+   will not crawl it. But `Disallow` and `noindex` pull against each other — a
+   page Google cannot crawl is a page whose `noindex` it never reads, so a URL
+   that gets linked from somewhere could still surface as a bare result. If it
+   must stay out of search for certain, put `noindex` back on `catalog.html`
+   **and** drop the `Disallow` line, so the crawler can see the tag.
+3. **No newsletter signup.** A static site cannot store addresses; it needs a
    service (Kit is free to 10,000 subscribers) whose embed code drops into a page.
-5. **Rituals carries ~44MB of autoplaying video.** Slow on mobile data.
-   `-short` versions of two clips already exist if they are wanted.
-6. Products has three empty categories (Sexual Health, Hair Loss, Acne).
-7. Products page is hidden from the nav but still reachable at
+4. Products has three empty categories (Sexual Health, Hair Loss, Acne).
+5. Products page is hidden from the nav but still reachable at
    `sereneque.com/catalog.html`. That is obscurity, not privacy — a static
    host cannot password-protect a page.
 
@@ -97,3 +112,7 @@ documents must never be committed to it. Those live in
   themselves. Check widths after touching either.
 - GitHub Pages deploys fail with a 503 during their outages. Re-push an empty
   commit; nothing is wrong with the site.
+- The three `<x-dc>` pages need React from unpkg to render at all, so they
+  cannot be previewed anywhere without network access to that CDN. To check
+  them at phone and tablet widths, load the live pages into fixed-width
+  iframes — media queries inside an iframe key off the iframe's width.
