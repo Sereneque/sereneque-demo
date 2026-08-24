@@ -41,9 +41,9 @@ their outer edges so they part from the centre outward.
 
 - Opens 1s after load, holds 8s, the button clears away, then the doors shut. Repeats.
 - The swing is 2.6s and the CSS duration must match `SWING` in the script.
-- `SQ_GATE_LINK` near the bottom of `index.html` is **empty** — the button goes nowhere.
-  Paste a URL between the quotes and it opens in a new tab. It is meant to point
-  at the customer portal (probably `rx.sereneque.com`) once that is live.
+- `SQ_GATE_LINK` near the bottom of `index.html` points at
+  `https://rx.sereneque.com`, the customer portal, and opens in a new tab.
+  Change the URL between the quotes to move it.
 
 Numbers that have been tuned by measurement, not guesswork:
 
@@ -69,6 +69,22 @@ tapping play gives quiet sound.
 `-short` versions of two clips still exist and are unused; with tap-to-play the
 file sizes no longer cost anything on load.
 
+## Search
+
+- Every page has a `<title>`, a canonical link and `lang="en"`. Titles follow
+  `<Page> — Sereneque`. Home, Method and Products had no title at all until
+  24 Aug; Google had nothing to show in a result.
+- Meta descriptions are lifted word for word from copy already on the page.
+  Rituals has no prose to quote, so it has none — Google will compose one.
+- `sitemap.xml` lists the four public pages and is referenced from `robots.txt`.
+  `catalog.html` is deliberately absent.
+- `catalog.html` carries `noindex, follow`, and `robots.txt` no longer disallows
+  it. Those two have to go together: a crawler blocked from fetching a page
+  never reads its noindex. **When Products goes public, delete the meta tag** —
+  nothing else needs changing.
+- Not done yet: the site is not registered in Google Search Console, so nothing
+  has been submitted for crawling and there is no coverage reporting.
+
 ## Conventions
 
 - Header 72px; logo 52px, 44px on mobile.
@@ -80,20 +96,25 @@ file sizes no longer cost anything on load.
 
 ## Open items
 
-1. **The gate button has no destination.** Waiting on the customer portal.
-2. **`catalog.html` is now indexable in principle.** The `noindex` tag came off
-   every page, including this one; `robots.txt` still disallows it, so Google
-   will not crawl it. But `Disallow` and `noindex` pull against each other — a
-   page Google cannot crawl is a page whose `noindex` it never reads, so a URL
-   that gets linked from somewhere could still surface as a bare result. If it
-   must stay out of search for certain, put `noindex` back on `catalog.html`
-   **and** drop the `Disallow` line, so the crawler can see the tag.
-3. **No newsletter signup.** A static site cannot store addresses; it needs a
-   service (Kit is free to 10,000 subscribers) whose embed code drops into a page.
+1. **Google Search Console.** The site is not registered. Sign in to Google,
+   add `sereneque.com`, verify, and submit `sitemap.xml`. A domain property
+   (DNS TXT at GoDaddy) covers `rx.sereneque.com` too; a URL-prefix property
+   only needs an HTML meta tag on the site.
+2. **The cart is coming back.** It was removed on 24 Aug because it was a mock
+   with a fake card form. The plan is a real cart for the items that do not
+   need a prescription, with prescription items redirected to the portal.
+   Commit `35d331d` has the old markup if any of it is worth reusing — but the
+   payment step has to be a real processor, not the simulation.
+3. **`rx.sereneque.com` renders blank in desktop Chrome.** It serves over
+   https with a valid certificate and the title loads, but the body paints
+   nothing. It works on iPhone. Worth checking on a desktop browser before
+   sending customers through the gate button.
 4. Products has three empty categories (Sexual Health, Hair Loss, Acne).
 5. Products page is hidden from the nav but still reachable at
    `sereneque.com/catalog.html`. That is obscurity, not privacy — a static
    host cannot password-protect a page.
+
+No newsletter for now — decided against it on 24 Aug.
 
 ## Backups
 

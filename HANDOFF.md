@@ -27,12 +27,14 @@ and page wordmarks use a script logo; the lotus artwork is the same throughout.
 
 **What still needs doing, roughly in order:**
 
-1. The gate button has no destination (`SQ_GATE_LINK` is empty in `index.html`).
-   It should point at the customer portal once that subdomain is live.
-2. No newsletter signup yet — I'm considering Kit, free to 10,000 subscribers.
-3. Products has three empty categories (Sexual Health, Hair Loss, Acne).
-4. Products is hidden from the nav but still reachable at `catalog.html`.
-   See the note in PROJECT-NOTES about `noindex` vs `robots.txt` for that page.
+1. The site is not in Google Search Console yet — nothing has been submitted
+   for crawling.
+2. The cart needs rebuilding for real: non-prescription items check out on the
+   site, prescription items redirect to the portal.
+3. `rx.sereneque.com` renders blank in desktop Chrome, though it works on iPhone.
+4. Products has three empty categories (Sexual Health, Hair Loss, Acne).
+5. Products is hidden from the nav but still reachable at `catalog.html`.
 
-The `noindex` tags, the mock cart and the autoplaying Rituals video were all
-dealt with on 24 Aug.
+Dealt with on 24 Aug: the `noindex` tags, the mock cart and its fake payment
+form, the autoplaying Rituals video, the missing page titles and descriptions,
+and the gate button, which now opens the portal.
