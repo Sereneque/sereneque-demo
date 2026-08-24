@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,10 +67,7 @@
       <a href="rituals.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Rituals</a>
       <a href="journal.html" style="color: #3d6a71;" style-hover="color: #8f6d29;">Journal</a>
     </div>
-    <button onClick="{{ openCart }}" style="position: relative; display: flex; align-items: center; gap: 9px; height: 38px; padding: 0 15px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255, 255, 255, 0.5); color: #143035; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.04em; cursor: pointer; transition: all 180ms ease;" style-hover="background: #ffffff; border-color: #b08a35;">
-      <span>Cart</span>
-      <span style="font-size: 11px; min-width: 21px; height: 21px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: linear-gradient(150deg, #d3ac5f, #b08a35); color: #ffffff; font-weight: 500; padding: 0 6px;">{{ cartCount }}</span>
-    </button>
+    <span style="width: 96px; flex: none;"></span>
   </nav>
 
   <section style="position: relative; padding: 124px 24px 8px; text-align: center;">
@@ -112,85 +108,7 @@
     <span style="font-size: 9.5px; letter-spacing: 0.16em; color: #587f87;">CALM, BY DESIGN</span>
   </footer>
 
-  <div onClick="{{ closeCart }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(20, 48, 53, 0.34); backdrop-filter: blur(3px); transition: opacity 260ms ease; opacity: {{ scrimOpacity }}; pointer-events: {{ scrimEvents }};"></div>
 
-  <aside style="position: fixed; top: 0; right: 0; bottom: 0; z-index: 80; width: min(420px, 100vw); display: flex; flex-direction: column; background: #e9f2f0; border-left: 1px solid rgba(176, 138, 53, 0.35); box-shadow: -30px 0 60px rgba(20, 48, 53, 0.2); transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1); transform: {{ drawerTransform }}">
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px; border-bottom: 1px solid rgba(176, 138, 53, 0.3);">
-      <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; display: none">Your cart</span>
-      <button onClick="{{ closeCart }}" style="width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.4); background: rgba(255, 255, 255, 0.7); color: #3d6a71; font-family: inherit; font-size: 13px; line-height: 1; cursor: pointer;" style-hover="color: #143035; border-color: #b08a35;">✕</button>
-    </div>
-
-    <div style="flex: 1; overflow-y: auto; padding: 16px 22px;">
-      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
-        <div style="padding: 60px 0; text-align: center; color: #587f87; font-size: 14px; font-weight: 300;">Nothing here yet.</div>
-      </sc-if>
-      <sc-for list="{{ cartLines }}" as="line" hint-placeholder-count="0">
-        <div style="display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid rgba(176, 138, 53, 0.22);">
-          <div style="width: 62px; height: 62px; flex: none; border-radius: 3px; background-color: #cadfdb; background-image: repeating-linear-gradient(135deg, rgba(20, 48, 53, 0.07) 0 2px, transparent 2px 10px); border: 1px solid rgba(176, 138, 53, 0.28);"></div>
-          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
-            <div style="display: flex; justify-content: space-between; gap: 10px;">
-              <span style="font-size: 14px; font-weight: 400;">{{ line.name }}</span>
-              <span style="font-size: 13px; color: #8f6d29;">{{ line.totalLabel }}</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="display: flex; align-items: center; border: 1px solid rgba(176, 138, 53, 0.4); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.7);">
-                <button onClick="{{ line.dec }}" style="width: 28px; height: 26px; border: none; background: transparent; color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="background: rgba(176,138,53,0.16); color: #143035;">−</button>
-                <span style="font-size: 12px; min-width: 20px; text-align: center;">{{ line.qty }}</span>
-                <button onClick="{{ line.inc }}" style="width: 28px; height: 26px; border: none; background: transparent; color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="background: rgba(176,138,53,0.16); color: #143035;">+</button>
-              </div>
-              <button onClick="{{ line.remove }}" style="border: none; background: transparent; color: #587f87; font-family: inherit; font-size: 12.5px; font-weight: 300; cursor: pointer; padding: 0;" style-hover="color: #6b1642;">Remove</button>
-            </div>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-
-    <div style="padding: 20px 22px 24px; border-top: 1px solid rgba(176, 138, 53, 0.3); display: flex; flex-direction: column; gap: 10px">
-      <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 300; color: #3d6a71;"><span>Subtotal</span><span>{{ subtotalLabel }}</span></div>
-      <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 300; color: #3d6a71;"><span>Shipping</span><span>{{ shippingLabel }}</span></div>
-      <div style="display: flex; justify-content: space-between; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; padding-top: 8px; border-top: 1px solid rgba(176, 138, 53, 0.25);"><span>Total</span><span>{{ totalLabel }}</span></div>
-      <button onClick="{{ openCheckout }}" style="margin-top: 8px; height: 48px; border-radius: 999px; border: none; background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%); color: #ffffff; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: transform 180ms ease;" style-hover="transform: translateY(-1px);">Checkout</button>
-    </div>
-  </aside>
-
-  <div style="position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 48, 53, 0.5); backdrop-filter: blur(6px); transition: opacity 240ms ease; opacity: {{ checkoutOpacity }}; pointer-events: {{ checkoutEvents }}; left: -327px; top: -45px">
-    <div style="width: min(520px, 100%); border-radius: 6px; border: 1px solid rgba(176, 138, 53, 0.45); background: #eef5f3; box-shadow: 0 40px 90px rgba(20, 48, 53, 0.32); overflow: hidden;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid rgba(176, 138, 53, 0.3);">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px;">{{ checkoutTitle }}</span>
-        <button onClick="{{ closeCheckout }}" style="width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.4); background: rgba(255,255,255,0.7); color: #3d6a71; font-family: inherit; cursor: pointer;" style-hover="color: #143035;">✕</button>
-      </div>
-      <div style="padding: 26px;">
-        <sc-if value="{{ checkoutDone }}" hint-placeholder-val="{{ false }}">
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 22px 0 8px; text-align: center;">
-            <div style="width: 54px; height: 54px; border-radius: 999px; background: linear-gradient(150deg, #d3ac5f, #b08a35); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 22px;">✓</div>
-            <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px;">Order confirmed</div>
-            <p style="margin: 0; font-size: 14px; font-weight: 300; color: #3d6a71; max-width: 320px;">A receipt is on its way. Estimated delivery in two business days.</p>
-            <span style="font-size: 11.5px; letter-spacing: 0.12em; color: #587f87;">{{ orderId }}</span>
-            <button onClick="{{ closeCheckout }}" style="margin-top: 12px; height: 44px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(176, 138, 53, 0.5); background: rgba(255,255,255,0.7); color: #143035; font-family: inherit; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;" style-hover="background: #ffffff; border-color: #b08a35;">Done</button>
-          </div>
-        </sc-if>
-        <sc-if value="{{ checkoutForm }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <label style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #587f87;">Email</label>
-              <input type="email" placeholder="you@company.com" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <label style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #587f87;">Card</label>
-              <input placeholder="4242 4242 4242 4242" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <input placeholder="MM / YY" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
-              <input placeholder="CVC" style="height: 44px; border-radius: 3px; border: 1px solid rgba(176, 138, 53, 0.45); background: #ffffff; color: #143035; padding: 0 13px; font-family: inherit; font-size: 14px; outline: none;" style-focus="border-color: #b08a35; box-shadow: 0 0 0 3px rgba(176,138,53,0.16);">
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; padding-top: 14px; margin-top: 4px; border-top: 1px solid rgba(176, 138, 53, 0.3);"><span>Total due</span><span>{{ totalLabel }}</span></div>
-            <button onClick="{{ payNow }}" style="height: 48px; border-radius: 999px; border: none; background: linear-gradient(150deg, #fdf4be 0%, #f1dd9e 28%, #d3c08d 62%, #a69b73 100%); color: #ffffff; font-family: inherit; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: transform 180ms ease;" style-hover="transform: translateY(-1px);">{{ payLabel }}</button>
-            <span style="text-align: center; font-size: 10.5px; font-weight: 300; letter-spacing: 0.12em; color: #587f87;">SIMULATED PAYMENT — NO CARD IS CHARGED</span>
-          </div>
-        </sc-if>
-      </div>
-    </div>
-  </div>
 </div>
 
 </x-dc>
@@ -236,16 +154,8 @@ const NODES = [
 const money = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 class Component extends DCLogic {
-  state = { activeCat: "all", catOpen: false, cart: {}, cartOpen: false, checkout: "closed", tilt: { x: 0, y: 0 }, hovered: null, paying: false };
+  state = { activeCat: "all", catOpen: false, tilt: { x: 0, y: 0 }, hovered: null };
 
-  add = (id) => this.setState((s) => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 }, cartOpen: true }));
-  bump = (id, d) => this.setState((s) => {
-    const q = (s.cart[id] || 0) + d;
-    const cart = { ...s.cart };
-    if (q <= 0) delete cart[id]; else cart[id] = q;
-    return { cart };
-  });
-  remove = (id) => this.setState((s) => { const cart = { ...s.cart }; delete cart[id]; return { cart }; });
 
   waterRef = React.createRef();
 
@@ -299,28 +209,15 @@ class Component extends DCLogic {
   componentWillUnmount() { cancelAnimationFrame(this._raf); }
 
   renderVals() {
-    const { cart, cartOpen, checkout, tilt, hovered, activeCat, catOpen } = this.state;
+    const { tilt, hovered, activeCat, catOpen } = this.state;
     const VISIBLE = activeCat === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === activeCat);
     const cols = this.props.catalogColumns ?? "3";
     const motion = this.props.floatMotion ?? true;
     const showBadges = this.props.showBadges ?? true;
 
-    const lines = PRODUCTS.filter((p) => cart[p.id]).map((p) => ({
-      name: p.name, qty: cart[p.id], totalLabel: money(p.price * cart[p.id]),
-      inc: () => this.bump(p.id, 1), dec: () => this.bump(p.id, -1), remove: () => this.remove(p.id)
-    }));
-    const count = Object.values(cart).reduce((a, b) => a + b, 0);
-    const subtotal = PRODUCTS.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0);
-    const shipping = subtotal === 0 || subtotal >= 150 ? 0 : 12;
 
     return {
       waterRef: this.waterRef,
-      cartCount: count,
-      cartLines: lines,
-      cartEmpty: lines.length === 0,
-      subtotalLabel: money(subtotal),
-      shippingLabel: shipping === 0 ? "Free" : money(shipping),
-      totalLabel: money(subtotal + shipping),
 
       products: VISIBLE.map((p) => ({
         img: p.img,
@@ -377,22 +274,7 @@ class Component extends DCLogic {
       },
       onTreeLeave: () => this.setState({ tilt: { x: 0, y: 0 } }),
 
-      openCart: () => this.setState({ cartOpen: true }),
-      closeCart: () => this.setState({ cartOpen: false }),
-      drawerTransform: cartOpen ? "translateX(0)" : "translateX(105%)",
-      scrimOpacity: cartOpen ? 1 : 0,
-      scrimEvents: cartOpen ? "auto" : "none",
 
-      openCheckout: () => { if (lines.length) this.setState({ checkout: "form" }); },
-      closeCheckout: () => this.setState({ checkout: "closed", paying: false, cart: checkout === "done" ? {} : cart, cartOpen: false }),
-      payNow: () => { this.setState({ paying: true }); setTimeout(() => this.setState({ checkout: "done", paying: false }), 900); },
-      payLabel: this.state.paying ? "Processing…" : "Pay " + money(subtotal + shipping),
-      checkoutOpacity: checkout === "closed" ? 0 : 1,
-      checkoutEvents: checkout === "closed" ? "none" : "auto",
-      checkoutForm: checkout === "form",
-      checkoutDone: checkout === "done",
-      checkoutTitle: checkout === "done" ? "Thank you" : "Checkout",
-      orderId: "ORDER #SRQ-" + (7100 + Object.keys(cart).length * 13 + count)
     };
   }
 }
@@ -408,16 +290,6 @@ class Component extends DCLogic {
     "@media (max-width:" + BP + "px){" +
     "[data-sq-links]{display:none !important}" +
     "nav a img{height:38px !important}" +
-    "nav button[data-sq-cart]{position:fixed !important;top:16px;right:70px;z-index:120;"
-    + "width:42px;height:42px;min-width:0;padding:0 !important;gap:0 !important;"
-    + "border-radius:8px !important;border:1px solid rgba(176,138,53,.45) !important;"
-    + "background:rgba(255,255,255,.6) !important;backdrop-filter:blur(10px);"
-    + "-webkit-backdrop-filter:blur(10px);display:flex !important;align-items:center;"
-    + "justify-content:center;overflow:visible}" +
-    "nav button[data-sq-cart] span:first-child{display:none !important}" +
-    "nav button[data-sq-cart]::before{content:'';display:block;width:19px;height:19px;"
-    + "background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d6a71' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8h12l-1.2 12H7.2L6 8z'/%3E%3Cpath d='M9 8V6.2a3 3 0 0 1 6 0V8'/%3E%3C/svg%3E\") center/contain no-repeat}" +
-    "nav button[data-sq-cart] span:last-child{display:none !important}" +
     "img[src*='sereneque-wordmark']{filter:none !important}" +
     "#sqBurger{display:flex !important}}" +
     "#sqBurger{display:none;position:fixed;top:16px;right:18px;z-index:120;width:42px;height:42px;" +
@@ -476,8 +348,6 @@ class Component extends DCLogic {
     for (var i = 0; i < divs.length; i++) {
       if (divs[i].querySelectorAll("a").length >= 3) divs[i].setAttribute("data-sq-links", "");
     }
-    var b = nav.querySelector("button");
-    if (b) b.setAttribute("data-sq-cart", "");
   }
   tag(); setInterval(tag, 500);
 })();
