@@ -66,11 +66,11 @@
           slope += wv.a * wv.k * decay[r] * Math.cos(wv.k * r - wv.w * t * 6.28 + wv.p);
         }
         if (slope > 0) {
-          lightA[r] = Math.min(1, slope * 6.5) * edge[r] * 255;
+          lightA[r] = Math.min(1, slope * 3.4) * edge[r] * 132;
           darkA[r] = 0;
         } else {
           lightA[r] = 0;
-          darkA[r] = Math.min(1, -slope * 5.6) * edge[r] * 205;
+          darkA[r] = Math.min(1, -slope * 2.8) * edge[r] * 62;
         }
       }
 
