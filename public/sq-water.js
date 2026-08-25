@@ -1,24 +1,34 @@
-/* Sereneque — the water surface.
-   The wave maths here is the routine already written for the home page
-   (three wave trains, radial decay, specular banding) which was never wired
-   to a canvas. This is that routine, standalone, so any page can use it.
+/* Sereneque — the water surface behind the lotus.
 
-   Original per-pixel version recomputed three cosines for every pixel every
-   frame. The field only ever depends on radius, so the slope is computed once
-   per radius into a lookup and the pixels just read from it — same picture,
-   a fraction of the work. */
+   Grown out of the wave routine already written into the home page component
+   (three wave trains, radial decay, specular banding) which had never been
+   wired to a canvas and so had never run.
+
+   Two things make it read as water rather than as rings:
+     - the field is sampled on a squashed vertical axis, so the wavefronts are
+       ellipses — a surface seen at an angle, not circles seen head on;
+     - crests take light and troughs take shadow. Highlights alone look like haze.
+
+   The field only depends on radius, so each frame resolves the wave once per
+   radius into a lookup and the pixels just read from it. ~900 cosines a frame
+   instead of one per pixel. */
 (function () {
-  var N = 300;                 // internal resolution; her constants are tuned to this
+  var N = 460;                    // internal resolution, upscaled by CSS
   var C = N / 2;
+  var RM = 900;                   // radius table covers the stretched axis
+  var SQUASH = 0.42;              // vertical compression = viewing angle
+  var ORIGIN_Y = 0.86;            // ripple origin sits a little above centre
+
   var WAVES = [
-    { k: 2 * Math.PI / 34, w: 1.05, a: 1.00, p: 0   },
-    { k: 2 * Math.PI / 52, w: 0.72, a: 0.75, p: 2.1 },
-    { k: 2 * Math.PI / 23, w: 1.50, a: 0.42, p: 4.4 }
+    { k: 2 * Math.PI / 82,  w: 1.05, a: 1.00, p: 0   },
+    { k: 2 * Math.PI / 132, w: 0.72, a: 0.80, p: 2.1 },
+    { k: 2 * Math.PI / 56,  w: 1.50, a: 0.50, p: 4.4 }
   ];
 
   function mount(host) {
     var cv = document.createElement("canvas");
     cv.className = "sq-water";
+    cv.setAttribute("aria-hidden", "true");
     cv.width = N; cv.height = N;
     host.insertBefore(cv, host.firstChild);
 
@@ -26,57 +36,55 @@
     var img = ctx.createImageData(N, N);
     var d = img.data;
 
-    // radius per pixel, once
     var radIdx = new Uint16Array(N * N);
-    var inside = new Uint8Array(N * N);
     for (var y = 0; y < N; y++) {
       for (var x = 0; x < N; x++) {
-        var i = y * N + x, dx = x - C + 0.5, dy = y - C + 0.5;
+        var dx = x - C + 0.5;
+        var dy = (y - C * ORIGIN_Y + 0.5) / SQUASH;
         var r = Math.sqrt(dx * dx + dy * dy);
-        radIdx[i] = r | 0;
-        inside[i] = r <= C ? 1 : 0;
+        radIdx[y * N + x] = r < RM ? (r | 0) : RM - 1;
       }
     }
 
-    // per-radius constants, once
-    var RMAX = (C | 0) + 2;
-    var decay = new Float32Array(RMAX), edge = new Float32Array(RMAX);
-    for (var r2 = 0; r2 < RMAX; r2++) {
-      decay[r2] = Math.exp(-r2 / 150) * Math.min(1, r2 / 26);
-      var e = 1 - Math.min(1, Math.max(0, (r2 - C * 0.55) / (C * 0.45)));
-      edge[r2] = 0.35 + 0.65 * e;
+    var decay = new Float32Array(RM), edge = new Float32Array(RM);
+    for (var q = 0; q < RM; q++) {
+      decay[q] = Math.exp(-q / 380) * Math.min(1, q / 40);
+      edge[q] = Math.max(0, 1 - Math.min(1, Math.max(0, (q - 70) / 470)));
     }
 
-    var alpha = new Float32Array(RMAX);
-    var t0 = performance.now();
-    var raf = 0;
+    var lightA = new Float32Array(RM), darkA = new Float32Array(RM);
+    var t0 = performance.now(), raf = 0;
 
     function frame(now) {
       if (!cv.isConnected) { cancelAnimationFrame(raf); return; }
       var t = (now - t0) / 1000;
 
-      // slope -> lit -> alpha, once per radius
-      for (var r = 0; r < RMAX; r++) {
+      for (var r = 0; r < RM; r++) {
         var slope = 0;
         for (var j = 0; j < 3; j++) {
           var wv = WAVES[j];
           slope += wv.a * wv.k * decay[r] * Math.cos(wv.k * r - wv.w * t * 6.28 + wv.p);
         }
-        var lit = (slope > 0 ? slope * 0.5 : -slope * 0.16);
-        alpha[r] = Math.min(1, lit * 1.35) * edge[r] * 190;
+        if (slope > 0) {
+          lightA[r] = Math.min(1, slope * 5.2) * edge[r] * 225;
+          darkA[r] = 0;
+        } else {
+          lightA[r] = 0;
+          darkA[r] = Math.min(1, -slope * 4.2) * edge[r] * 135;
+        }
       }
 
       for (var i = 0, p = 0; i < N * N; i++, p += 4) {
-        if (!inside[i]) { d[p + 3] = 0; continue; }
-        d[p] = 255; d[p + 1] = 255; d[p + 2] = 252;
-        d[p + 3] = alpha[radIdx[i]];
+        var ri = radIdx[i], la = lightA[ri];
+        if (la > 0) { d[p] = 255; d[p + 1] = 255; d[p + 2] = 252; d[p + 3] = la; }
+        else        { d[p] = 26;  d[p + 1] = 74;  d[p + 2] = 80;  d[p + 3] = darkA[ri]; }
       }
       ctx.putImageData(img, 0, 0);
       raf = requestAnimationFrame(frame);
     }
 
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      frame(t0 + 900);           // one still frame, no animation
+      frame(t0 + 900);            // one still frame, no animation
     } else {
       raf = requestAnimationFrame(frame);
     }
@@ -92,6 +100,5 @@
   } else {
     ensure();
   }
-  // the template re-renders and can drop the canvas, so keep an eye on it
-  setInterval(ensure, 900);
+  setInterval(ensure, 900);       // the template re-renders; keep the canvas alive
 })();
