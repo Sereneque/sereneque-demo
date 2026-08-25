@@ -103,8 +103,13 @@ distorts a texture underneath it, and a flat gradient gives it nothing to bend.
   html's. Put the colour back on `body` and the water silently vanishes. This
   is why Home's gradient and the inner pages' `#bcd8d4` sit on `html` now and
   the page wrappers are transparent.
-- Hidden under 760px — no 3.5MB on phone data. Phones keep the flat ground
-  and the lotus.
+- Phones get it too, but load `sereneque-water-sm.mp4` (640x360, 1.9MB)
+  instead of the 960x540. A one-line script picks by `innerWidth <= 760`.
+- **Nothing opaque may sit in front of it.** Every page had a layer painting
+  the seafoam gradient over the video — an inline wrapper `div` on Home,
+  Method and Shop, a second `body` rule on Rituals and Journal. All of them
+  are transparent now and the gradient lives on `html`. If the water ever
+  vanishes from one page, this is the first thing to check.
 - The gold rings are separate and still CSS (`sq-ripple`, `sq-pulseGlow`).
 
 ## Conventions
