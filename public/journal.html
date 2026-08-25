@@ -34,6 +34,9 @@
            display: flex; align-items: center; justify-content: center;
            pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
   .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
+  .sq-wm canvas.sq-water, .sq-backdrop canvas.sq-water {
+      position: absolute; width: min(940px, 104vw); aspect-ratio: 1 / 1;
+      border-radius: 999px; opacity: 0.85; mix-blend-mode: screen; pointer-events: none; }
   .sq-wm-glow { width: min(880px, 100vw);
                 background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 62%);
                 filter: blur(14px); }
@@ -78,6 +81,7 @@
          align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:1180px;
          margin:auto auto 0;font-size:11px;font-weight:300;color:#3d6a71}
 </style>
+<script src="./sq-water.js" defer></script>
 </head>
 <body>
 

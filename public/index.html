@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./sq-water.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -106,6 +107,9 @@
                               .sq-enter-cap { white-space: nowrap; font-size: 17px; }
                               .sq-hero { min-height: 830px !important; }
                               .sq-backdrop { transform: translateY(134px) !important; } }
+  .sq-wm canvas.sq-water, .sq-backdrop canvas.sq-water {
+      position: absolute; width: min(940px, 104vw); aspect-ratio: 1 / 1;
+      border-radius: 999px; opacity: 0.85; mix-blend-mode: screen; pointer-events: none; }
 </style>
 </helmet>
 
