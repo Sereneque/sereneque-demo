@@ -9,8 +9,15 @@
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./sq-water.js" defer></script>
 </head>
 <body>
+
+<div class="sq-bgwrap" aria-hidden="true">
+  <video class="sq-bgvideo" autoplay muted loop playsinline aria-hidden="true"
+         tabindex="-1" preload="auto" src="sereneque-water.mp4"></video>
+</div>
+
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +26,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Dancing+Script:wght@400;500;600&amp;family=Pinyon+Script&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #bcd8d4; }
+  html { background: #bcd8d4; }
+  body { margin: 0; padding: 0; background: transparent; }
+
+  /* ---- water backdrop ------------------------------------------------------
+     Realistic ripples are footage, not code: Pexels 2675514, free for
+     commercial use, hosted on our own domain rather than hotlinked.
+     The clip is near-greyscale and sits on a coloured plate that gives it hue,
+     so LOWER --sq-video-opacity means BLUER. Colour must live on <html>: a
+     child of <body> at negative z-index paints behind body's own background
+     and in front of html's. */
+  :root { --sq-water-tint: #4599B2; --sq-plate-opacity: .64; --sq-video-opacity: .55; }
+  .sq-bgwrap { position: fixed; inset: 0; z-index: -3; background: var(--sq-water-tint);
+               opacity: var(--sq-plate-opacity); overflow: hidden; pointer-events: none; }
+  .sq-bgvideo { width: 100%; height: 100%; object-fit: cover; display: block;
+                opacity: var(--sq-video-opacity); filter: saturate(1.05) contrast(1.12); }
+  @media (max-width: 760px) { .sq-bgwrap { display: none; } }   /* data and battery */
   body { font-family: "Jost", "Helvetica Neue", Helvetica, sans-serif; color: #143035; -webkit-font-smoothing: antialiased; }
   a { color: #143035; text-decoration: none; }
   a:hover { color: #8f6d29; }
@@ -36,8 +58,11 @@
            display: flex; align-items: center; justify-content: center;
            pointer-events: none; overflow: hidden; z-index: 0; transform: translateY(104px); }
   .sq-wm > div { position: absolute; aspect-ratio: 1 / 1; border-radius: 999px; }
+  .sq-wm canvas.sq-water, .sq-backdrop canvas.sq-water {
+      position: absolute; width: min(2100px, 190vw); aspect-ratio: 1 / 1;
+      z-index: 1; opacity: 0.8; pointer-events: none; }
   .sq-wm-glow { width: min(880px, 100vw);
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 62%);
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0) 62%);
                 filter: blur(14px); }
   .sq-wm-pulse { width: min(405px, 54vw); border: 1px solid rgba(241, 221, 158, 0.7);
                  animation: pulseGlow 6s ease-in-out infinite; }
