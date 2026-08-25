@@ -83,6 +83,30 @@ file sizes no longer cost anything on load.
 - Not done yet: the site is not registered in Google Search Console, so nothing
   has been submitted for crawling and there is no coverage reporting.
 
+## The water backdrop
+
+The realistic ripples are **footage, not code**. This matters: no CSS or canvas
+can produce them, and several attempts at simulating them just made a moire
+pattern that was unpleasant to look at. A ripple only reads as water when it
+distorts a texture underneath it, and a flat gradient gives it nothing to bend.
+
+- Clip: Pexels 2675514, "Drops Of Water, Creating Ripples". Free for
+  commercial use, no attribution required. **Served from our own domain**
+  (`sereneque-water.mp4`) — Pexels discourage hotlinking.
+- The 960x540 cut, 3.5MB. The 1920x1080 is 14.9MB and buys nothing: the clip
+  is tinted, dimmed to 55% and sits behind a lotus.
+- The footage is near-greyscale and sits on a `#4599B2` plate that supplies
+  the colour. **Lower `--sq-video-opacity` means bluer**, because less video
+  means more plate showing through.
+- **The ground colour has to live on `<html>`, not `body`.** A child of `body`
+  at negative z-index paints behind body's own background and in front of
+  html's. Put the colour back on `body` and the water silently vanishes. This
+  is why Home's gradient and the inner pages' `#bcd8d4` sit on `html` now and
+  the page wrappers are transparent.
+- Hidden under 760px — no 3.5MB on phone data. Phones keep the flat ground
+  and the lotus.
+- The gold rings are separate and still CSS (`sq-ripple`, `sq-pulseGlow`).
+
 ## Conventions
 
 - Header 72px; logo 52px, 44px on mobile.
