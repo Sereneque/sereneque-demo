@@ -108,8 +108,8 @@
                               .sq-hero { min-height: 830px !important; }
                               .sq-backdrop { transform: translateY(134px) !important; } }
   .sq-wm canvas.sq-water, .sq-backdrop canvas.sq-water {
-      position: absolute; width: min(1600px, 150vw); aspect-ratio: 1 / 1;
-      opacity: 0.95; pointer-events: none; }
+      position: absolute; width: min(2100px, 190vw); aspect-ratio: 1 / 1;
+      z-index: 1; opacity: 1; pointer-events: none; }
 </style>
 </helmet>
 
@@ -132,7 +132,7 @@
   <section id="top" class="sq-hero" onMouseMove="{{ onTreeMove }}" onMouseLeave="{{ onTreeLeave }}" style="position: relative; min-height: 86vh; display: flex; align-items: center; justify-content: center; padding: 150px 24px 112px; overflow: hidden;">
 
     <div class="sq-backdrop" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; transform: translateY(104px);">
-      <div style="position: absolute; width: min(880px, 100vw); aspect-ratio: 1 / 1; border-radius: 999px; background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%); filter: blur(14px);"></div>
+      <div style="position: absolute; width: min(880px, 100vw); aspect-ratio: 1 / 1; border-radius: 999px; background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 62%); filter: blur(14px);"></div>
       <div style="position: absolute; width: min(405px, 54vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: pulseGlow 6s ease-in-out infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
