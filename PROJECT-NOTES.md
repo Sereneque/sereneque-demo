@@ -162,6 +162,16 @@ documents must never be committed to it. Those live in
   themselves. Check widths after touching either.
 - GitHub Pages deploys fail with a 503 during their outages. Re-push an empty
   commit; nothing is wrong with the site.
+- **Sometimes GitHub stops running the deploy workflow altogether** — the
+  commit lands on `main` but no run appears in Actions and an empty commit
+  does not wake it either. Happened 26 Aug: the Shop page sat committed and
+  unpublished for fifteen minutes. Tell it apart from a normal delay by
+  looking at the commit list — every deployed commit carries a green tick, and
+  the stuck ones carry nothing at all.
+  Fix: **Actions -> Deploy to GitHub Pages -> Run workflow** (the workflow has
+  `workflow_dispatch:` enabled, so the button is there). Live inside a minute.
+  This needs a signed-in GitHub session; signing in on **Chrome** rather than
+  Safari means Claude can press it in future sessions.
 - The three `<x-dc>` pages need React from unpkg to render at all, so they
   cannot be previewed anywhere without network access to that CDN. To check
   them at phone and tablet widths, load the live pages into fixed-width
