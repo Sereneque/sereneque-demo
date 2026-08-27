@@ -15,13 +15,19 @@
 
 <div class="sq-bgwrap" aria-hidden="true">
   <video class="sq-bgvideo" autoplay muted loop playsinline aria-hidden="true"
-         tabindex="-1" preload="auto"></video>
+         tabindex="-1" preload="none"></video>
 </div>
 <script>
 (function () {                     // small clip on small screens, to spare mobile data
   var v = document.querySelector(".sq-bgvideo");
   if (!v) return;
-  v.src = (window.innerWidth <= 760 ? "sereneque-water-sm.mp4" : "sereneque-water.mp4");
+  // the clip is decoration: let the words and the lotus land first, then fetch it,
+  // so it never competes with the page for the first bytes
+  function go() {
+    v.src = (window.innerWidth <= 760 ? "sereneque-water-sm.mp4" : "sereneque-water.mp4");
+  }
+  if (document.readyState === "complete") go();
+  else window.addEventListener("load", go);
 })();
 </script>
 
@@ -91,6 +97,7 @@
                               #dcc17c 60%, #bda05a 80%, #967d45 100%);
                   color: #ffffff; font-family: inherit; font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em;
                   line-height: 1.4; text-transform: uppercase; cursor: pointer; white-space: normal;
+                  text-decoration: none;
                   text-shadow: 0 1px 1px rgba(20, 48, 53, 0.62),
                                0 2px 5px rgba(20, 48, 53, 0.45),
                                0 0 2px rgba(20, 48, 53, 0.35);
@@ -144,7 +151,7 @@
 
   <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 24px; background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(176, 138, 53, 0.28);">
     <a href="#top" style="display: flex; align-items: center; gap: 11px; flex: none;">
-      <img src="sereneque-header-script.png" alt="Sereneque" style="display: block; height: 52px; width: auto;">
+      <img src="sereneque-header-script.png" width="442" height="105" alt="Sereneque" style="display: block; height: 52px; width: auto;">
     </a>
     <div style="display: flex; flex-wrap: wrap; overflow: hidden; max-height: 24px; gap: 24px; font-size: 13.5px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #3d6a71;">
       <a href="#top" style="color: #3d6a71;" style-hover="color: #8f6d29;">Home</a>
@@ -164,20 +171,20 @@
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite;"></div>
       <div style="position: absolute; width: min(820px, 92vw); aspect-ratio: 1 / 1; border-radius: 999px; border: 1px solid rgba(241, 221, 158, 0.95); animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite 5.5s;"></div>
       <div class="sq-gate" style="position: relative; width: min(600px, 82vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
-        <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" alt="">
+        <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" width="819" height="673" alt="">
         <div class="sq-reveal">
-          <button type="button" class="sq-enter-btn"><span>Click<br>Here</span></button>
+          <a class="sq-enter-btn" href="https://rx.sereneque.com" target="_blank" rel="noopener"><span>Click<br>Here</span></a>
         </div>
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
-        <div class="sq-half sq-half-l"><img src="./sereneque-lotus-mark.png" alt="Sereneque"></div>
-        <div class="sq-half sq-half-r"><img src="./sereneque-lotus-mark.png" alt=""></div>
+        <div class="sq-half sq-half-l"><img src="./sereneque-lotus-mark.png" width="819" height="673" alt=""></div>
+        <div class="sq-half sq-half-r"><img src="./sereneque-lotus-mark.png" width="819" height="673" alt=""></div>
       </div>
     </div>
 
     <div style="position: absolute; top: 124px; left: 0; right: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 0 24px; text-align: center;">
-      <img src="sereneque-wordmark-script.png" alt="Sereneque" style="display: block; width: min(280px, 62vw); height: auto; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));">
+      <img src="sereneque-wordmark-script.png" width="560" height="196" alt="Sereneque" style="display: block; width: min(280px, 62vw); height: auto; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));">
       <p style="margin: 0; max-width: 620px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.2vw, 26px); line-height: 1.52; color: #143035; text-wrap: pretty; text-shadow: 0 1px 12px rgba(255, 255, 255, 0.95), 0 0 26px rgba(255, 255, 255, 0.7);">A modern philosophy of wellness centered on vitality, balance, confidence, and whole-body renewal. Built on the belief that true radiance begins from within.</p>
-      <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 400; letter-spacing: 0.07em; color: #335c63; text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);">The Sereneque Wellness Method</div>
+      <h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 400; letter-spacing: 0.07em; color: #335c63; text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);">The Sereneque Wellness Method</h1>
     </div>
   </section>
 
@@ -401,7 +408,7 @@ class Component extends DCLogic {
   var here = (location.pathname.split("/").pop() || "index.html");
   var menu = document.createElement("nav");
   menu.id = "sqMenu";
-  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
+  [["Home","index.html"],["Method","method.html"],["Shop","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
     .forEach(function (p) {
       var a = document.createElement("a");
       a.textContent = p[0]; a.href = p[1];
@@ -438,9 +445,10 @@ class Component extends DCLogic {
 <script>
 /* Lotus gate: opens by itself, holds, closes again, and repeats. */
 (function () {
-  // ==== PASTE THE DESTINATION URL BETWEEN THE QUOTES BELOW ====
+  // The destination now lives in the href of the gate link itself, in the markup
+  // above (search for sq-enter-btn), so that search engines can read it. This
+  // keeps the two in step if the href is ever left behind.
   var SQ_GATE_LINK = "https://rx.sereneque.com";
-  // ============================================================
 
   var FIRST_DELAY = 1000;   // wait after the page loads before the first opening
   var SWING       = 2600;   // how long the doors take to travel (matches the CSS)
@@ -487,11 +495,14 @@ class Component extends DCLogic {
   document.addEventListener("mouseover", function (e) { if (up(e.target, "sq-enter-btn")) hoveringButton = true; });
   document.addEventListener("mouseout",  function (e) { if (up(e.target, "sq-enter-btn")) hoveringButton = false; });
 
-  document.addEventListener("click", function (e) {
-    if (!up(e.target, "sq-enter-btn")) return;
-    e.preventDefault();
-    if (SQ_GATE_LINK) window.open(SQ_GATE_LINK, "_blank", "noopener");
-  });
+  // the link carries its own destination; just make sure it is the current one
+  (function syncHref() {
+    var a = document.querySelector("a.sq-enter-btn");
+    if (a && SQ_GATE_LINK && a.getAttribute("href") !== SQ_GATE_LINK) {
+      a.setAttribute("href", SQ_GATE_LINK);
+    }
+    setTimeout(syncHref, 500);   // the template re-renders; keep it pointed right
+  })();
 })();
 </script>
 

@@ -82,19 +82,25 @@
 
 <div class="sq-bgwrap" aria-hidden="true">
   <video class="sq-bgvideo" autoplay muted loop playsinline aria-hidden="true"
-         tabindex="-1" preload="auto"></video>
+         tabindex="-1" preload="none"></video>
 </div>
 <script>
 (function () {                     // small clip on small screens, to spare mobile data
   var v = document.querySelector(".sq-bgvideo");
   if (!v) return;
-  v.src = (window.innerWidth <= 760 ? "sereneque-water-sm.mp4" : "sereneque-water.mp4");
+  // the clip is decoration: let the words and the lotus land first, then fetch it,
+  // so it never competes with the page for the first bytes
+  function go() {
+    v.src = (window.innerWidth <= 760 ? "sereneque-water-sm.mp4" : "sereneque-water.mp4");
+  }
+  if (document.readyState === "complete") go();
+  else window.addEventListener("load", go);
 })();
 </script>
 
 
 <nav>
-  <a href="index.html"><img src="sereneque-header-script.png" alt="Sereneque" style="display:block;height:52px;width:auto"></a>
+  <a href="index.html"><img src="sereneque-header-script.png" width="442" height="105" alt="Sereneque" style="display:block;height:52px;width:auto"></a>
   <div class="links">
     <a href="index.html">Home</a>
     <a href="method.html">Method</a>
@@ -110,10 +116,10 @@
     <div class="sq-wm-pulse"></div>
     <div class="sq-wm-ripple"></div>
     <div class="sq-wm-ripple sq-wm-ripple-b"></div>
-    <img src="./sereneque-lotus-mark.png" alt="">
+    <img src="./sereneque-lotus-mark.png" width="819" height="673" alt="">
   </div>
 <div class="wrap">
-  <a href="index.html" style="display:inline-block"><img src="sereneque-wordmark-script.png" alt="Sereneque" style="display:block;margin:0 auto;width:min(280px,62vw);height:auto;filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));"></a>
+  <a href="index.html" style="display:inline-block"><img src="sereneque-wordmark-script.png" width="560" height="196" alt="Sereneque" style="display:block;margin:0 auto;width:min(280px,62vw);height:auto;filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));"></a>
   <h1>Rituals</h1>
   <div class="rule"></div>
 
@@ -204,7 +210,7 @@
   var here = (location.pathname.split("/").pop() || "index.html");
   var menu = document.createElement("nav");
   menu.id = "sqMenu";
-  [["Home","index.html"],["Method","method.html"],["Products","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
+  [["Home","index.html"],["Method","method.html"],["Shop","catalog.html"],["Rituals","rituals.html"],["Journal","journal.html"]]
     .forEach(function (p) {
       var a = document.createElement("a");
       a.textContent = p[0]; a.href = p[1];
