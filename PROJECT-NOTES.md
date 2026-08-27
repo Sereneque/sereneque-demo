@@ -76,12 +76,40 @@ file sizes no longer cost anything on load.
   24 Aug; Google had nothing to show in a result.
 - Meta descriptions are lifted word for word from copy already on the page.
   Rituals has no prose to quote, so it has none — Google will compose one.
-- `sitemap.xml` lists the four public pages and is referenced from `robots.txt`.
-  `catalog.html` is deliberately absent.
+- `sitemap.xml` lists all five public pages and is referenced from `robots.txt`.
 - `catalog.html` is public as of 24 Aug: no `noindex`, in the nav, in the
-  sitemap. `robots.txt` allows everything.
+  sitemap. `robots.txt` allows everything. **Open question for Rebecca:** it now
+  holds nothing but "Coming soon", so either put it back to `noindex, follow`
+  and drop it from the sitemap, or give it real content.
+- Every page has exactly one `<h1>`, added 27 Aug, using words already on the
+  page. Home and Method say "The Sereneque Wellness Method"; Shop says
+  "Coming soon". Nothing moved on screen: the inline styles carried over and
+  the browser's default heading weight and margins are overridden.
 - Not done yet: the site is not registered in Google Search Console, so nothing
   has been submitted for crawling and there is no coverage reporting.
+
+### The gate has to be a real link
+
+The lotus gate was a `<button>` calling `window.open`. That works perfectly for
+a person and is **completely invisible to a crawler** — for nine months nothing
+told Google that `rx.sereneque.com` had anything to do with `sereneque.com`.
+It is now an `<a href>`, same look, same new tab. The URL lives in the `href`;
+the script only re-syncs it after a template re-render.
+
+The same trap applies anywhere else a click is wired up in JavaScript. If it
+navigates, it should be an `<a href>`.
+
+### What the portal can and cannot do
+
+`rx.sereneque.com` is a white-label storefront and **cannot be optimised**, not
+merely "we're not allowed to":
+
+- its `robots.txt` points its sitemap at `therxspot.com`, the platform's domain;
+- the page is an empty JavaScript shell with no text in the HTML;
+- its `<title>` is just "Sereneque".
+
+Treat it as a checkout counter. Everything a search engine will ever learn
+about the business has to come from `sereneque.com`.
 
 ## The water backdrop
 
