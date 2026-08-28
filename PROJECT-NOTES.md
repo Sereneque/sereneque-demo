@@ -145,6 +145,37 @@ Plan, kept current: https://claude.ai/code/artifact/e73f7e56-e629-4138-aa44-994a
 which now carries its own `og:` tags — so a freshly built article inherits a
 second set pointing at the Journal. Strip them, or the share card is wrong.
 
+### Bing Webmaster Tools, and why not Google
+
+Rebecca does not want a Google account, so there is no Google Search Console
+and no Google Analytics. Bing Webmaster Tools is the substitute: it signs in
+with a Microsoft account, and Rebecca@sereneque.com already is one because the
+domain's mail runs on Microsoft 365.
+
+- Verified 28 Aug by **meta tag**, not Bing's recommended DNS auto-verify.
+  That option wants an OAuth sign-in to GoDaddy and write access to the DNS
+  zone; the meta tag proves the same thing and grants nothing. The tag lives in
+  `index.html` right after the charset. **Do not remove it** -- Bing re-checks,
+  and removing it drops the site out of the tools.
+- `sitemap.xml` submitted and accepted, no errors.
+- Bing matters more than its market share suggests: its index also feeds
+  DuckDuckGo, Yahoo, and several AI assistants' web search.
+
+### IndexNow
+
+Rather than wait to be crawled, we can tell the search engines the moment
+something is published. `tools/indexnow.sh` does it -- no arguments submits
+everything in the sitemap, or pass specific URLs:
+
+    tools/indexnow.sh
+    tools/indexnow.sh https://sereneque.com/new-article.html
+
+**Run it after every deploy.** All nine pages were submitted on 28 Aug (202).
+
+The key is the file named `<32 hex chars>.txt` in `public/`. It is *meant* to
+be public -- serving it at the site root is how the API confirms we own the
+domain. Deleting or renaming it breaks submissions.
+
 ### Sharing and identity
 
 Every page carries Open Graph and Twitter card tags plus `sereneque-share.jpg`
