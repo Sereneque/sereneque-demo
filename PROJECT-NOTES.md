@@ -111,6 +111,55 @@ merely "we're not allowed to":
 Treat it as a checkout counter. Everything a search engine will ever learn
 about the business has to come from `sereneque.com`.
 
+**Link direction matters and is easy to get backwards.** The gate link points
+outward, which is a vote we give the portal, not one we receive. A link in the
+portal's own footer back to us would be our subdomain endorsing our domain,
+which Google largely discounts. The link actually worth having is from
+`therxspot.com` — their established company domain, an outside party. That is
+an ask, not a build.
+
+### The Journal is the content engine
+
+Sereneque markets for a licensed telehealth operation; it does not prescribe.
+That shapes everything that can be written:
+
+- **Describe, never promise.** What a thing is and who it suits, never what it
+  will do for someone. Outcome claims need clinical substantiation we do not
+  have, and the FTC holds everyone in the marketing chain liable, not only the
+  seller.
+- Never: before-and-after images, testimonials describing results, brand-name
+  drugs, dosing guidance.
+- The safe ground — process, provenance, cost, regulation — is also the least
+  competitive and the closest to buying intent. That alignment is the whole
+  content strategy.
+
+Live as of 28 Aug: `choosing-a-peptide-provider`, `503a-vs-503b-compounding-
+pharmacy`, `research-use-only-peptides`. Rebecca and her business partner
+reviewed the advertising rules for this market and cleared publishing here.
+The remaining queue is blocked on facts only she has: intake process, pricing,
+bloodwork, shipping, and what the portal actually offers.
+
+Plan, kept current: https://claude.ai/code/artifact/e73f7e56-e629-4138-aa44-994aef312692
+
+**Learned the hard way:** a new article's shell is lifted from `journal.html`,
+which now carries its own `og:` tags — so a freshly built article inherits a
+second set pointing at the Journal. Strip them, or the share card is wrong.
+
+### Sharing and identity
+
+Every page carries Open Graph and Twitter card tags plus `sereneque-share.jpg`
+(1200x630, built from the lotus and wordmark). Before this, every link pasted
+into a message rendered as bare grey text — for a brand whose early traffic is
+word of mouth, that was costing more than any ranking factor.
+
+`rituals.html` has no `og:description`, because it has no prose to quote. That
+is one of the copy lines still owed by Rebecca, not an oversight.
+
+The home page carries Organization / WebSite / WebPage JSON-LD. Deliberately a
+plain **Organization**, never a medical or health business type: Sereneque
+markets, it does not prescribe. `legalName` is *Sereneque LLC*, registered in
+Florida; `sameAs` declares the portal as the same organisation's property.
+
 ## The water backdrop
 
 The realistic ripples are **footage, not code**. This matters: no CSS or canvas
