@@ -84,9 +84,12 @@
          background:#8bbcb7;box-shadow:0 14px 40px rgba(20,48,53,.24)}
   .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   figcaption{margin-top:12px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#587f87}
-  footer{border-top:1px solid rgba(176,138,53,.3);padding:12px 24px;display:flex;flex-wrap:wrap;
-         align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:1180px;
-         margin:auto auto 0;font-size:11px;font-weight:300;color:#3d6a71}
+  /* mirrors the header: same tint, same blur, same gold hairline */
+  footer{border-top:1px solid rgba(176,138,53,.28);background:rgba(226,239,236,.68);
+         backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+         padding:20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+         justify-content:center;text-align:center;width:100%;margin:auto 0 0;
+         font-size:12.5px;font-weight:300;letter-spacing:.02em;color:#3d6a71}
 </style>
 </head>
 <body>
@@ -165,7 +168,6 @@
 
 <footer>
   <span>&copy; 2026 Sereneque LLC &middot; <a href="privacy.html" style="color:#3d6a71">Privacy</a></span>
-  <span style="font-size:9.5px;letter-spacing:.16em;color:#587f87">CALM, BY DESIGN</span>
 </footer>
 
 <script>

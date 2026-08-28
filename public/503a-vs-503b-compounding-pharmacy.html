@@ -132,9 +132,12 @@
            font-size:clamp(18px,2.1vw,23px) !important;line-height:1.55}
   .sq-signoff{margin-top:34px !important;text-align:center !important;font-style:italic;color:#8f6d29;
               font-size:clamp(17px,1.9vw,21px) !important;letter-spacing:.03em}
-  footer{border-top:1px solid rgba(176,138,53,.3);padding:12px 24px;display:flex;flex-wrap:wrap;
-         align-items:center;gap:10px;justify-content:space-between;width:100%;max-width:1180px;
-         margin:auto auto 0;font-size:11px;font-weight:300;color:#3d6a71}
+  /* mirrors the header: same tint, same blur, same gold hairline */
+  footer{border-top:1px solid rgba(176,138,53,.28);background:rgba(226,239,236,.68);
+         backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+         padding:20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+         justify-content:center;text-align:center;width:100%;margin:auto 0 0;
+         font-size:12.5px;font-weight:300;letter-spacing:.02em;color:#3d6a71}
 
   /* ---- article ---- */
   .sq-art{max-width:720px;margin:0 auto;text-align:left}
@@ -287,7 +290,6 @@
 </div>
 <footer>
   <span>&copy; 2026 Sereneque LLC &middot; <a href="privacy.html" style="color:#3d6a71">Privacy</a></span>
-  <span style="font-size:9.5px;letter-spacing:.16em;color:#587f87">CALM, BY DESIGN</span>
 </footer>
 
 <script>

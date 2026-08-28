@@ -192,7 +192,12 @@ distorts a texture underneath it, and a flat gradient gives it nothing to bend.
 ## Conventions
 
 - Header 72px; logo 52px, 44px on mobile.
-- Footer 41px, pinned to the bottom with `margin-top: auto` in a flex column.
+- Footer ~55px, pinned to the bottom with `margin-top: auto` in a flex column.
+  It mirrors the header deliberately: same `rgba(226,239,236,.68)` tint, same
+  16px blur, same gold hairline, full width with the text centred. It was 41px
+  and bare until 28 Aug. The old "CALM, BY DESIGN" tagline came in with the
+  Claude Design import (599c991, 14 Aug) rather than from Rebecca, and she had
+  it removed once she noticed it.
   Centred blocks in that column need `width: 100%` or they shrink to fit.
 - Mobile breakpoint 760px. The nav links collapse into the burger at top right.
 - Gold `#b08a35` / `#f1dd9e`, deep teal `#143035`, soft teal `#3d6a71`.
