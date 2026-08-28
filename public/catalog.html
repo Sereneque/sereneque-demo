@@ -24,6 +24,7 @@
 <script src="./support.js"></script>
 </head>
 <body>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="sq-gold" x1="0" y1="0" x2=".35" y2="1"><stop offset="0%" stop-color="#fff6cd"/><stop offset="14%" stop-color="#f7d484"/><stop offset="34%" stop-color="#d9a743"/><stop offset="52%" stop-color="#9b6925"/><stop offset="68%" stop-color="#c9913a"/><stop offset="84%" stop-color="#f2cf7d"/><stop offset="100%" stop-color="#a3722a"/></linearGradient><linearGradient id="sq-gold-ring" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0%" stop-color="#ffefb4"/><stop offset="22%" stop-color="#d9a743"/><stop offset="46%" stop-color="#8a5f20"/><stop offset="64%" stop-color="#e0b45c"/><stop offset="82%" stop-color="#fff3cf"/><stop offset="100%" stop-color="#9b6925"/></linearGradient></defs></svg>
 
 <div class="sq-bgwrap" aria-hidden="true">
   <video class="sq-bgvideo" autoplay muted loop playsinline aria-hidden="true"
@@ -99,6 +100,20 @@
                filter: drop-shadow(0 18px 34px rgba(23, 53, 57, 0.14)); }
   @media (max-width: 760px) { .sq-wm { height: 780px; transform: translateY(134px); }
                               .sq-wm img { opacity: 0.3; } }
+
+  /* ---- social marks: drawn as vector, in the gold sampled off the wordmark,
+     standing on their own reflection because the whole site sits on water ---- */
+  .sq-social{display:inline-flex;align-items:flex-start;gap:15px}
+  .sq-social a{display:block;line-height:0;transition:transform 200ms ease,filter 200ms ease}
+  .sq-social a:hover{transform:translateY(-1px);filter:brightness(1.14) saturate(1.06)}
+  .sq-social a:focus-visible{outline:2px solid #b08a35;outline-offset:3px;border-radius:50%}
+  .sq-social svg{display:block;width:26px;height:26px;fill:url(#sq-gold)}
+  .sq-social svg:not(.sq-refl){filter:drop-shadow(0 1px 1.5px rgba(20,48,53,.34)) drop-shadow(0 0 1px rgba(255,255,255,.5))}
+  .sq-social .sq-refl{transform:scaleY(-1);opacity:.32;margin-top:1px;
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 72%);
+            mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 72%);
+    filter:blur(.4px)}
+  @media (prefers-reduced-motion:reduce){.sq-social a{transition:none}}
 </style>
 </helmet>
 
@@ -136,7 +151,8 @@
 
   <section style="position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 40px 24px 140px;"></section>
 
-  <footer style="border-top: 1px solid rgba(176, 138, 53, 0.28); background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; text-align: center; width: 100%; margin: auto 0 0; font-size: 12.5px; font-weight: 300; letter-spacing: 0.02em; color: #3d6a71;">
+  <footer style="border-top: 1px solid rgba(176, 138, 53, 0.28); background: rgba(226, 239, 236, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; text-align: center; flex-direction: column; gap: 11px; width: 100%; margin: auto 0 0; font-size: 12.5px; font-weight: 300; letter-spacing: 0.02em; color: #3d6a71;">
+    <span class="sq-social"><a href="https://www.facebook.com/SerenequeWellness/" target="_blank" rel="noopener" aria-label="Sereneque on Facebook" title="Sereneque on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg></a><a href="https://www.instagram.com/serenequewellness/" target="_blank" rel="noopener" aria-label="Sereneque on Instagram" title="Sereneque on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg></a><a href="https://www.tiktok.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on TikTok" title="Sereneque on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg></a><a href="https://www.threads.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on Threads" title="Sereneque on Threads"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg></a></span>
     <span>© 2026 Sereneque LLC &middot; <a href="privacy.html" style="color: #3d6a71;">Privacy</a></span>
   </footer>
 
