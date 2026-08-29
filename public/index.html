@@ -161,23 +161,21 @@
   html.sq-gate-hiding .sq-reveal { opacity: 0; pointer-events: none;
                transform: translate(-50%, -50%) scale(0.9);
                transition: opacity 420ms ease, transform 420ms ease; }
+  /* the coin is a photograph, so the shaping is in the picture -- the old inset
+     highlights fought it and are gone. Shadow and halo move to filter so they
+     follow the cut-out circle rather than the square box. */
   .sq-enter-btn { display: flex; align-items: center; justify-content: center; text-align: center;
                   width: 92px; height: 92px; padding: 0 9px; border: none; border-radius: 50%;
-                  background: radial-gradient(circle at 34% 26%, #fffdf0 0%, #fbf0c4 18%, #f0dda2 38%,
-                              #dcc17c 60%, #bda05a 80%, #967d45 100%);
-                  color: #ffffff; font-family: inherit; font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em;
+                  background: url("sereneque-enter-coin.png") center / 100% 100% no-repeat;
+                  color: #143035; font-family: inherit; font-size: 12.5px; font-weight: 500; letter-spacing: 0.1em;
                   line-height: 1.4; text-transform: uppercase; cursor: pointer; white-space: normal;
                   text-decoration: none;
-                  text-shadow: 0 1px 1px rgba(20, 48, 53, 0.62),
-                               0 2px 5px rgba(20, 48, 53, 0.45),
-                               0 0 2px rgba(20, 48, 53, 0.35);
-                  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.9),
-                              inset 0 -5px 9px rgba(88, 64, 20, 0.5),
-                              inset 0 0 0 1px rgba(255, 255, 255, 0.3),
-                              0 9px 16px rgba(20, 48, 53, 0.38),
-                              0 2px 4px rgba(20, 48, 53, 0.3),
-                              0 0 38px 13px rgba(255, 255, 255, 0.72);
-                  transition: transform 200ms ease, box-shadow 200ms ease; }
+                  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55),
+                               0 0 6px rgba(255, 255, 255, 0.5);
+                  filter: drop-shadow(0 9px 16px rgba(20, 48, 53, 0.34))
+                          drop-shadow(0 2px 4px rgba(20, 48, 53, 0.28))
+                          drop-shadow(0 0 16px rgba(255, 255, 255, 0.7));
+                  transition: transform 200ms ease, filter 200ms ease; }
   .sq-cap { position: absolute; left: 50%; top: 70%; z-index: 4; width: max-content; max-width: 92%;
             transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
   .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
@@ -189,17 +187,14 @@
   html.sq-gate-hiding .sq-enter-cap { opacity: 0; transform: scale(0.92);
                   transition: opacity 420ms ease, transform 420ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px);
-                        box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.95),
-                                    inset 0 -5px 9px rgba(88, 64, 20, 0.45),
-                                    inset 0 0 0 1px rgba(255, 255, 255, 0.38),
-                                    0 14px 22px rgba(20, 48, 53, 0.4),
-                                    0 3px 6px rgba(20, 48, 53, 0.3),
-                                    0 0 44px 16px rgba(255, 255, 255, 0.82); }
+                        filter: drop-shadow(0 14px 22px rgba(20, 48, 53, 0.36))
+                                drop-shadow(0 3px 6px rgba(20, 48, 53, 0.28))
+                                drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))
+                                brightness(1.05); }
   .sq-enter-btn:active { transform: translateY(1px);
-                        box-shadow: inset 0 3px 7px rgba(88, 64, 20, 0.5),
-                                    inset 0 -1px 2px rgba(255, 255, 255, 0.5),
-                                    0 4px 8px rgba(20, 48, 53, 0.32),
-                                    0 0 34px 11px rgba(255, 255, 255, 0.68); }
+                        filter: drop-shadow(0 4px 8px rgba(20, 48, 53, 0.3))
+                                drop-shadow(0 0 14px rgba(255, 255, 255, 0.65))
+                                brightness(0.97); }
 
   /* a short window (landscape phone, small laptop) shrinks 86vh until the gate
      rides up into the paragraph -- give the hero a floor in that case */
@@ -257,7 +252,7 @@
       <div class="sq-gate" style="position: relative; width: min(600px, 82vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" width="819" height="673" alt="">
         <div class="sq-reveal">
-          <a class="sq-enter-btn" href="https://rx.sereneque.com" target="_blank" rel="noopener"><span>Click<br>Here</span></a>
+          <a class="sq-enter-btn" href="https://rx.sereneque.com" target="_blank" rel="noopener"><span>Enter<br>Here</span></a>
         </div>
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
         <div class="sq-half sq-half-l"><img src="./sereneque-lotus-mark.png" width="819" height="673" alt=""></div>
