@@ -260,10 +260,11 @@ No newsletter — decided against it on 24 Aug.
 
 ## Backups
 
-`website/` is mirrored on GitHub, so the site, its artwork and
+`01 Website/` is mirrored on GitHub, so the site, its artwork and
 `brand-source/` survive this Mac. **The repo is public** — business and legal
 documents must never be committed to it. Those live in
-`~/Desktop/Desktop Folder/Sereneque/` and are backed up nowhere.
+`~/Sereneque/04 Legal & Business/`, outside the repo, and were copied to the
+external drive ("External HD" → `C Sereneque`) on 5 Sep 2026.
 
 ## Things learned the hard way
 
