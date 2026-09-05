@@ -2,7 +2,7 @@
 
 Live at **sereneque.com**. Domain at GoDaddy, DNS pointed at GitHub Pages.
 Repo `Sereneque/sereneque-demo`, branch `main`, served from `public/`.
-Local folder: `~/Sereneque/website` (moved out of `~/Projects` on 24 Aug).
+Local folder: `~/Sereneque/01 Website` (moved out of `~/Projects` on 24 Aug).
 Every push triggers a GitHub Actions deploy; it goes live in roughly 45 seconds.
 
 ## Pages

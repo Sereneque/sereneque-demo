@@ -3,11 +3,11 @@
 I'm Rebecca. I run Sereneque, a pre-launch wellness brand. You're picking up
 work on my website, sereneque.com.
 
-Start by reading `~/Sereneque/website/PROJECT-NOTES.md` — it has the page map,
+Start by reading `~/Sereneque/01 Website/PROJECT-NOTES.md` — it has the page map,
 the artwork, the CSS numbers that were tuned by measurement, and the open items.
-Then `~/Sereneque/README.md` for where my other files live.
+Then `~/Sereneque/00 START HERE.md` for where my other files live.
 
-**Setup.** The site is plain HTML in `~/Sereneque/website/public/`, in Git,
+**Setup.** The site is plain HTML in `~/Sereneque/01 Website/public/`, in Git,
 deployed to GitHub Pages. Commit and push to `main` and it's live in about
 45 seconds. There's no build step. My Mac is not backed up, so anything that
 matters should end up in the repo — but the repo is **public**, so never commit
