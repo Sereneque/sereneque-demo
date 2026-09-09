@@ -8,23 +8,34 @@
 #
 # The key is deliberately public -- it is served at the site root, and that is
 # how the API checks we own the domain. Do not delete public/<key>.txt.
+#
+# Written for bash 3.2, which is what macOS ships. No mapfile, no readarray,
+# no associative arrays -- they are bash 4 and this will run on Rebecca's iMac.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-KEYFILE=$(ls public/*.txt | grep -E 'public/[0-9a-f]{32}\.txt$' | head -1)
+KEYFILE=$(ls public/*.txt 2>/dev/null | grep -E 'public/[0-9a-f]{32}\.txt$' | head -1 || true)
 [ -n "$KEYFILE" ] || { echo "No IndexNow key file in public/. Aborting."; exit 1; }
 KEY=$(basename "$KEYFILE" .txt)
 
+URLS=""
+COUNT=0
 if [ $# -gt 0 ]; then
-  URLS=("$@")
+  for u in "$@"; do URLS="$URLS\"$u\","; COUNT=$((COUNT+1)); done
 else
-  mapfile -t URLS < <(grep -o '<loc>[^<]*</loc>' public/sitemap.xml | sed 's/<[^>]*>//g')
+  [ -f public/sitemap.xml ] || { echo "No public/sitemap.xml. Aborting."; exit 1; }
+  while IFS= read -r u; do
+    [ -n "$u" ] || continue
+    URLS="$URLS\"$u\","
+    COUNT=$((COUNT+1))
+  done <<EOF
+$(grep -o '<loc>[^<]*</loc>' public/sitemap.xml | sed 's/<[^>]*>//g')
+EOF
 fi
-[ ${#URLS[@]} -gt 0 ] || { echo "No URLs to submit."; exit 1; }
+[ "$COUNT" -gt 0 ] || { echo "No URLs to submit."; exit 1; }
+LIST="[${URLS%,}]"
 
-LIST=$(printf '"%s",' "${URLS[@]}"); LIST="[${LIST%,}]"
-printf 'Submitting %d URL(s) with key %s\n' "${#URLS[@]}" "$KEY"
-
+printf 'Submitting %d URL(s) with key %s\n' "$COUNT" "$KEY"
 CODE=$(curl -s -o /tmp/indexnow.out -w '%{http_code}' -X POST "https://api.indexnow.org/IndexNow" \
   -H "Content-Type: application/json; charset=utf-8" \
   -d "{\"host\":\"sereneque.com\",\"key\":\"$KEY\",\"keyLocation\":\"https://sereneque.com/$KEY.txt\",\"urlList\":$LIST}")
