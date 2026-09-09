@@ -162,8 +162,10 @@
                transform: translate(-50%, -50%) scale(0.9);
                transition: opacity 420ms ease, transform 420ms ease; }
   /* the coin is a photograph, so the shaping is in the picture -- the old inset
-     highlights fought it and are gone. Shadow and halo move to filter so they
-     follow the cut-out circle rather than the square box. */
+     highlights fought it and are gone. Shadow and halo are box-shadow on the
+     round box: Safari draws filter: drop-shadow() from the square border box
+     when the button sits inside the gate's perspective layer, which put a pale
+     square halo behind the coin. box-shadow follows border-radius everywhere. */
   .sq-enter-btn { display: flex; align-items: center; justify-content: center; text-align: center;
                   width: 92px; height: 92px; padding: 0 9px; border: none; border-radius: 50%;
                   background: url("sereneque-enter-coin.png") center / 100% 100% no-repeat;
@@ -172,10 +174,10 @@
                   text-decoration: none;
                   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55),
                                0 0 6px rgba(255, 255, 255, 0.5);
-                  filter: drop-shadow(0 9px 16px rgba(20, 48, 53, 0.34))
-                          drop-shadow(0 2px 4px rgba(20, 48, 53, 0.28))
-                          drop-shadow(0 0 16px rgba(255, 255, 255, 0.7));
-                  transition: transform 200ms ease, filter 200ms ease; }
+                  box-shadow: 0 9px 16px rgba(20, 48, 53, 0.34),
+                              0 2px 4px rgba(20, 48, 53, 0.28),
+                              0 0 16px rgba(255, 255, 255, 0.7);
+                  transition: transform 200ms ease, box-shadow 200ms ease; }
   .sq-cap { position: absolute; left: 50%; top: 70%; z-index: 4; width: max-content; max-width: 92%;
             transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
   .sq-enter-cap { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px;
@@ -187,14 +189,12 @@
   html.sq-gate-hiding .sq-enter-cap { opacity: 0; transform: scale(0.92);
                   transition: opacity 420ms ease, transform 420ms ease; }
   .sq-enter-btn:hover { transform: translateY(-2px);
-                        filter: drop-shadow(0 14px 22px rgba(20, 48, 53, 0.36))
-                                drop-shadow(0 3px 6px rgba(20, 48, 53, 0.28))
-                                drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))
-                                brightness(1.05); }
+                        box-shadow: 0 14px 22px rgba(20, 48, 53, 0.36),
+                                    0 3px 6px rgba(20, 48, 53, 0.28),
+                                    0 0 20px rgba(255, 255, 255, 0.8); }
   .sq-enter-btn:active { transform: translateY(1px);
-                        filter: drop-shadow(0 4px 8px rgba(20, 48, 53, 0.3))
-                                drop-shadow(0 0 14px rgba(255, 255, 255, 0.65))
-                                brightness(0.97); }
+                        box-shadow: 0 4px 8px rgba(20, 48, 53, 0.3),
+                                    0 0 14px rgba(255, 255, 255, 0.65); }
 
   /* a short window (landscape phone, small laptop) shrinks 86vh until the gate
      rides up into the paragraph -- give the hero a floor in that case */
