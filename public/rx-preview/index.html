@@ -183,7 +183,7 @@
     'weight-loss':   { label:'Weight Loss',   h:'Reach a healthier weight,<br> with a plan made for you.', sections:['Weight Management','Appetite Suppressant'], clip:'media/weight-loss.mp4', alpha:true,
                        blurb:'GLP-1 and metabolic treatments, tailored to your body.' },
     'vitality':      { label:'Vitality',      h:'Feel vibrant at every age.', sections:['Anti-Aging'], blurb:'NAD+, glutathione, B12 and more for energy and healthy aging.' },
-    'sexual-health': { label:'Sexual Health', h:'Confidence.', sections:['Sexual Health'], clip:'media/sexual-health.mp4?v=5', alpha:false, blurb:'Discreet, physician-guided treatments for desire and performance.' },
+    'sexual-health': { label:'Sexual Health', h:'', sections:['Sexual Health'], clip:'', alpha:false, blurb:'Discreet, physician-guided treatments for desire and performance.' },
     'hair-skin':     { label:'Hair & Skin',   h:'Healthy hair. Clear, radiant skin.', sections:['Hair Loss','Acne'], blurb:'Treatments for hair loss and acne, personalised to you.' }
   };
   var P = [
@@ -264,7 +264,7 @@
   }
   function renderGroup(k){
     var g=GROUPS[k]; var plain=g.clip && !g.alpha;
-    var html='<section class="landing'+(plain?' plain':'')+(g.clip?'':' plain')+'"><div class="text"><div class="k">'+esc(g.label)+'</div><h2 class="h">'+g.h+'</h2></div>'+(g.clip?'<div class="media" id="media">'+(plain?'<video class="plainvid" autoplay muted loop playsinline preload="auto" src="'+g.clip+'"></video>':'')+'</div>':'')+'</section>';
+    var html='<section class="landing'+(plain?' plain':'')+(g.clip?'':' plain')+'"><div class="text"><div class="k">'+esc(g.label)+'</div>'+(g.h?'<h2 class="h">'+g.h+'</h2>':'')+'</div>'+(g.clip?'<div class="media" id="media">'+(plain?'<video class="plainvid" autoplay muted loop playsinline preload="auto" src="'+g.clip+'"></video>':'')+'</div>':'')+'</section>';
     html+='<div class="catalog"><div class="k">The catalog</div><h2>'+esc(g.label)+'</h2></div>';
     g.sections.forEach(function(s){ html+='<section class="sec"><div class="band">'+esc(s)+'</div><div class="grid">'+cards(s)+'</div></section>'; });
     main.innerHTML=html;
