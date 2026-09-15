@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sereneque Rx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{ --mint:#E2EFEC; --page:#A9CBC7; --ink:#143035; --teal:#3D6A71; --gold:#A87830; --gold-line:rgba(176,138,53,.28); --card:rgba(255,255,255,.55); }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; background:var(--page); color:var(--ink); }
+  body{ font-family:-apple-system, BlinkMacSystemFont, 'system-ui', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight:400; min-height:100vh;
+        background: radial-gradient(1200px 700px at 50% 12%, #cfe3e0 0%, var(--page) 60%);
+        background-color:var(--page); padding:0; }
+  a{ color:inherit; text-decoration:none; }
+
+  /* masthead — same measurements as sereneque.com */
+  header{ position:sticky; top:0; z-index:50; background:rgba(226,239,236,.82); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); border-bottom:1px solid var(--gold-line); }
+  .nav{ height:108px; padding:0 36px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .logo{ display:flex; align-items:center; gap:14px; }
+  .logo img.logoimg{ height:78px; width:auto; max-width:328px; display:block; }
+  .logo .wm{ font-family:'Pinyon Script',cursive; font-size:54px; line-height:1; color:#b8892f;
+             background:linear-gradient(180deg,#e9c76a 0%,#c99a3a 45%,#a87830 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; padding-right:8px; }
+  nav.links{ display:flex; align-items:center; gap:36px; }
+  nav.links a{ font-family:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:300; position:relative; padding:8px 0; font-size:20px; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); white-space:nowrap; cursor:pointer; }
+  nav.links a::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:var(--teal); transform:scaleX(0); transform-origin:center; transition:transform .18s ease; }
+  nav.links a:hover::after, nav.links a.on::after{ transform:scaleX(1); }
+  nav.links a.on{ color:var(--ink); }
+  .spacer{ width:144px; flex:0 0 144px; }
+
+  .wrap{ max-width:1140px; margin:0 auto; padding:34px 28px 60px; }
+
+  /* backdrop: water (a live ripple simulation on a tinted plate), then the lotus with its breathing glow and travelling gold rings - fixed, as on the live home page */
+  .bg{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .bg .water{ position:absolute; inset:0; background:#4599B2; opacity:.64; }
+  .bg .water video{ width:100%; height:100%; object-fit:cover; display:block; opacity:.55; filter:saturate(1.05) contrast(1.12); }
+  .bg .collage{ position:absolute; top:52%; left:50%; translate:-50% -50%; width:min(1180px,94vw); aspect-ratio:1/1; opacity:1;
+    -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 34%, rgba(0,0,0,.8) 60%, transparent 84%); mask-image:radial-gradient(circle at 50% 50%, #000 34%, rgba(0,0,0,.8) 60%, transparent 84%); }
+  .bg .collage img{ position:absolute; left:50%; top:50%; translate:-50% -50%; width:39%; height:auto; }
+  .bg .t{ position:absolute; left:50%; top:50%; translate:-50% -50%; width:58%; aspect-ratio:1/1; border-radius:999px; }
+  .bg .t1{ width:78%; background:radial-gradient(circle, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 62%); animation:sq-pulseGlow 6s ease-in-out infinite; }
+  .bg .t2, .bg .t3{ width:62%; border:1.5px solid rgba(241,221,158,.95); opacity:0; animation:sq-ripple 11s cubic-bezier(.16,.8,.3,1) infinite; }
+  .bg .t3{ animation-delay:5.5s; }
+  @keyframes sq-pulseGlow{ 0%,100%{opacity:.5; transform:scale(1);} 50%{opacity:1; transform:scale(1.1);} }
+  @keyframes sq-ripple{ 0%{transform:scale(.5); opacity:0;} 18%{opacity:.9;} 65%{opacity:.4;} 100%{transform:scale(1.2); opacity:0;} }
+  @media (prefers-reduced-motion:reduce){ .bg .t{ animation:none !important; } .bg .t1{ opacity:.8; } .bg .t2{ opacity:.6; transform:scale(1); } .bg .t3{ opacity:.35; transform:scale(1.15); } }
+  @media (max-width:760px){ .bg .collage{ width:136vw; opacity:.6; } }
+  header, main, footer{ position:relative; z-index:1; }
+
+  /* home */
+  .hero{ text-align:center; padding:52px 0 26px; }
+  .hero .script{ font-family:'Pinyon Script','Snell Roundhand',cursive; font-size:clamp(20px,3.8vw,52px); color:#355C64; margin:0; line-height:1.15; white-space:nowrap;
+    text-shadow:0 0 1px rgba(255,255,255,.9), 0 1px 0 rgba(255,255,255,.75), 0 6px 18px rgba(20,48,53,.18); }
+  .journey{ text-align:center; padding:56px 0 10px; }
+  .journey h2, .tailored h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(34px,4.6vw,52px); letter-spacing:.07em; margin:0 0 16px; color:var(--ink); }
+  .journey .intro, .tailored .intro{ max-width:44em; margin:0 auto; font-size:clamp(16px,1.5vw,19px); line-height:1.55; color:#2A4A52; }
+  .steps{ margin:38px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media (max-width:1040px){ .steps{ grid-template-columns:repeat(2,1fr); gap:30px 22px; } }
+  @media (max-width:560px){ .steps{ grid-template-columns:1fr; gap:34px; } }
+  .step{ text-align:center; }
+  .step .num{ width:74px; height:74px; margin:0 auto 14px; border-radius:50%; background:rgba(226,239,236,.62); border:1px solid rgba(255,255,255,.75); box-shadow:0 8px 20px rgba(20,48,53,.12), inset 0 1px 0 rgba(255,255,255,.8);
+    display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:22px; color:var(--ink); }
+  .step .lab{ font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+  .step h3{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(22px,2.1vw,27px); letter-spacing:.06em; margin:0 0 8px; color:var(--ink); }
+  .step p{ margin:0 auto; max-width:38em; font-size:clamp(15px,1.15vw,16.5px); line-height:1.5; color:#2A4A52; }
+  .cta{ text-align:center; margin:38px 0 10px; }
+  .pill{ display:inline-flex; align-items:center; gap:14px; padding:14px 30px; border-radius:999px; background:rgba(226,239,236,.62); border:1px solid rgba(255,255,255,.8); box-shadow:0 10px 24px rgba(20,48,53,.14), inset 0 1px 0 rgba(255,255,255,.8);
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:24px; color:var(--ink); cursor:pointer; }
+  .pill .arr{ width:34px; height:34px; border-radius:50%; border:1.5px solid var(--ink); display:inline-flex; align-items:center; justify-content:center; font-style:normal; font-size:18px; }
+  .tailored{ text-align:center; padding:70px 0 20px; }
+  .checks{ list-style:none; margin:44px auto 0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:18px 40px; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(22px,2.4vw,28px); letter-spacing:.04em; color:var(--ink); }
+  .checks li::before{ content:"\2713"; margin-right:14px; font-size:.8em; color:var(--teal); }
+  .cats{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px; }
+  .cats.hide{ display:none; }
+  .cats{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px; }
+  .cat{ display:block; background:var(--card); border:1px solid rgba(255,255,255,.7); border-radius:18px; padding:26px 20px; text-align:center; transition:transform .15s, box-shadow .15s; }
+  .cat:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(20,48,53,.12); }
+  .cat .k{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+  .cat .n{ font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; color:var(--ink); }
+  .cat .s{ font-size:13.5px; color:#2A4A52; margin-top:6px; }
+
+  /* category landing */
+  .landing{ display:grid; grid-template-columns:1.05fr .95fr; gap:32px 48px; align-items:center; padding:14px 0 28px; }
+  .landing.plain{ grid-template-columns:1fr; gap:16px; }
+  .k{ font-family:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin:0 0 14px; font-weight:400; }
+  h2.h{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(22px,2vw,28px); line-height:1.25; margin:0 0 22px; }
+  .text{ position:relative; z-index:2; }
+  .media{ position:relative; z-index:1; display:flex; justify-content:center; align-items:center; overflow:hidden; margin-left:-170px; }
+  .media canvas{ display:block; height:470px; width:auto; }
+  .landing.plain .media{ margin:0; overflow:visible; }
+  .plainvid{ display:block; height:440px; width:auto; max-width:100%; border-radius:18px; box-shadow:0 18px 40px rgba(20,48,53,.22); background:#dfeeea; }
+  .catalog{ padding:8px 0 18px; }
+  .catalog .k{ margin-bottom:8px; }
+  .catalog h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(20px,1.8vw,24px); margin:0; line-height:1.2; }
+
+  /* products */
+  .sec{ margin-top:22px; }
+  .sec .band{ background:rgba(226,239,236,.55); border:1px solid rgba(255,255,255,.7); border-radius:14px; padding:12px 18px; font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; margin:0 0 14px; }
+  .grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .card{ background:var(--card); border:1px solid rgba(255,255,255,.7); border-radius:16px; padding:18px 16px 16px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .card .vial{ height:210px; width:100%; display:flex; align-items:center; justify-content:center; }
+  .card .vial img{ max-height:100%; max-width:88%; object-fit:contain; filter:drop-shadow(0 10px 16px rgba(20,48,53,.16)); }
+  .card .name{ font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; margin:12px 0 2px; color:var(--ink); }
+  .card .sub{ font-size:12.5px; color:#2A4A52; min-height:1.3em; }
+  .card .btn{ margin-top:12px; display:inline-block; padding:9px 18px; border-radius:999px; background:#335C63; color:#fff; font-size:13px; letter-spacing:.04em; cursor:pointer; }
+  .card .btn:hover{ background:#274a50; }
+  .empty{ text-align:center; padding:40px; color:#2A4A52; }
+
+  footer{ margin-top:30px; padding:28px 20px 48px; text-align:center; font-size:13px; color:#2A4A52; }
+  footer .fl{ display:flex; justify-content:center; gap:8px; margin-bottom:12px; }
+  footer .fl a{ color:#2A4A52; cursor:pointer; } footer .fl span{ opacity:.55; }
+  .sq-social{ display:flex; justify-content:center; align-items:flex-start; gap:15px; margin:8px 0 22px; flex-wrap:wrap; }
+  .sq-social a{ display:block; width:26px; color:#143035; text-decoration:none; transition:transform .18s ease; }
+  .sq-social a:hover{ transform:translateY(-2px); }
+  .sq-social svg{ width:26px; height:26px; display:block; }
+  .sq-social a > svg:first-child{ filter: drop-shadow(0 1px 1.5px rgba(20,48,53,.34)) drop-shadow(0 0 1px rgba(255,255,255,.5)); }
+  .sq-social .sq-ref{ margin-top:1px; transform:scaleY(-1); opacity:.22; -webkit-mask-image:linear-gradient(to top, transparent 4%, #000 92%); mask-image:linear-gradient(to top, transparent 4%, #000 92%); }
+  @media (max-width:560px){ .sq-social{ gap:14px; margin-bottom:18px; } .sq-social a{ width:24px; } .sq-social svg{ width:24px; height:24px; } }
+  footer .fline{ font-size:15px; margin:10px 0 4px; }
+  footer .wm{ font-family:'Pinyon Script',cursive; font-size:30px; color:#3D6A71; }
+  footer .disc.small{ font-size:11px; opacity:.7; }
+  footer .disc{ max-width:60em; margin:12px auto 0; font-size:12px; opacity:.8; line-height:1.5; }
+  .toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--ink); color:#fff; padding:10px 16px; border-radius:999px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:99; }
+  .toast.show{ opacity:1; }
+
+  @media (min-width:761px) and (max-width:1180px){
+    .nav{ height:92px; padding:0 24px; } .logo img.logoimg{ height:66px; } .logo .wm{ font-size:44px; } nav.links{ gap:26px; } nav.links a{ font-size:17px; } .spacer{ width:96px; flex-basis:96px; }
+    .media canvas{ height:380px; } .media{ margin-left:-120px; } .plainvid{ height:360px; }
+    .grid{ grid-template-columns:repeat(3,1fr); } .cats{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:760px){
+    .nav{ height:auto; flex-direction:column; padding:10px 16px 8px; gap:6px; } .logo img.logoimg{ height:58px; max-width:86vw; } .logo .wm{ font-size:36px; }
+    nav.links{ flex-wrap:wrap; justify-content:center; gap:6px 16px; } nav.links a{ font-size:13px; padding:3px 0; } .spacer{ display:none; }
+    .wrap{ padding:18px 16px 40px; }
+    .hero{ padding:28px 0 20px; } .cats{ grid-template-columns:1fr 1fr; gap:10px; } .cat{ padding:18px 12px; } .cat .n{ font-size:20px; }
+    .landing{ grid-template-columns:1fr 1fr; gap:8px; padding:12px 0 18px; }
+    .k{ font-size:10px; margin-bottom:8px; } h2.h{ font-size:19px; margin-bottom:12px; }
+    .media{ margin-left:-170px; margin-right:-16px; justify-content:flex-end; }
+    .media canvas{ height:240px; margin-right:-60px; }
+    .text .k, .text h2.h{ text-shadow:0 0 5px rgba(226,239,236,.95), 0 0 12px rgba(226,239,236,.9), 0 0 22px rgba(226,239,236,.8); }
+    .landing.plain{ grid-template-columns:1fr; gap:4px; } .landing.plain .media{ margin:0; justify-content:center; }
+    .plainvid{ height:auto; width:100%; max-width:250px; border-radius:12px; }
+    .catalog h2{ font-size:18px; }
+    .grid{ grid-template-columns:1fr 1fr; gap:10px; } .card{ padding:12px 10px; } .card .vial{ height:150px; } .card .name{ font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#home"><img class="logoimg" src="img/logo.png" alt="Sereneque"></a>
+    <nav class="links" id="links">
+      <a href="#weight-loss" data-g="weight-loss">Weight Loss</a>
+      <a href="#vitality" data-g="vitality">Vitality</a>
+      <a href="#sexual-health" data-g="sexual-health">Sexual Health</a>
+      <a href="#hair-skin" data-g="hair-skin">Hair &amp; Skin</a>
+    </nav>
+    <span class="spacer"></span>
+  </div>
+</header>
+
+<div class="bg" aria-hidden="true"><div class="water"><video autoplay muted loop playsinline preload="auto" src="media/water.mp4"></video></div><div class="collage"><div class="t t1"></div><div class="t t2"></div><div class="t t3"></div><img src="img/lotus.png" alt=""></div></div>
+<main class="wrap" id="main"></main>
+
+<footer>
+<div id="sq-gold-defs" style="position:absolute;width:0;height:0;overflow:hidden"><svg xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sq-gold-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffefb4"></stop><stop offset="22%" stop-color="#d9a743"></stop><stop offset="46%" stop-color="#8a5f20"></stop><stop offset="64%" stop-color="#e0b45c"></stop><stop offset="82%" stop-color="#fff3cf"></stop><stop offset="100%" stop-color="#9b6925"></stop></linearGradient><linearGradient id="sq-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff6cd"></stop><stop offset="14%" stop-color="#f7d484"></stop><stop offset="34%" stop-color="#d9a743"></stop><stop offset="52%" stop-color="#9b6925"></stop><stop offset="68%" stop-color="#c9913a"></stop><stop offset="84%" stop-color="#f2cf7d"></stop><stop offset="100%" stop-color="#a3722a"></stop></linearGradient></defs></svg></div>
+  <div class="sq-social"><a href="https://www.facebook.com/SerenequeWellness" target="_blank" rel="noopener noreferrer" aria-label="Sereneque on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><path fill="url(#sq-gold)" d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"></path></svg><svg class="sq-ref" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><path fill="url(#sq-gold)" d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"></path></svg></a><a href="https://www.instagram.com/serenequewellness/" target="_blank" rel="noopener noreferrer" aria-label="Sereneque on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"></rect><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"></circle><circle fill="url(#sq-gold)" cx="15.6" cy="8.5" r=".95"></circle></svg><svg class="sq-ref" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"></rect><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"></circle><circle fill="url(#sq-gold)" cx="15.6" cy="8.5" r=".95"></circle></svg></a><a href="https://www.tiktok.com/@serenequewellness" target="_blank" rel="noopener noreferrer" aria-label="Sereneque on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><path fill="url(#sq-gold)" d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"></path></svg><svg class="sq-ref" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><path fill="url(#sq-gold)" d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"></path></svg></a><a href="https://www.threads.com/@serenequewellness" target="_blank" rel="noopener noreferrer" aria-label="Sereneque on Threads"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"></path></g></svg><svg class="sq-ref" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"></circle><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"></path></g></svg></a></div>
+  <div class="fl"><a data-page="about">About</a><span>·</span><a data-page="faq">FAQ</a><span>·</span><a data-page="contact">Contact</a></div>
+  <div class="fline"><span class="wm">Sereneque</span> · info@sereneque.com ·</div>
+  <div>© 2026 Sereneque LLC</div>
+  <div class="disc">Prescription treatments require clinician review. We here at Sereneque support your wellness journey, while all medical care, prescribing decisions, payments, pharmacy fulfillment, and shipping are handled independently through licensed partners.</div>
+  <div class="disc small">Product images are illustrative. Actual labeling, fill volume and packaging are determined by the dispensing pharmacy and may differ from what is shown.</div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var GROUPS = {
+    'weight-loss':   { label:'Weight Loss',   h:'Reach a healthier weight,<br> with a plan made for you.', sections:['Weight Management','Appetite Suppressant'], clip:'media/weight-loss.mp4', alpha:true,
+                       blurb:'GLP-1 and metabolic treatments, tailored to your body.' },
+    'vitality':      { label:'Vitality',      h:'Feel vibrant at every age.', sections:['Anti-Aging'], blurb:'NAD+, glutathione, B12 and more for energy and healthy aging.' },
+    'sexual-health': { label:'Sexual Health', h:'Confidence.', sections:['Sexual Health'], clip:'media/sexual-health.mp4', alpha:false, blurb:'Discreet, physician-guided treatments for desire and performance.' },
+    'hair-skin':     { label:'Hair & Skin',   h:'Healthy hair. Clear, radiant skin.', sections:['Hair Loss','Acne'], blurb:'Treatments for hair loss and acne, personalised to you.' }
+  };
+  var P = [
+    ['Weight Management','GLP-1 + B12','Semaglutide + B12','glp1-b12'],
+    ['Weight Management','GLP-1 + Glycine','Semaglutide + Glycine','glp1-glycine'],
+    ['Weight Management','GLP-1/GIP + B12','Tirzepatide + B12','glp1-gip-b12'],
+    ['Weight Management','GLP-1/GIP + Glycine','Tirzepatide + Glycine','glp1-gip-glycine'],
+    ['Weight Management','Metformin','','metformin'],
+    ['Appetite Suppressant','L-Carnitine','','l-carnitine'],
+    ['Appetite Suppressant','Lipo-B','MIC + B12','lipo-b'],
+    ['Appetite Suppressant','Lipo-C','','lipo-c'],
+    ['Appetite Suppressant','MIC-B12','','mic-b12'],
+    ['Anti-Aging','NAD+ Injection','','nad'],
+    ['Anti-Aging','NAD+ Nasal Spray','','nad-nasal'],
+    ['Anti-Aging','B12','','b12'],
+    ['Anti-Aging','Methylcobalamin','','methylcobalamin'],
+    ['Anti-Aging','Glutathione','','glutathione'],
+    ['Anti-Aging','Methylene Blue','Capsules','methylene-blue'],
+    ['Sexual Health','PT-141','','pt141'],
+    ['Sexual Health','Bremelanotide','Compounded PT-141 injection','bremelanotide'],
+    ['Sexual Health','Oxytocin / PT-141 / Sildenafil','','oxytocin'],
+    ['Sexual Health','Oxytocin / PT-141 / Tadalafil','','oxytocin'],
+    ['Sexual Health','Oxytocin / Sildenafil','','oxytocin'],
+    ['Sexual Health','Oxytocin / Tadalafil','','oxytocin'],
+    ['Sexual Health','Sildenafil','','sildenafil'],
+    ['Sexual Health','Sildenafil Citrate','','sildenafil-citrate'],
+    ['Sexual Health','Sildenafil SR','','sildenafil-sr'],
+    ['Sexual Health','Sildenafil Citrate SL','','sildenafil-citrate-sl'],
+    ['Sexual Health','Caffeine / Sildenafil Citrate','','caffeine-sildenafil'],
+    ['Sexual Health','Tadalafil','','tadalafil'],
+    ['Sexual Health','Tadalafil SR','','tadalafil-sr'],
+    ['Sexual Health','Sildenafil / Tadalafil','','sildenafil-tadalafil'],
+    ['Sexual Health','Enclomiphene / Tadalafil','','enclomiphene-tadalafil'],
+    ['Sexual Health','Scream Cream','','scream-cream'],
+    ['Hair Loss','Finasteride','','finasteride'],
+    ['Hair Loss','Finasteride / Minoxidil Topical Foam','','fin-minox-foam'],
+    ['Hair Loss','Finasteride / Minoxidil','','fin-minox'],
+    ['Hair Loss','Minoxidil / Tretinoin','','minox-tret'],
+    ['Hair Loss','Finasteride / Minoxidil / Tretinoin','','fin-minox-tret'],
+    ['Hair Loss','Minoxidil','','minoxidil'],
+    ['Hair Loss','Dutasteride','','dutasteride'],
+    ['Hair Loss','Dutasteride SR','','dutasteride-sr'],
+    ['Acne','Doxycycline','','doxycycline'],
+    ['Acne','Renew Azelaic Acid / Niacinamide','','renew-azelaic-niacinamide']
+  ];
+  var main=document.getElementById('main'), toastEl=document.getElementById('toast'), tt;
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function toast(m){ toastEl.textContent=m; toastEl.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){ toastEl.classList.remove('show'); },2200); }
+
+  function alphaVideo(box, src){
+    var v=document.createElement('video'); v.muted=true; v.defaultMuted=true; v.loop=true; v.autoplay=true; v.preload='auto';
+    v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.playsInline=true;
+    v.style.cssText='position:absolute;width:2px;height:2px;opacity:0.01;pointer-events:none;left:0;top:0';
+    var c=document.createElement('canvas'); box.appendChild(c); box.appendChild(v);
+    var ctx=c.getContext('2d',{willReadFrequently:true}), off=document.createElement('canvas'), octx=off.getContext('2d',{willReadFrequently:true}), W=0,H=0;
+    function draw(){ if(v.readyState<2) return; if(!W){ W=v.videoWidth; H=Math.floor(v.videoHeight/2); if(!W||!H){W=0;return;} c.width=W; c.height=H; off.width=W; off.height=v.videoHeight; }
+      octx.drawImage(v,0,0); var col=octx.getImageData(0,0,W,H), mat=octx.getImageData(0,H,W,H), cd=col.data, md=mat.data; for(var i=3,n=cd.length;i<n;i+=4) cd[i]=md[i-3]; ctx.putImageData(col,0,0); }
+    function tick(){ draw(); if(v.requestVideoFrameCallback) v.requestVideoFrameCallback(tick); else requestAnimationFrame(tick); }
+    v.addEventListener('loadeddata', draw); v.src=src; var p=v.play(); if(p&&p.catch) p.catch(function(){}); tick();
+  }
+
+  function cards(section){
+    var items=P.filter(function(p){ return p[0]===section; });
+    return items.map(function(p){ return '<div class="card"><div class="vial"><img src="img/'+p[3]+'.webp" alt="" loading="lazy"></div><div class="name">'+esc(p[1])+'</div><div class="sub">'+esc(p[2])+'</div><span class="btn" data-p="'+esc(p[1])+'">Get started →</span></div>'; }).join('');
+  }
+  function renderHome(){
+    main.innerHTML =
+      '<section class="hero"><h1 class="script">True radiance begins from within</h1></section>'+
+      '<section class="journey"><h2>How your journey begins</h2><p class="intro">We here at Sereneque support your wellness journey, while all medical care, prescribing decisions, payments, pharmacy fulfillment, and shipping are handled independently through licensed partners.</p>'+
+      '<div class="steps">'+
+        '<div class="step"><div class="num">1</div><div class="lab">Intake</div><h3>Share your goals and health history</h3><p>A focused questionnaire, completed online in a few minutes. No appointment, no waiting room.</p></div>'+
+        '<div class="step"><div class="num">2</div><div class="lab">Clinical review</div><h3>A licensed clinician reviews your file</h3><p>Through a licensed provider network. If treatment is appropriate, they write a prescription \u2014 and if it isn\u2019t, they\u2019ll tell you why.</p></div>'+
+        '<div class="step"><div class="num">3</div><div class="lab">Fulfillment</div><h3>Checkout, pharmacy, and delivery</h3><p>Payment processing, compounding, and discreet shipping are all handled through licensed partners.</p></div>'+
+        '<div class="step"><div class="num">4</div><div class="lab">Ongoing support</div><h3>It doesn\u2019t end at the first delivery</h3><p>Reorder when it suits you, raise questions as they come up, and have your plan adjusted by a clinician when it needs to change.</p></div>'+
+      '</div><div class="cta"><a class="pill" href="#weight-loss">Begin your journey <span class="arr">\u2192</span></a></div></section>'+
+      '<section class="tailored"><h2>Experience Tailored to You</h2><p class="intro">Explore personalized options designed around your individual goals \u2014 from weight management and longevity to energy, recovery, and overall vitality.</p>'+
+      '<ul class="checks"><li>Licensed U.S. pharmacies</li><li>Physician-reviewed care</li><li>Free, discreet shipping</li><li>HIPAA-compliant &amp; secure</li></ul></section>';
+  }
+  function renderGroup(k){
+    var g=GROUPS[k]; var plain=g.clip && !g.alpha;
+    var html='<section class="landing'+(plain?' plain':'')+(g.clip?'':' plain')+'"><div class="text"><div class="k">'+esc(g.label)+'</div><h2 class="h">'+g.h+'</h2></div>'+(g.clip?'<div class="media" id="media">'+(plain?'<video class="plainvid" autoplay muted loop playsinline preload="auto" src="'+g.clip+'"></video>':'')+'</div>':'')+'</section>';
+    html+='<div class="catalog"><div class="k">The catalog</div><h2>'+esc(g.label)+'</h2></div>';
+    g.sections.forEach(function(s){ html+='<section class="sec"><div class="band">'+esc(s)+'</div><div class="grid">'+cards(s)+'</div></section>'; });
+    main.innerHTML=html;
+    if(g.clip && g.alpha) alphaVideo(document.getElementById('media'), g.clip);
+    if(plain){ var pv=main.querySelector('video.plainvid'); if(pv){ var pp=pv.play(); if(pp&&pp.catch) pp.catch(function(){}); } }
+  }
+  function route(){
+    var k=(location.hash||'#home').slice(1);
+    [].forEach.call(document.querySelectorAll('#links a'), function(a){ a.classList.toggle('on', a.getAttribute('data-g')===k); });
+    if(GROUPS[k]) renderGroup(k); else renderHome();
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', route); route();
+
+
+  document.addEventListener('click', function(e){
+    var b=e.target.closest('.btn'); if(b){ toast('Ordering connects here: '+b.getAttribute('data-p')); return; }
+    var f=e.target.closest('footer a[data-page]'); if(f){ toast(f.textContent+' page'); }
+  });
+})();
+</script>
+
+</body>
+</html>
