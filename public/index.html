@@ -45,8 +45,7 @@
         "https://www.facebook.com/SerenequeWellness/",
         "https://www.instagram.com/serenequewellness/",
         "https://www.tiktok.com/@serenequewellness",
-        "https://www.threads.com/@serenequewellness",
-        "https://rx.sereneque.com"
+        "https://www.threads.com/@serenequewellness"
       ]
     },
     {
@@ -252,7 +251,7 @@
       <div class="sq-gate" style="position: relative; width: min(600px, 82vw); margin-top: 54px; transform: {{ treeTilt }}; transition: transform 260ms ease-out; animation: {{ floatAnim }};">
         <img class="sq-gate-sizer" src="./sereneque-lotus-mark.png" width="819" height="673" alt="">
         <div class="sq-reveal">
-          <a class="sq-enter-btn" href="https://rx.sereneque.com" target="_blank" rel="noopener"><span>Enter<br>Here</span></a>
+          <span class="sq-enter-btn"><span>Enter<br>Here</span></span>
         </div>
         <div class="sq-cap"><span class="sq-enter-cap">Vitality. Balance. Confidence.<br>Whole-body renewal.</span></div>
         <div class="sq-half sq-half-l"><img src="./sereneque-lotus-mark.png" width="819" height="673" alt=""></div>
@@ -526,7 +525,7 @@ class Component extends DCLogic {
   // The destination now lives in the href of the gate link itself, in the markup
   // above (search for sq-enter-btn), so that search engines can read it. This
   // keeps the two in step if the href is ever left behind.
-  var SQ_GATE_LINK = "https://rx.sereneque.com";
+  var SQ_GATE_LINK = "";   // 5 Oct 2026: the RxSpot portal link is removed; the coin is not a link until the next home is chosen
 
   var FIRST_DELAY = 1000;   // wait after the page loads before the first opening
   var SWING       = 2600;   // how long the doors take to travel (matches the CSS)
