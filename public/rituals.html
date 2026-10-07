@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box}
-  html{background:radial-gradient(ellipse 120% 80% at 50% 0%,#d5e8e4 0%,#a9cbc7 45%,#86b6b2 100%);background-attachment:fixed}
+  html{background:radial-gradient(ellipse 120% 80% at 50% 0%,#cde7e2 0%,#9bc8c4 45%,#72aeab 100%);background-attachment:fixed}
   body{margin:0;padding:0;background:transparent}
 
   /* ---- water backdrop ------------------------------------------------------
@@ -33,21 +33,21 @@
      so LOWER --sq-video-opacity means BLUER. Colour must live on <html>: a
      child of <body> at negative z-index paints behind body's own background
      and in front of html's. */
-  :root { --sq-water-tint: #4599B2; --sq-plate-opacity: .64; --sq-video-opacity: .55; }
+  :root { --sq-water-tint: #3692B0; --sq-plate-opacity: .72; --sq-video-opacity: .52; }
   .sq-bgwrap { position: fixed; inset: 0; z-index: -3; background: var(--sq-water-tint);
                opacity: var(--sq-plate-opacity); overflow: hidden; pointer-events: none; }
   .sq-bgvideo { width: 100%; height: 100%; object-fit: cover; display: block;
-                opacity: var(--sq-video-opacity); filter: saturate(1.05) contrast(1.12); }
+                opacity: var(--sq-video-opacity); filter: saturate(1.15) contrast(1.15); }
   body{font-family:"Jost","Helvetica Neue",Helvetica,sans-serif;color:#143035;-webkit-font-smoothing:antialiased;
        background:transparent;min-height:100vh;display:flex;flex-direction:column}
   a{color:#143035;text-decoration:none}
   nav{position:fixed;top:0;left:0;right:0;z-index:60;height:72px;display:flex;align-items:center;
-      justify-content:space-between;gap:16px;padding:0 24px;background:rgba(226,239,236,.68);
-      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(176,138,53,.28)}
+      justify-content:space-between;gap:16px;padding:0 24px;background:rgba(220,238,234,.68);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(178,134,40,.28)}
   nav .links{display:flex;gap:24px;font-size:13.5px;font-weight:300;letter-spacing:.06em;
-             text-transform:uppercase;color:#3d6a71}
-  nav .links a{color:#3d6a71;transition:color 180ms ease}
-  nav .links a:hover,nav .links a.on{color:#8f6d29}
+             text-transform:uppercase;color:#2f626a}
+  nav .links a{color:#2f626a;transition:color 180ms ease}
+  nav .links a:hover,nav .links a.on{color:#8a6520}
   .wrap{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:124px 24px 120px;text-align:center}
   body{position:relative}
   @keyframes floaty { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(14px); } }
@@ -64,9 +64,9 @@
   .sq-wm-glow { width: min(880px, 100vw);
                 background: radial-gradient(circle, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0) 62%);
                 filter: blur(14px); }
-  .sq-wm-pulse { width: min(405px, 54vw); border: 1px solid rgba(241, 221, 158, 0.7);
+  .sq-wm-pulse { width: min(405px, 54vw); border: 1px solid rgba(242, 216, 140, 0.7);
                  animation: pulseGlow 6s ease-in-out infinite; }
-  .sq-wm-ripple { width: min(820px, 92vw); border: 1px solid rgba(241, 221, 158, 0.7);
+  .sq-wm-ripple { width: min(820px, 92vw); border: 1px solid rgba(242, 216, 140, 0.7);
                   animation: ripple 11s cubic-bezier(0.16, 0.8, 0.3, 1) infinite; }
   .sq-wm-ripple-b { animation-delay: 5.5s; }
   .sq-wm img { position: relative; width: min(500px, 70vw); height: auto; opacity: 0.3;
@@ -75,7 +75,7 @@
   @media (max-width: 760px) { .sq-wm { height: 780px; transform: translateY(134px); } }
 
   .rule{height:1px;margin:34px auto 44px;max-width:640px;
-        background:linear-gradient(90deg,rgba(176,138,53,0) 0%,rgba(176,138,53,.55) 16%,rgba(176,138,53,.6) 50%,rgba(176,138,53,.55) 84%,rgba(176,138,53,0) 100%)}
+        background:linear-gradient(90deg,rgba(178,134,40,0) 0%,rgba(178,134,40,.55) 16%,rgba(178,134,40,.6) 50%,rgba(178,134,40,.55) 84%,rgba(178,134,40,0) 100%)}
   h1{margin:22px 0 0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
      font-size:clamp(28px,3.6vw,40px);letter-spacing:.01em}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,270px));justify-content:center;gap:26px}
@@ -85,18 +85,18 @@
   .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   figcaption{margin-top:12px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#587f87}
   /* mirrors the header: same tint, same blur, same gold hairline */
-  footer{border-top:1px solid rgba(176,138,53,.28);background:rgba(226,239,236,.68);
+  footer{border-top:1px solid rgba(178,134,40,.28);background:rgba(220,238,234,.68);
          backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
          padding:20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
          justify-content:center;text-align:center;flex-direction:column;gap:11px;width:100%;margin:auto 0 0;
-         font-size:12.5px;font-weight:300;letter-spacing:.02em;color:#3d6a71}
+         font-size:12.5px;font-weight:300;letter-spacing:.02em;color:#2f626a}
 
   /* ---- social marks: drawn as vector, in the gold sampled off the wordmark,
      standing on their own reflection because the whole site sits on water ---- */
   .sq-social{display:inline-flex;align-items:flex-start;gap:15px}
   .sq-social a{display:block;line-height:0;transition:transform 200ms ease,filter 200ms ease}
   .sq-social a:hover{transform:translateY(-1px);filter:brightness(1.14) saturate(1.06)}
-  .sq-social a:focus-visible{outline:2px solid #b08a35;outline-offset:3px;border-radius:50%}
+  .sq-social a:focus-visible{outline:2px solid #b28628;outline-offset:3px;border-radius:50%}
   .sq-social svg{display:block;width:26px;height:26px;fill:url(#sq-gold)}
   .sq-social svg:not(.sq-refl){filter:drop-shadow(0 1px 1.5px rgba(20,48,53,.34)) drop-shadow(0 0 1px rgba(255,255,255,.5))}
   .sq-social .sq-refl{transform:scaleY(-1);opacity:.32;margin-top:1px;
@@ -104,6 +104,7 @@
             mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 72%);
     filter:blur(.4px)}
   @media (prefers-reduced-motion:reduce){.sq-social a{transition:none}}
+  img[src$="sereneque-header-script.png"] { filter: saturate(1.14); }
 </style>
 </head>
 <body>
@@ -148,7 +149,7 @@
     <img src="./sereneque-lotus-mark.png" width="819" height="673" alt="">
   </div>
 <div class="wrap">
-  <a href="index.html" style="display:inline-block"><img src="sereneque-wordmark-script-v2.png" width="560" height="196" alt="Sereneque" style="display:block;margin:0 auto;width:min(280px,62vw);height:auto;filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.92)) drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3));"></a>
+  <a href="index.html" style="display:inline-block"><img src="sereneque-wordmark-script-v2.png" width="560" height="196" alt="Sereneque" style="display:block;margin:0 auto;width:min(280px,62vw);height:auto;filter: drop-shadow(0 2px 3px rgba(20, 48, 53, 0.3)) saturate(1.14);"></a>
   <h1>Rituals</h1>
   <div class="rule"></div>
 
@@ -173,7 +174,7 @@
     </figure>
   </div>
 
-    <div style="height: 1px; margin: 0 auto 46px; max-width: 900px; background: linear-gradient(90deg, rgba(176, 138, 53, 0) 0%, rgba(176, 138, 53, 0.55) 16%, rgba(176, 138, 53, 0.6) 50%, rgba(176, 138, 53, 0.55) 84%, rgba(176, 138, 53, 0) 100%);"></div>
+    <div style="height: 1px; margin: 0 auto 46px; max-width: 900px; background: linear-gradient(90deg, rgba(178, 134, 40, 0) 0%, rgba(178, 134, 40, 0.55) 16%, rgba(178, 134, 40, 0.6) 50%, rgba(178, 134, 40, 0.55) 84%, rgba(178, 134, 40, 0) 100%);"></div>
 
     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 26px 24px 10px; text-align: center;">
       <div style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 3.2vw, 34px); font-weight: 400; letter-spacing: 0.02em; color: #143035;">The Sereneque Wellness Method</div>
@@ -182,7 +183,7 @@
 
 <footer>
   <span class="sq-social"><a href="https://www.facebook.com/SerenequeWellness/" target="_blank" rel="noopener" aria-label="Sereneque on Facebook" title="Sereneque on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg></a><a href="https://www.instagram.com/serenequewellness/" target="_blank" rel="noopener" aria-label="Sereneque on Instagram" title="Sereneque on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg></a><a href="https://www.tiktok.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on TikTok" title="Sereneque on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg></a><a href="https://www.threads.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on Threads" title="Sereneque on Threads"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg></a></span>
-  <span>&copy; 2026 Sereneque LLC &middot; <a href="privacy.html" style="color:#3d6a71">Privacy</a></span>
+  <span>&copy; 2026 Sereneque LLC &middot; <a href="privacy.html" style="color:#2f626a">Privacy</a></span>
 </footer>
 
 <script>
@@ -213,21 +214,21 @@
     "#sqBurger{display:flex !important}}" +
     "#sqBurger{display:none;position:fixed;top:16px;right:18px;z-index:120;width:42px;height:42px;" +
     "align-items:center;justify-content:center;flex-direction:column;gap:5px;border-radius:8px;" +
-    "border:1px solid rgba(176,138,53,.45);background:rgba(255,255,255,.6);backdrop-filter:blur(10px);cursor:pointer}" +
-    "#sqBurger span{display:block;width:18px;height:1.5px;background:#3d6a71;transition:transform .2s ease,opacity .2s ease}" +
+    "border:1px solid rgba(178,134,40,.45);background:rgba(255,255,255,.6);backdrop-filter:blur(10px);cursor:pointer}" +
+    "#sqBurger span{display:block;width:18px;height:1.5px;background:#2f626a;transition:transform .2s ease,opacity .2s ease}" +
     "#sqBurger.on span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}" +
     "#sqBurger.on span:nth-child(2){opacity:0}" +
     "#sqBurger.on span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}" +
     "#sqMenu{position:fixed;top:66px;right:18px;left:auto;bottom:auto;display:block;height:auto;padding:0;gap:0;align-items:initial;justify-content:initial;z-index:119;min-width:190px;max-width:calc(100vw - 36px);border-radius:10px;overflow:hidden;" +
-    "border:1px solid rgba(176,138,53,.35);background:rgba(255,255,255,.96);backdrop-filter:blur(16px);" +
+    "border:1px solid rgba(178,134,40,.35);background:rgba(255,255,255,.96);backdrop-filter:blur(16px);" +
     "box-shadow:0 18px 44px rgba(20,48,53,.22);opacity:0;transform:translateY(-8px);pointer-events:none;" +
     "transition:opacity .18s ease,transform .18s ease}" +
     "#sqMenu.on{opacity:1;transform:translateY(0);pointer-events:auto}" +
     "#sqMenu a{display:block;padding:13px 18px;font-family:'Jost',Helvetica,sans-serif;font-size:13.5px;" +
-    "font-weight:300;letter-spacing:.08em;text-transform:uppercase;color:#3d6a71;text-decoration:none;" +
-    "border-bottom:1px solid rgba(176,138,53,.16)}" +
+    "font-weight:300;letter-spacing:.08em;text-transform:uppercase;color:#2f626a;text-decoration:none;" +
+    "border-bottom:1px solid rgba(178,134,40,.16)}" +
     "#sqMenu a:last-child{border-bottom:none}" +
-    "#sqMenu a:hover,#sqMenu a.on{background:rgba(176,138,53,.1);color:#8f6d29}";
+    "#sqMenu a:hover,#sqMenu a.on{background:rgba(178,134,40,.1);color:#8a6520}";
   document.head.appendChild(css);
 
   var burger = document.createElement("button");
