@@ -298,7 +298,7 @@ ten pages. The colour values quoted earlier in these notes are the old ones.
 
 | What | Was | Now |
 |---|---|---|
-| Water plate | `#4599B2` at .64, video .55 | `#2D8DAE` at .76, video .51 (deepened a second time the same day) |
+| Water plate | `#4599B2` at .64, video .55 | `#2D8DAE` at .86, video .285 (Rebecca picked this herself: step 5 of 8 on a preview slider) |
 | Video filter | `saturate(1.05) contrast(1.12)` | `saturate(1.2) contrast(1.17)` |
 | Seafoam gradient on `html` | `#d5e8e4 / #a9cbc7 / #86b6b2` | `#c8e6e0 / #92c4c0 / #67a7a4` |
 | Gold | `#b08a35` (176,138,53) | `#b28628` (178,134,40) |
