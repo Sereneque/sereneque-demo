@@ -298,9 +298,9 @@ ten pages. The colour values quoted earlier in these notes are the old ones.
 
 | What | Was | Now |
 |---|---|---|
-| Water plate | `#4599B2` at .64, video .55 | `#3692B0` at .72, video .52 |
-| Video filter | `saturate(1.05) contrast(1.12)` | `saturate(1.15) contrast(1.15)` |
-| Seafoam gradient on `html` | `#d5e8e4 / #a9cbc7 / #86b6b2` | `#cde7e2 / #9bc8c4 / #72aeab` |
+| Water plate | `#4599B2` at .64, video .55 | `#2D8DAE` at .76, video .51 (deepened a second time the same day) |
+| Video filter | `saturate(1.05) contrast(1.12)` | `saturate(1.2) contrast(1.17)` |
+| Seafoam gradient on `html` | `#d5e8e4 / #a9cbc7 / #86b6b2` | `#c8e6e0 / #92c4c0 / #67a7a4` |
 | Gold | `#b08a35` (176,138,53) | `#b28628` (178,134,40) |
 | Ring gold | 241,221,158 | 242,216,140 |
 | Header/footer tint | 226,239,236 | 220,238,234 |
