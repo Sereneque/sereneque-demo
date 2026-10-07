@@ -290,3 +290,27 @@ external drive ("External HD" → `C Sereneque`) on 5 Sep 2026.
   cannot be previewed anywhere without network access to that CDN. To check
   them at phone and tablet widths, load the live pages into fixed-width
   iframes — media queries inside an iframe key off the iframe's width.
+
+## Colour refresh, 7 Oct 2026
+
+Rebecca chose "a touch richer" colours and no white glow on the words, on all
+ten pages. The colour values quoted earlier in these notes are the old ones.
+
+| What | Was | Now |
+|---|---|---|
+| Water plate | `#4599B2` at .64, video .55 | `#3692B0` at .72, video .52 |
+| Video filter | `saturate(1.05) contrast(1.12)` | `saturate(1.15) contrast(1.15)` |
+| Seafoam gradient on `html` | `#d5e8e4 / #a9cbc7 / #86b6b2` | `#cde7e2 / #9bc8c4 / #72aeab` |
+| Gold | `#b08a35` (176,138,53) | `#b28628` (178,134,40) |
+| Ring gold | 241,221,158 | 242,216,140 |
+| Header/footer tint | 226,239,236 | 220,238,234 |
+| Soft teal / hero teal / gold text | `#3d6a71` / `#335c63` / `#8f6d29` | `#2f626a` / `#27565e` / `#8a6520` |
+| Home lotus doors | opacity .7 (open .6) | .8 (open .68), `saturate(1.14)` |
+
+- The white `text-shadow` glow is gone from all text, and the wordmark lost its
+  `drop-shadow(0 0 20px white)`; the thin dark shadows stayed. Wordmark and
+  header logo carry `saturate(1.14)`.
+- She tried a larger, bolder wordmark and did not like it. Leave its size alone.
+- To undo everything: the tag `before-richer-colors-2026-10-07` is the site as
+  it was just before this change.
+- `sample-no-rxspot-9k4d2.html` was not touched and still has the old colours.
