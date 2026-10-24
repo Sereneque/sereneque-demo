@@ -115,6 +115,50 @@
     filter:blur(.4px)}
   @media (prefers-reduced-motion:reduce){.sq-social a{transition:none}}
   img[src$="sereneque-header-script.png"] { filter: saturate(1.14); }
+
+  /* ---- shop catalog (the RxSpot storefront look, with nothing for sale yet) ---- */
+  .sq-shop { position: relative; z-index: 1; }
+  .sq-shop-label { display: flex; align-items: baseline; gap: 14px; margin: 0 0 18px; }
+  .sq-shop-label .k { font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: #8a6520; }
+  .sq-shop-label .v { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; color: #143035; }
+  .sq-band { margin: 0 0 34px; }
+  .sq-band-h { display: flex; align-items: center; justify-content: space-between; gap: 14px;
+               padding: 7px 18px; border-radius: 12px;
+               background: rgba(255, 255, 255, 0.22); border: 1px solid rgba(255, 255, 255, 0.45);
+               backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+               box-shadow: 0 3px 10px rgba(20, 48, 53, 0.05); }
+  .sq-band-h h2 { margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+                  font-size: 19px; letter-spacing: 0.03em; color: #143035; }
+  .sq-band-h .n { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a6520; }
+  .sq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 18px; margin-top: 18px; }
+  .sq-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+             padding: 26px 18px 20px; border-radius: 18px;
+             background: rgba(255, 255, 255, 0.58); border: 1px solid rgba(255, 255, 255, 0.8);
+             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+             box-shadow: 0 10px 28px rgba(20, 48, 53, 0.10);
+             animation: sq-floatCard 7s ease-in-out infinite;
+             transition: box-shadow .2s ease; }
+  .sq-card:hover { box-shadow: 0 18px 38px rgba(20, 48, 53, 0.16); }
+  .sq-card:nth-child(2) { animation-delay: -1.7s; }
+  .sq-card:nth-child(3) { animation-delay: -3.4s; }
+  .sq-card:nth-child(4) { animation-delay: -5.1s; }
+  .sq-card .ph { width: 100%; aspect-ratio: 1 / 1.08; border-radius: 12px;
+                 background: linear-gradient(180deg, rgba(200, 230, 224, 0.55), rgba(146, 196, 192, 0.35));
+                 border: 1px solid rgba(255, 255, 255, 0.6);
+                 display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .sq-card .ph img { width: 62%; height: auto; opacity: 0.28; filter: saturate(0.9); }
+  .sq-card .nm { margin: 18px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px;
+                 font-weight: 500; letter-spacing: 0.01em; color: #143035; }
+  .sq-card .pr { margin: 6px 0 0; font-size: 12.5px; letter-spacing: 0.06em; color: #2f626a; font-style: italic;
+                 font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; }
+  .sq-card .btn { margin-top: 16px; display: inline-block; padding: 9px 22px; border-radius: 999px;
+                  font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a6520;
+                  background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(178, 134, 40, 0.45);
+                  box-shadow: 0 3px 10px rgba(20, 48, 53, 0.08); }
+  @keyframes sq-floatCard { 0%, 100% { transform: translateY(-4px); } 50% { transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) { .sq-card { animation: none; } }
+  @media (max-width: 760px) { .sq-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+                              .sq-card { padding: 18px 12px 16px; } .sq-card .nm { font-size: 16px; } }
 </style>
 </helmet>
 
@@ -150,7 +194,35 @@
     <p style="margin: 14px auto 0; max-width: 560px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.5; color: #2f626a;">Our full range, by category.</p>
   </section>
 
-  <section style="position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 40px 24px 140px;"></section>
+  <section class="sq-shop" style="position: relative; width: 100%; max-width: 1180px; margin: 0 auto; padding: 40px 24px 140px;">
+    <div class="sq-shop-label"><span class="k">The catalog</span><span class="v">All</span></div>
+    <div class="sq-band">
+      <div class="sq-band-h"><h2>Face</h2><span class="n">Coming soon</span></div>
+      <div class="sq-grid">
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      </div>
+    </div>
+    <div class="sq-band">
+      <div class="sq-band-h"><h2>Body</h2><span class="n">Coming soon</span></div>
+      <div class="sq-grid">
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      </div>
+    </div>
+    <div class="sq-band">
+      <div class="sq-band-h"><h2>Rituals &amp; Sets</h2><span class="n">Coming soon</span></div>
+      <div class="sq-grid">
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      <div class="sq-card"><div class="ph"><img src="./sereneque-lotus-mark.png" alt=""></div><p class="nm">Coming soon</p><span class="btn">View details</span></div>
+      </div>
+    </div>
+  </section>
 
   <footer style="border-top: 1px solid rgba(178, 134, 40, 0.28); background: rgba(220, 238, 234, 0.68); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; text-align: center; flex-direction: column; gap: 11px; width: 100%; margin: auto 0 0; font-size: 12.5px; font-weight: 300; letter-spacing: 0.02em; color: #2f626a;">
     <span class="sq-social"><a href="https://www.facebook.com/SerenequeWellness/" target="_blank" rel="noopener" aria-label="Sereneque on Facebook" title="Sereneque on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M13.9 8.2h1.7V6.05c-.3-.04-1.02-.11-1.86-.11-1.84 0-3.1 1.1-3.1 3.12v1.79H8.5v2.4h2.14v6.05h2.56v-6.05h2.06l.33-2.4h-2.39V9.3c0-.7.19-1.1 1.1-1.1z"/></svg></a><a href="https://www.instagram.com/serenequewellness/" target="_blank" rel="noopener" aria-label="Sereneque on Instagram" title="Sereneque on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><rect x="6.6" y="6.6" width="10.8" height="10.8" rx="3.4" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="url(#sq-gold)" stroke-width="1.5"/><circle cx="15.6" cy="8.5" r=".95"/></svg></a><a href="https://www.tiktok.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on TikTok" title="Sereneque on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><path d="M15.4 6.1c.28 1.2 1.03 2.13 2.24 2.4v2.05a5.3 5.3 0 0 1-2.98-.95v4.34a3.94 3.94 0 1 1-3.94-3.94c.19 0 .37.01.55.04v2.12a1.9 1.9 0 1 0 1.33 1.81V6.1h2.8z"/></svg></a><a href="https://www.threads.com/@serenequewellness" target="_blank" rel="noopener" aria-label="Sereneque on Threads" title="Sereneque on Threads"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg><svg class="sq-refl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.1" fill="none" stroke="url(#sq-gold-ring)" stroke-width="1.35"/><g transform="translate(12 12) scale(1.1) translate(-12 -12)"><path fill="none" stroke="url(#sq-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16.05 8.2A5.6 5.6 0 1 0 15.5 16.4c1.6-.9 2-2.6 1.35-3.75-.6-1.05-2.1-1.5-3.5-1.1-1.2.35-1.9 1.2-1.75 2.1.15.85 1.1 1.35 2.05 1.05 1.2-.4 1.75-1.85 1.6-3.65-.15-1.75-1.05-2.9-2.5-2.9-1 0-1.8.45-2.3 1.2"/></g></svg></a></span>
