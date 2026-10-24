@@ -183,30 +183,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;floatMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;catalogColumns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;2&quot;,&quot;3&quot;,&quot;4&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Catalog&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Catalog&quot;}}">
 const CATEGORIES = [
-  { id: "all",    name: "All products" },
-  { id: "appet",  name: "Appetite Suppressant" },
-  { id: "weight", name: "Weight Management" },
-  { id: "pep",    name: "Peptides" },
-  { id: "aging",  name: "Anti-Aging" },
-  { id: "sexual", name: "Sexual Health" },
-  { id: "hair",   name: "Hair Loss" },
-  { id: "acne",   name: "Acne" }
+  { id: "all",    name: "All products" }
 ];
 
-const PRODUCTS = [
-  { id: "sermorelin", cat: "pep",    badge: "RX", img: "product-sermorelin-troche.svg" },
-  { id: "lcarn",      cat: "weight", badge: "",   img: "product-l-carnitine.svg" },
-  { id: "micc",       cat: "weight", badge: "",   img: "product-skinny-shots.svg" },
-  { id: "oralwl",     cat: "appet",  badge: "",   img: "product-oral-weight-loss.svg" },
-  { id: "sema",       cat: "weight", badge: "RX", img: "product-semaglutide.svg" },
-  { id: "ghk",        cat: "aging",  badge: "",   img: "product-ghk-cu.svg" },
-  { id: "ghkep",      cat: "aging",  badge: "",   img: "product-ghk-epitalon.svg" },
-  { id: "bpc",        cat: "pep",    badge: "",   img: "product-bpc-157.svg" },
-  { id: "cream",      cat: "aging",  badge: "",   img: "product-anti-aging-cream.svg" },
-  { id: "nad",        cat: "pep",    badge: "",   img: "product-nad-spray.svg" },
-  { id: "methblue",   cat: "aging",  badge: "",   img: "product-methylene-blue.svg" },
-  { id: "gluta",      cat: "aging",  badge: "",   img: "product-glutathione.svg" }
-];
+const PRODUCTS = [];
 
 const NODES = [
   { id: "n0", x: 200, y: 356, r: 9 },
